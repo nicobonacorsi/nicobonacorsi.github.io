@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicolò Bonacorsi — Ms in Applied Mathematics @Columbia University in the City of Ney York</title>
+  <title>Nicolò Bonacorsi — MS in Applied Mathematics @ Columbia University in the City of New York</title>
   <meta name="description" content="Nicolò Bonacorsi — MS Applied Mathematics @ Columbia. Probability • Dynamical Systems • AI." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
     /* =====================
        THEME TOKENS
@@ -24,6 +25,7 @@
       --outline: 1px solid rgba(10, 102, 194, 0.12);
       --maxw: 1100px;
       --ease: cubic-bezier(.2,.8,.2,1);
+      --tocw: 280px;
     }
     .dark {
       --bg: #0f0f10;           /* deep graphite */
@@ -108,8 +110,28 @@
     section { padding: 56px 0; position: relative; }
     .section__hd { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
     .section__title { font-size: clamp(1.6rem, 1.4vw + 1rem, 2.2rem); }
+
+    /* Base reveal (per sezione) */
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.is-in { opacity: 1; transform: translateY(0); }
+
+    /* ---------- FLUID REVEAL (blur + skew + scale + stagger) ---------- */
+    .flow {
+      opacity: 0;
+      transform: translateY(22px) scale(0.985) skewY(1.2deg);
+      filter: blur(6px);
+      transition:
+        opacity .9s var(--ease),
+        transform 1s var(--ease),
+        filter .9s var(--ease);
+      transition-delay: var(--d, 0ms); /* variabile per lo stagger */
+      will-change: transform, opacity, filter;
+    }
+    .flow.is-in {
+      opacity: 1;
+      transform: translateY(0) scale(1) skewY(0deg);
+      filter: blur(0);
+    }
 
     /* =====================
        TIMELINE (Education)
@@ -135,6 +157,61 @@
     .card .actions { display: flex; gap: 10px; margin-top: 12px; }
 
     /* =====================
+       NOTES (blog) — layout con TOC sticky
+       ===================== */
+    #notes .notes-wrap {
+      display: grid;
+      grid-template-columns: var(--tocw) 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 980px){
+      #notes .notes-wrap { grid-template-columns: 1fr; }
+    }
+    .toc {
+      position: sticky; top: 90px;
+      align-self: start;
+      background: var(--card);
+      border: var(--outline);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .toc h4 { margin: 0 0 8px; }
+    .toc a {
+      display: block; padding: 6px 8px; border-radius: 8px;
+      color: var(--text); opacity: .9;
+    }
+    .toc a:hover { background: color-mix(in oklab, var(--accent) 14%, transparent); }
+    .posts {
+      display: grid; gap: 24px;
+    }
+    .post {
+      background: var(--card);
+      border: var(--outline);
+      box-shadow: var(--shadow);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+    .post h4 { margin: 0 0 8px; }
+    .post .meta { color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
+    .post pre, .post code {
+      background: color-mix(in oklab, var(--bg) 70%, var(--card));
+      border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+      border-radius: 10px;
+      padding: 8px 10px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: var(--text);
+    }
+    .post blockquote {
+      margin: .4rem 0 .8rem;
+      padding: .6rem .8rem;
+      border-left: 4px solid var(--accent);
+      background: color-mix(in oklab, var(--accent) 8%, transparent);
+      border-radius: 10px;
+    }
+
+    /* =====================
        CONTACT BAR
        ===================== */
     .contact { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0,1fr)); }
@@ -145,6 +222,11 @@
        FOOTER
        ===================== */
     footer { padding: 60px 0 40px; text-align: center; color: var(--muted); }
+
+    /* Respect reduced-motion users */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .flow { transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+    }
   </style>
 </head>
 <body>
@@ -158,6 +240,7 @@
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
+        <a href="#notes">Probability & Notes</a>
         <a href="#contact">Contact</a>
         <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
       </div>
@@ -167,21 +250,21 @@
   <header class="hero">
     <div class="container hero__grid">
       <div>
-        <h1 class="hero__title"><span class="accent-underline">Hi, I'm Nicolò</span>.</h1>
-        <p class="hero__lead">MS in Applied Mathematics @ Columbia University. I am interested in <strong>Probability Theory</strong>, <strong>Stochastic Dynamical Systems</strong>, and <strong>Probabilistic Models</strong>.</p>
-        <div class="cta-row">
+        <h1 class="hero__title flow"><span class="accent-underline">Hi, I'm Nicolò</span>.</h1>
+        <p class="hero__lead flow">MS in Applied Mathematics @ Columbia University. I am interested in <strong>Probability Theory</strong>, <strong>Stochastic Dynamical Systems</strong>, and <strong>Probabilistic Models</strong>.</p>
+        <div class="cta-row flow">
           <a class="btn btn--primary" href="#projects">View Projects</a>
           <a class="btn btn--ghost" href="#contact">Get in Touch</a>
         </div>
       </div>
-      <aside class="hero__card">
+      <aside class="hero__card flow">
         <div class="stat">
           <div class="stat__num">1</div>
-          <div class="stat__lbl">MSc (Applied Mathematics @ Columbia)</div>
+          <div class="stat__lbl">MS (Applied Mathematics @ Columbia)</div>
           <div class="stat__num">2</div>
-          <div class="stat__lbl">BS in Mathematical Sciences for Artificial Intelligence @ Univeristy of Rome - Sapienza</div>
-           <div class="stat__num">3</div>
-          <div class="stat__lbl">BS in Statistical Sciences @ University of Bologna</div>          
+          <div class="stat__lbl">BS in Mathematical Sciences for Artificial Intelligence @ University of Rome - Sapienza</div>
+          <div class="stat__num">3</div>
+          <div class="stat__lbl">BS in Statistical Sciences @ University of Bologna</div>
           <div class="stat__num">∞</div>
           <div class="stat__lbl">Curiosity • Proofs • Experiments</div>
         </div>
@@ -194,39 +277,38 @@
     <section id="about" class="reveal">
       <div class="container">
         <div class="section__hd">
-          <h2 class="section__title">About</h2>
+          <h2 class="section__title flow">About</h2>
         </div>
-        <p>I’m a mathematician in training with a rigorous background in probability theory, measure theory, and PDEs. I enjoy turning abstract ideas into concrete models and clean, reproducible code. My current interests include martingale methods, stochastic dynamics, and probabilistic number theory (e.g., Collatz‑type heuristics).</p>
+        <p class="flow">I’m a mathematician in training with a rigorous background in probability theory, measure theory, and PDEs. I enjoy turning abstract ideas into concrete models and clean, reproducible code. My current interests include martingale methods, stochastic dynamics, and probabilistic number theory (e.g., Collatz-type heuristics).</p>
       </div>
     </section>
 
     <!-- EDUCATION (timeline) -->
     <section id="education" class="reveal">
       <div class="container">
-        <div class="section__hd"><h2 class="section__title">Education</h2></div>
+        <div class="section__hd"><h2 class="section__title flow">Education</h2></div>
         <div class="timeline">
-          <div class="tl-item">
+          <div class="tl-item flow">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <h4>Columbia University — MS Applied Mathematics</h4>
-              <div class="tl-meta">2025–2026 </div>
-              <p>Analysis and Probability I (PhD level), Probabilistic Models and Machine Learning (PhD level), Advanced Probability Theory (PhD/MS level), Partial Differential Equations (PhD/MS level)
-</p>
+              <div class="tl-meta">2025–2026 · New York, USA</div>
+              <p>Analysis & Probability I (PhD), Probabilistic Models & Machine Learning (PhD), Advanced Probability (PhD/MS), Partial Differential Equations (PhD/MS).</p>
             </div>
           </div>
-          <div class="tl-item">
+          <div class="tl-item flow">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <h4>Sapienza University — BS in Mathematical Sciences for AI</h4>
-              <div class="tl-meta">Final Grade: 110/110 Cum Laude · Rome</div>
-              <p>Focus on mathematical foundations of AI, optimization, and stochastic modeling.</p>
+              <div class="tl-meta">Final Grade: 110/110 cum laude · Rome, Italy</div>
+              <p>Mathematical foundations of AI, optimization, stochastic modeling.</p>
             </div>
           </div>
-          <div class="tl-item">
+          <div class="tl-item flow">
             <div class="tl-dot"></div>
             <div class="tl-card">
-              <h4>University of Bologna — BSc Statistical Sciences</h4>
-              <div class="tl-meta">Final Grade: 110/110 cum laude · Bologna</div>
+              <h4>University of Bologna — BS Statistical Sciences</h4>
+              <div class="tl-meta">Final Grade: 110/110 cum laude · Bologna, Italy</div>
               <p>Thesis in probabilistic number theory on the Collatz Conjecture.</p>
             </div>
           </div>
@@ -237,9 +319,9 @@
     <!-- PROJECTS (grid) -->
     <section id="projects" class="reveal">
       <div class="container">
-        <div class="section__hd"><h2 class="section__title">Selected Projects</h2></div>
+        <div class="section__hd"><h2 class="section__title flow">Selected Projects</h2></div>
         <div class="grid">
-          <article class="card">
+          <article class="card flow">
             <h4>Probabilistic Collatz</h4>
             <p>Stochastic analogues and heuristics for Collatz; Monte Carlo experiments and limit distributions.</p>
             <div class="tags">
@@ -252,7 +334,7 @@
               <a class="btn btn--ghost" href="#">Notes</a>
             </div>
           </article>
-          <article class="card">
+          <article class="card flow">
             <h4>Chronicles from Deterministic Chaos</h4>
             <p>Poincaré sections, Melnikov method, and bifurcation sketches for a driven pendulum.</p>
             <div class="tags">
@@ -264,9 +346,9 @@
               <a class="btn btn--ghost" href="#">Repo</a>
             </div>
           </article>
-          <article class="card">
+          <article class="card flow">
             <h4>EndParty</h4>
-            <p>Event‑detection and crowd‑flow analytics; probabilistic signals with lightweight models.</p>
+            <p>Event-detection and crowd-flow analytics; probabilistic signals with lightweight models.</p>
             <div class="tags">
               <span class="tag">Data</span>
               <span class="tag">Realtime</span>
@@ -280,14 +362,83 @@
       </div>
     </section>
 
+    <!-- NOTES (blog di probabilità) -->
+    <section id="notes" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title flow">Probability & Notes</h2></div>
+
+        <div class="notes-wrap">
+          <!-- TOC autogenerata -->
+          <aside class="toc flow">
+            <h4>Contents</h4>
+            <nav id="toc-list"></nav>
+          </aside>
+
+          <!-- POSTS -->
+          <div class="posts">
+            <!-- POST #1 -->
+            <article id="post-clt" class="post flow">
+              <h4>Central Limit Theorem — intuition, hypotheses, and a quick proof sketch</h4>
+              <div class="meta">Updated: Oct 30, 2025 • Tags: probability, convergence, CLT</div>
+              <p>
+                If \(X_1, X_2, \ldots\) are i.i.d. with mean \(\mu\) and variance \(\sigma^2 \in (0,\infty)\),
+                \[
+                  \frac{1}{\sigma\sqrt{n}}\sum_{i=1}^n (X_i-\mu) \;\xRightarrow{d}\; \mathcal{N}(0,1).
+                \]
+                Intuitively, normalization balances the spread so that the cumulative effect of many small, weakly dependent “kicks” approaches a Gaussian law.
+              </p>
+              <p><strong>Sketch:</strong> Expand the log-characteristic function via Taylor,
+                control the remainder with Lyapunov or Lindeberg, and invoke Lévy’s continuity theorem.
+              </p>
+              <blockquote>Takeaway: the CLT is a statement about the “shape” of sums, not about convergence in probability of the sums themselves.</blockquote>
+            </article>
+
+            <!-- POST #2 -->
+            <article id="post-conv-modes" class="post flow">
+              <h4>Modes of Convergence — why they differ and how to navigate them</h4>
+              <div class="meta">Updated: Oct 30, 2025 • Tags: convergence, measure-theory</div>
+              <p>
+                We distinguish \(X_n \to X\) <em>a.s.</em>, in probability, in \(L^p\), and in distribution:
+                \[
+                  X_n \xrightarrow{a.s.} X \;\Rightarrow\; X_n \xrightarrow{P} X \;\Rightarrow\; X_n \xRightarrow{d} X,
+                \]
+                while \(L^p\) sits orthogonally (dominated convergence bridges \(L^p\) to a.s.).
+              </p>
+              <p><strong>Useful trick:</strong> to show \(X_n \Rightarrow X\), it suffices to prove \(\mathbb{E}f(X_n)\to\mathbb{E}f(X)\) for all bounded continuous \(f\) (Portmanteau/DUC).
+              </p>
+            </article>
+
+            <!-- POST #3 -->
+            <article id="post-dirichlet" class="post flow">
+              <h4>Beta–Gamma–Dirichlet — the integral identities you’ll use forever</h4>
+              <div class="meta">Updated: Oct 30, 2025 • Tags: integrals, beta, gamma</div>
+              <p>
+                The Beta integral
+                \[
+                  \mathrm{B}(\alpha,\beta)=\int_0^1 x^{\alpha-1}(1-x)^{\beta-1}\,dx
+                  = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+                \]
+                extends to the Dirichlet integral over the simplex with the Jacobian trick and the Gamma change of variables.
+              </p>
+              <pre>\[
+\int_{\sum_{i=1}^k x_i=1,\, x_i\ge0}\prod_{i=1}^k x_i^{\alpha_i-1}\,dx
+= \frac{\prod_{i=1}^k \Gamma(\alpha_i)}{\Gamma\!\left(\sum_{i=1}^k \alpha_i\right)}.
+\]</pre>
+              <p>Proof by induction on \(k\) or via stick-breaking; both reveal the conjugacy structure ubiquitous in Bayesian models.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="reveal">
       <div class="container">
-        <div class="section__hd"><h2 class="section__title">Contact</h2></div>
+        <div class="section__hd"><h2 class="section__title flow">Contact</h2></div>
         <div class="contact">
-          <a href="mailto:nb3328@columbia.edu">Email</a>
-          <a href="https://www.linkedin.com/in/nicolobonacorsi/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/nicobonacorsi" target="_blank" rel="noopener">GitHub</a>
+          <a class="flow" href="mailto:nb3328@columbia.edu">Email</a>
+          <a class="flow" href="https://www.linkedin.com/in/nicolobonacorsi/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="flow" href="https://github.com/nicobonacorsi" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
@@ -299,24 +450,75 @@
     </div>
   </footer>
 
+  <!-- MathJax (LaTeX) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']], processEscapes: true },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
   <script>
     // ===== Dark mode (with localStorage) =====
-    const root = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') document.body.classList.add('dark');
+    const setIcon = () => themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    setIcon();
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark');
       localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-      themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      setIcon();
     });
-    themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 
-    // ===== Reveal on scroll =====
-    const io = new IntersectionObserver(entries => {
+    // ===== Reveal on scroll (section fade-in) =====
+    const secObserver = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-in'); });
     }, { threshold: 0.16 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => secObserver.observe(el));
+
+    // ===== FLUID STAGGER on scroll (child-by-child) =====
+    const flowObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const flows = e.target.querySelectorAll('.flow');
+        flows.forEach((node, i) => {
+          node.style.setProperty('--d', `${i * 90}ms`);
+          requestAnimationFrame(() => node.classList.add('is-in'));
+        });
+        flowObserver.unobserve(e.target);
+      });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('section').forEach(sec => flowObserver.observe(sec));
+
+    // ===== Smooth anchor offset (navbar) =====
+    const offset = 80;
+    document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = link.getAttribute('href');
+        const target = document.querySelector(id);
+        if (!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    // ===== Build TOC from posts =====
+    const toc = document.getElementById('toc-list');
+    if (toc) {
+      const posts = document.querySelectorAll('.posts .post');
+      posts.forEach(post => {
+        const h4 = post.querySelector('h4');
+        if (!post.id) post.id = h4.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+        const a = document.createElement('a');
+        a.href = `#${post.id}`;
+        a.textContent = h4.textContent;
+        toc.appendChild(a);
+      });
+    }
   </script>
 </body>
 </html>
+
