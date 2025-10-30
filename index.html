@@ -2,67 +2,318 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nico Bonacorsi | Applied Mathematics</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nico Bonacorsi — Applied Mathematics</title>
+  <meta name="description" content="Nico Bonacorsi — MSc Applied Mathematics @ Columbia. Probability • Dynamical Systems • AI." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       THEME TOKENS
+       ===================== */
+    :root {
+      --bg: #fff7e8;           /* cream */
+      --bg-soft: #fff2dc;      /* slightly deeper cream */
+      --text: #222222;
+      --muted: #555a60;
+      --accent: #0a66c2;       /* bold blue */
+      --accent-2: #5ab2ff;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(5, 32, 64, 0.12);
+      --radius: 18px;
+      --outline: 1px solid rgba(10, 102, 194, 0.12);
+      --maxw: 1100px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+    .dark {
+      --bg: #0f0f10;           /* deep graphite */
+      --bg-soft: #111214;
+      --text: #e9ecf1;
+      --muted: #a0a6ad;
+      --accent: #66aaff;
+      --accent-2: #9bd0ff;
+      --card: #17181b;
+      --shadow: 0 12px 36px rgba(0,0,0,.4);
+      --outline: 1px solid rgba(102,170,255,.18);
+    }
+
+    /* =====================
+       RESET & GLOBAL
+       ===================== */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, var(--bg-soft), transparent 60%), var(--bg);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background .4s var(--ease), color .3s var(--ease);
+    }
+    h1,h2,h3,h4 { font-family: "Space Grotesk", Inter, sans-serif; letter-spacing: .2px; }
+    h2 { font-size: clamp(2rem, 2.8vw + 1rem, 3rem); margin: 0 0 .8rem; }
+    p { margin: 0 0 1rem; color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; transition: color .2s var(--ease); }
+    a:hover { color: var(--accent-2); }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* =====================
+       NAVBAR (glass + sticky)
+       ===================== */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(1.1) blur(8px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: var(--outline);
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: baseline; gap: 10px; }
+    .brand__title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .brand__tag { color: var(--muted); font-size: .95rem; }
+    .nav__links { display: flex; gap: 18px; align-items: center; }
+    .nav__links a { color: var(--text); opacity: .85; font-weight: 500; }
+    .nav__links a:hover { opacity: 1; color: var(--accent); }
+    .theme-btn { border: 0; background: var(--card); color: var(--text); padding: 8px 12px; border-radius: 999px; box-shadow: var(--shadow); cursor: pointer; transition: transform .2s var(--ease), background .3s var(--ease); }
+    .theme-btn:hover { transform: translateY(-1px); }
+
+    /* =====================
+       HERO — bold layout
+       ===================== */
+    .hero { padding: 110px 0 70px; }
+    .hero__grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; align-items: center; }
+    @media (max-width: 900px){ .hero__grid { grid-template-columns: 1fr; } }
+
+    .hero__title { font-size: clamp(2.6rem, 4.5vw + 1rem, 4.8rem); line-height: 1.04; margin: 0 0 16px; }
+    .hero__title .accent-underline { position: relative; display: inline-block; }
+    .hero__title .accent-underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 10px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); opacity: .25; border-radius: 6px; transform: skewX(-12deg); }
+    .hero__lead { font-size: clamp(1.05rem, 1.2vw + .8rem, 1.35rem); color: var(--muted); margin-bottom: 22px; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; font-weight: 600; border: 1px solid transparent; cursor: pointer; transition: transform .15s var(--ease), background .25s var(--ease), border-color .25s var(--ease); }
+    .btn--primary { background: var(--accent); color: white; box-shadow: var(--shadow); }
+    .btn--primary:hover { transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--text); border-color: color-mix(in oklab, var(--accent) 30%, transparent); }
+    .btn--ghost:hover { border-color: var(--accent); }
+
+    .hero__card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: var(--outline); }
+    .stat { display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; align-items: baseline; }
+    .stat__num { font-family: "Space Grotesk", Inter, sans-serif; font-size: 1.9rem; color: var(--accent); }
+    .stat__lbl { color: var(--muted); }
+
+    /* =====================
+       SECTION WRAPPER + reveal
+       ===================== */
+    section { padding: 56px 0; position: relative; }
+    .section__hd { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+    .section__title { font-size: clamp(1.6rem, 1.4vw + 1rem, 2.2rem); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.is-in { opacity: 1; transform: translateY(0); }
+
+    /* =====================
+       TIMELINE (Education)
+       ===================== */
+    .timeline { position: relative; margin-top: 18px; }
+    .timeline::before { content: ""; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: color-mix(in oklab, var(--accent) 40%, transparent); }
+    .tl-item { display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding: 14px 8px; }
+    .tl-dot { width: 14px; height: 14px; background: var(--accent); border-radius: 999px; margin-top: 6px; box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent); }
+    .tl-card { background: var(--card); border-radius: 14px; padding: 16px; border: var(--outline); box-shadow: var(--shadow); }
+    .tl-card h4 { margin: 0 0 6px; }
+    .tl-meta { color: var(--muted); font-size: .95rem; }
+
+    /* =====================
+       PROJECT GRID
+       ===================== */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 980px){ .grid { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border-radius: var(--radius); padding: 18px; border: var(--outline); box-shadow: var(--shadow); text-align: left; }
+    .card h4 { margin: 0 0 8px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag { padding: 6px 10px; border-radius: 999px; background: color-mix(in oklab, var(--accent) 18%, transparent); color: var(--text); border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent); font-size: .85rem; }
+    .card .actions { display: flex; gap: 10px; margin-top: 12px; }
+
+    /* =====================
+       CONTACT BAR
+       ===================== */
+    .contact { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0,1fr)); }
+    @media (max-width: 760px){ .contact { grid-template-columns: 1fr; } }
+    .contact a { display: inline-flex; justify-content: center; align-items: center; border: var(--outline); padding: 14px 16px; border-radius: 12px; background: var(--card); box-shadow: var(--shadow); font-weight: 600; }
+
+    /* =====================
+       FOOTER
+       ===================== */
+    footer { padding: 60px 0 40px; text-align: center; color: var(--muted); }
+  </style>
 </head>
-
 <body>
-  <!-- HERO SECTION -->
-  <section id="hero">
-    <h1>Hi, I'm <span class="highlight">Nico</span>.</h1>
-    <p>
-      MSc Student in Applied Mathematics @ Columbia University <br />
-      Passionate about Probability, Dynamical Systems and AI.
-    </p>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a mathematics student with dual B.Sc. degrees from Sapienza and Bologna.
-      My interests lie in probabilistic number theory, stochastic processes and mathematical modeling.
-    </p>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>Columbia University</strong> – MSc Applied Mathematics (2025–2026)</li>
-      <li><strong>Sapienza University of Rome</strong> – BSc Mathematical Sciences for AI (GPA 27.85/30)</li>
-      <li><strong>University of Bologna</strong> – BSc Statistical Sciences (GPA 28.66/30, 110 L cum laude)</li>
-    </ul>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Research & Projects</h2>
-    <div class="project">
-      <h3>Probabilistic Approach to the Collatz Conjecture</h3>
-      <p>Exploring stochastic models behind the Collatz process and its probabilistic analogue.</p>
+  <nav class="nav">
+    <div class="container nav__inner">
+      <div class="brand">
+        <div class="brand__title">Nico Bonacorsi</div>
+        <div class="brand__tag">Applied Mathematics</div>
+      </div>
+      <div class="nav__links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      </div>
     </div>
-    <div class="project">
-      <h3>Chronicles from Deterministic Chaos</h3>
-      <p>Analysis of chaotic pendulum via Melnikov method and Poincaré maps.</p>
-    </div>
-  </section>
+  </nav>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:nicobonacorsi@gmail.com">nicobonacorsi@gmail.com</a><br />
-      <a href="https://www.linkedin.com/in/nicobonacorsi/">LinkedIn</a> | 
-      <a href="https://github.com/nicobonacorsi">GitHub</a>
-    </p>
-  </section>
+  <header class="hero">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="hero__title"><span class="accent-underline">Hi, I'm Nico</span>.</h1>
+        <p class="hero__lead">MSc in Applied Mathematics @ Columbia University. I work at the intersection of <strong>Probability</strong>, <strong>Dynamical Systems</strong>, and <strong>AI</strong>.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="#projects">View Projects</a>
+          <a class="btn btn--ghost" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <aside class="hero__card">
+        <div class="stat">
+          <div class="stat__num">2</div>
+          <div class="stat__lbl">BSc (Statistical Sciences • Mathematical Sciences for AI)</div>
+          <div class="stat__num">1</div>
+          <div class="stat__lbl">MSc (Applied Mathematics @ Columbia)</div>
+          <div class="stat__num">∞</div>
+          <div class="stat__lbl">Curiosity • Proofs • Experiments</div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="container">
+        <div class="section__hd">
+          <h2 class="section__title">About</h2>
+        </div>
+        <p>I’m a mathematician in training with a rigorous background in probability theory, measure theory, and PDEs. I enjoy turning abstract ideas into concrete models and clean, reproducible code. My current interests include martingale methods, stochastic dynamics, and probabilistic number theory (e.g., Collatz‑type heuristics).</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION (timeline) -->
+    <section id="education" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title">Education</h2></div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h4>Columbia University — MSc Applied Mathematics</h4>
+              <div class="tl-meta">2025–2026 · Probability · PDEs · Machine Learning</div>
+              <p>Graduate‑level courses in analysis & probability, stochastic processes, and applied PDEs.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h4>Sapienza University — BSc Mathematical Sciences for AI</h4>
+              <div class="tl-meta">GPA 27.85/30 · Rome</div>
+              <p>Focus on mathematical foundations of AI, optimization, and stochastic modeling.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h4>University of Bologna — BSc Statistical Sciences</h4>
+              <div class="tl-meta">GPA 28.66/30 · 110/110 cum laude · Bologna</div>
+              <p>Thesis in probabilistic number theory on the Collatz Conjecture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (grid) -->
+    <section id="projects" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title">Selected Projects</h2></div>
+        <div class="grid">
+          <article class="card">
+            <h4>Probabilistic Collatz</h4>
+            <p>Stochastic analogues and heuristics for Collatz; Monte Carlo experiments and limit distributions.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Probability</span>
+              <span class="tag">Monte Carlo</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn--ghost" href="#">Repo</a>
+              <a class="btn btn--ghost" href="#">Notes</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>Chronicles from Deterministic Chaos</h4>
+            <p>Poincaré sections, Melnikov method, and bifurcation sketches for a driven pendulum.</p>
+            <div class="tags">
+              <span class="tag">Dynamical Systems</span>
+              <span class="tag">PDEs</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn--ghost" href="#">Slides</a>
+              <a class="btn btn--ghost" href="#">Repo</a>
+            </div>
+          </article>
+          <article class="card">
+            <h4>EndParty</h4>
+            <p>Event‑detection and crowd‑flow analytics; probabilistic signals with lightweight models.</p>
+            <div class="tags">
+              <span class="tag">Data</span>
+              <span class="tag">Realtime</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn--ghost" href="#">Case Study</a>
+              <a class="btn btn--ghost" href="#">Repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title">Contact</h2></div>
+        <div class="contact">
+          <a href="mailto:nicobonacorsi@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/nicobonacorsi/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/nicobonacorsi" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Nico Bonacorsi. All rights reserved.</p>
+    <div class="container">
+      <p>© 2025 Nico Bonacorsi — Built with care. Theme: Cream ⇄ Night.</p>
+    </div>
   </footer>
+
+  <script>
+    // ===== Dark mode (with localStorage) =====
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.body.classList.add('dark');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+    themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+
+    // ===== Reveal on scroll =====
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-in'); });
+    }, { threshold: 0.16 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
-
-
