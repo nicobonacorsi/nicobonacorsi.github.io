@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nicolò Bonacorsi — MS in Applied Mathematics @ Columbia University in the City of New York</title>
+  <title>Nicolò Bonacorsi — MS in Applied Mathematics @ Columbia University</title>
   <meta name="description" content="Nicolò Bonacorsi — MS Applied Mathematics @ Columbia. Probability • Dynamical Systems • AI." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- KaTeX (fast LaTeX rendering) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 
   <style>
     /* =====================
@@ -25,7 +29,7 @@
       --outline: 1px solid rgba(10, 102, 194, 0.12);
       --maxw: 1100px;
       --ease: cubic-bezier(.2,.8,.2,1);
-      --tocw: 280px;
+      --tocw: 300px;
     }
     .dark {
       --bg: #0f0f10;           /* deep graphite */
@@ -65,7 +69,7 @@
        NAVBAR (glass + sticky)
        ===================== */
     .nav {
-      position: sticky; top: 0; z-index: 50;
+      position: sticky; top: 0; z-index: 60;
       backdrop-filter: saturate(1.1) blur(8px);
       background: color-mix(in oklab, var(--bg) 80%, transparent);
       border-bottom: var(--outline);
@@ -89,7 +93,7 @@
 
     .hero__title { font-size: clamp(2.6rem, 4.5vw + 1rem, 4.8rem); line-height: 1.04; margin: 0 0 16px; }
     .hero__title .accent-underline { position: relative; display: inline-block; }
-    .hero__title .accent-underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 10px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); opacity: .25; border-radius: 6px; transform: skewX(-12deg); }
+    .hero__title .accent-underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 10px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); opacity: .22; border-radius: 6px; transform: skewX(-6deg); }
     .hero__lead { font-size: clamp(1.05rem, 1.2vw + .8rem, 1.35rem); color: var(--muted); margin-bottom: 22px; }
 
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -111,27 +115,20 @@
     .section__hd { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
     .section__title { font-size: clamp(1.6rem, 1.4vw + 1rem, 2.2rem); }
 
-    /* Base reveal (per sezione) */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    /* Base reveal */
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
     .reveal.is-in { opacity: 1; transform: translateY(0); }
 
-    /* ---------- FLUID REVEAL (blur + skew + scale + stagger) ---------- */
+    /* Fluid reveal (softer) */
     .flow {
       opacity: 0;
-      transform: translateY(22px) scale(0.985) skewY(1.2deg);
-      filter: blur(6px);
-      transition:
-        opacity .9s var(--ease),
-        transform 1s var(--ease),
-        filter .9s var(--ease);
-      transition-delay: var(--d, 0ms); /* variabile per lo stagger */
+      transform: translateY(10px) scale(0.995) skewY(0.3deg);
+      filter: blur(2px);
+      transition: opacity .55s var(--ease), transform .60s var(--ease), filter .55s var(--ease);
+      transition-delay: var(--d, 0ms);
       will-change: transform, opacity, filter;
     }
-    .flow.is-in {
-      opacity: 1;
-      transform: translateY(0) scale(1) skewY(0deg);
-      filter: blur(0);
-    }
+    .flow.is-in { opacity: 1; transform: translateY(0) scale(1) skewY(0deg); filter: blur(0); }
 
     /* =====================
        TIMELINE (Education)
@@ -157,59 +154,38 @@
     .card .actions { display: flex; gap: 10px; margin-top: 12px; }
 
     /* =====================
-       NOTES (blog) — layout con TOC sticky
+       LIBRARY (topic chooser)
        ===================== */
-    #notes .notes-wrap {
-      display: grid;
-      grid-template-columns: var(--tocw) 1fr;
-      gap: 24px;
-    }
-    @media (max-width: 980px){
-      #notes .notes-wrap { grid-template-columns: 1fr; }
-    }
-    .toc {
-      position: sticky; top: 90px;
-      align-self: start;
-      background: var(--card);
-      border: var(--outline);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      padding: 16px;
-    }
+    .lib-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 980px){ .lib-grid { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .lib-grid { grid-template-columns: 1fr; } }
+    .lib-card { background: var(--card); border: var(--outline); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+    .lib-card h4 { margin: 0 0 6px; }
+    .lib-card p { margin: 0; }
+    .lib-card a { display: inline-block; margin-top: 10px; }
+
+    /* =====================
+       NOTES (blog) — layout con TOC sticky numerata
+       ===================== */
+    #notes .notes-wrap { display: grid; grid-template-columns: var(--tocw) 1fr; gap: 24px; }
+    @media (max-width: 980px){ #notes .notes-wrap { grid-template-columns: 1fr; } }
+    .toc { position: sticky; top: 90px; align-self: start; background: var(--card); border: var(--outline); border-radius: 14px; box-shadow: var(--shadow); padding: 16px; }
     .toc h4 { margin: 0 0 8px; }
-    .toc a {
-      display: block; padding: 6px 8px; border-radius: 8px;
-      color: var(--text); opacity: .9;
-    }
-    .toc a:hover { background: color-mix(in oklab, var(--accent) 14%, transparent); }
-    .posts {
-      display: grid; gap: 24px;
-    }
-    .post {
-      background: var(--card);
-      border: var(--outline);
-      box-shadow: var(--shadow);
-      border-radius: 16px;
-      padding: 18px 20px;
-    }
+    .toc ol { margin: 0; padding-left: 18px; }
+    .toc li { margin: 6px 0; }
+    .toc a { color: var(--text); opacity: .9; }
+    .toc a:hover { opacity: 1; text-decoration: underline; }
+
+    .posts { display: grid; gap: 24px; }
+    .post { background: var(--card); border: var(--outline); box-shadow: var(--shadow); border-radius: 16px; padding: 18px 20px; }
     .post h4 { margin: 0 0 8px; }
     .post .meta { color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
-    .post pre, .post code {
-      background: color-mix(in oklab, var(--bg) 70%, var(--card));
-      border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent);
-      border-radius: 10px;
-      padding: 8px 10px;
-      overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: var(--text);
-    }
-    .post blockquote {
-      margin: .4rem 0 .8rem;
-      padding: .6rem .8rem;
-      border-left: 4px solid var(--accent);
-      background: color-mix(in oklab, var(--accent) 8%, transparent);
-      border-radius: 10px;
-    }
+
+    /* Math blocks */
+    .math-display { font-size: 1.02em; padding: 8px 10px; border-radius: 10px; background: color-mix(in oklab, var(--bg) 70%, var(--card)); border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent); overflow-x: auto; }
+
+    .post code { background: color-mix(in oklab, var(--bg) 70%, var(--card)); border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent); border-radius: 6px; padding: 2px 6px; }
+    .post blockquote { margin: .4rem 0 .8rem; padding: .6rem .8rem; border-left: 4px solid var(--accent); background: color-mix(in oklab, var(--accent) 8%, transparent); border-radius: 10px; }
 
     /* =====================
        CONTACT BAR
@@ -223,10 +199,8 @@
        ===================== */
     footer { padding: 60px 0 40px; text-align: center; color: var(--muted); }
 
-    /* Respect reduced-motion users */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .flow { transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
-    }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) { .reveal, .flow { transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; } }
   </style>
 </head>
 <body>
@@ -240,12 +214,59 @@
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
+        <a href="#library">Library</a>
         <a href="#notes">Probability & Notes</a>
+        <a href="#/blog" id="blogLink">Blog</a>
+        <a href="#" id="openAtlas">Atlas</a>
         <a href="#contact">Contact</a>
         <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
       </div>
     </div>
   </nav>
+
+  <!-- ATLAS OVERLAY (full-screen topic map) -->
+  <div id="atlas" aria-hidden="true" style="position:fixed;inset:0;display:none;z-index:70;">
+    <div id="atlas-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(3px);"></div>
+    <div style="position:absolute;inset:40px;display:grid;grid-template-columns:320px 1fr;gap:18px;">
+      <aside style="background:var(--card);border:var(--outline);box-shadow:var(--shadow);border-radius:16px;padding:16px;">
+        <h3 style="margin:0 0 6px;font-family:'Space Grotesk'">Probability Atlas</h3>
+        <p style="margin:0 0 12px;color:var(--muted)">Scegli un argomento per il deep–dive. Ricerca istantanea.</p>
+        <input id="atlas-search" placeholder="Cerca: martingale, CLT, LLN…" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid color-mix(in oklab, var(--accent) 25%, transparent);background:var(--card);color:var(--text)" />
+        <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+          <button class="btn btn--ghost" data-atlas-tag>Foundations</button>
+          <button class="btn btn--ghost" data-atlas-tag>Convergence</button>
+          <button class="btn btn--ghost" data-atlas-tag>Limit Theorems</button>
+          <button class="btn btn--ghost" data-atlas-tag>Martingales</button>
+          <button class="btn btn--ghost" data-atlas-tag>Stochastic Processes</button>
+          <button class="btn btn--ghost" data-atlas-tag>Bayesian</button>
+        </div>
+        <button id="atlas-close" class="btn btn--primary" style="margin-top:14px;width:100%">Close Atlas</button>
+      </aside>
+      <main style="background:var(--card);border:var(--outline);box-shadow:var(--shadow);border-radius:16px;padding:16px;overflow:auto;">
+        <div class="map" id="atlas-map" style="display:grid;grid-template-columns:repeat(6,minmax(140px,1fr));gap:14px;min-height:100%;">
+          <!-- nodes -->
+          <a class="map-node" href="#post-lln" data-tags="Limit Theorems Convergence" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>LLN</strong><span class="muted">Weak/Strong</span>
+          </a>
+          <a class="map-node" href="#post-clt" data-tags="Limit Theorems Convergence" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>CLT</strong><span class="muted">Lindeberg/Lyapunov</span>
+          </a>
+          <a class="map-node" href="#post-conv-modes" data-tags="Convergence Foundations" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>Modes</strong><span class="muted">a.s., P, L^p, d</span>
+          </a>
+          <a class="map-node" href="#post-martingales" data-tags="Martingales Convergence" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>Optional Sampling</strong><span class="muted">Doob</span>
+          </a>
+          <a class="map-node" href="#post-bm" data-tags="Stochastic Processes Martingales" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>Brownian Motion</strong><span class="muted">reflection</span>
+          </a>
+          <a class="map-node" href="#post-dirichlet" data-tags="Bayesian Foundations" style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);background:color-mix(in oklab, var(--accent) 6%, transparent);">
+            <strong>Dirichlet</strong><span class="muted">Beta–Gamma</span>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
 
   <header class="hero">
     <div class="container hero__grid">
@@ -273,6 +294,36 @@
   </header>
 
   <main>
+    <!-- HIGHLIGHTS (homepage teasers) -->
+    <section id="highlights" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title flow">Theorem Highlights</h2></div>
+        <div class="grid">
+          <article class="card flow">
+            <h4>Portmanteau Theorem</h4>
+            <p>Equivalences for weak convergence via bounded continuous test functions and closed/open sets.</p>
+            <div class="math-display">If $X_n\\Rightarrow X$, then $\\int f\,d\mu_{X_n}\\to\\int f\,d\mu_X$ for all bounded continuous $f$.</div>
+            <p><em>Idea:</em> tightness + oscillation control with approximation by Lipschitz cutoffs.</p>
+            <div class="actions"><a class="btn btn--ghost" href="#post-conv-modes">Read more</a></div>
+          </article>
+          <article class="card flow">
+            <h4>Borel–Cantelli (I & II)</h4>
+            <p>Characterizes almost-sure occurrence of infinitely many events.</p>
+            <div class="math-display">If $\\sum P(A_n)<\\infty \\Rightarrow P(A_n\\ i.o.)=0$. If independent and $\\sum P(A_n)=\\infty \\Rightarrow P(A_n\\ i.o.)=1$.</div>
+            <p><em>Idea:</em> use subadditivity and independence to control tail events.</p>
+            <div class="actions"><a class="btn btn--ghost" href="#post-conv-modes">Read more</a></div>
+          </article>
+          <article class="card flow">
+            <h4>Optional Stopping (bounded T)</h4>
+            <p>Expectations preserved for martingales at bounded stopping times.</p>
+            <div class="math-display">If $(M_t)$ martingale, $T\\le K$ a.s., then $\\mathbb E[M_T]=\\mathbb E[M_0]$.</div>
+            <p><em>Idea:</em> stop the Doob decomposition; dominated convergence passes to the limit.</p>
+            <div class="actions"><a class="btn btn--ghost" href="#post-martingales">Read more</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT -->
     <section id="about" class="reveal">
       <div class="container">
@@ -330,7 +381,6 @@
               <span class="tag">Monte Carlo</span>
             </div>
             <div class="actions">
-              <a class="btn btn--ghost" href="#">Repo</a>
               <a class="btn btn--ghost" href="#">Notes</a>
             </div>
           </article>
@@ -343,7 +393,6 @@
             </div>
             <div class="actions">
               <a class="btn btn--ghost" href="#">Slides</a>
-              <a class="btn btn--ghost" href="#">Repo</a>
             </div>
           </article>
           <article class="card flow">
@@ -355,9 +404,48 @@
             </div>
             <div class="actions">
               <a class="btn btn--ghost" href="#">Case Study</a>
-              <a class="btn btn--ghost" href="#">Repo</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIBRARY (topic chooser) -->
+    <section id="library" class="reveal">
+      <div class="container">
+        <div class="section__hd"><h2 class="section__title flow">Probability Library</h2></div>
+        <p class="flow">Choose a topic to enter a deep dive (definitions → lemmas → proof sketch → examples → exercises). Each card links to a full article in <em>Notes</em>.</p>
+        <div class="lib-grid">
+          <div class="lib-card flow">
+            <h4>Law of Large Numbers</h4>
+            <p>Weak/Strong LLN, Kolmogorov conditions, counterexamples.</p>
+            <a href="#post-lln">Read</a>
+          </div>
+          <div class="lib-card flow">
+            <h4>Central Limit Theorem</h4>
+            <p>Lindeberg, Lyapunov, Berry–Esseen and rates.</p>
+            <a href="#post-clt">Read</a>
+          </div>
+          <div class="lib-card flow">
+            <h4>Modes of Convergence</h4>
+            <p>Implications, non-implications, Portmanteau, DUC.</p>
+            <a href="#post-conv-modes">Read</a>
+          </div>
+          <div class="lib-card flow">
+            <h4>Martingales & Stopping</h4>
+            <p>Doob, optional sampling, upcrossings.</p>
+            <a href="#post-martingales">Read</a>
+          </div>
+          <div class="lib-card flow">
+            <h4>Brownian Motion</h4>
+            <p>Constructions, Markov/strong Markov, reflection principle.</p>
+            <a href="#post-bm">Read</a>
+          </div>
+          <div class="lib-card flow">
+            <h4>Beta–Gamma–Dirichlet</h4>
+            <p>Integral identities and Bayesian conjugacy.</p>
+            <a href="#post-dirichlet">Read</a>
+          </div>
         </div>
       </div>
     </section>
@@ -368,81 +456,96 @@
         <div class="section__hd"><h2 class="section__title flow">Probability & Notes</h2></div>
 
         <div class="notes-wrap">
-          <!-- TOC autogenerata -->
+          <!-- TOC numerata autogenerata -->
           <aside class="toc flow">
             <h4>Contents</h4>
-            <nav id="toc-list"></nav>
+            <ol id="toc-list"></ol>
           </aside>
 
           <!-- POSTS -->
           <div class="posts">
-            <!-- POST #1 -->
+            <article id="post-lln" class="post flow">
+              <h4>Law of Large Numbers — from Kolmogorov to almost-sure convergence</h4>
+              <div class="meta">Updated: Oct 30, 2025 • Tags: LLN, convergence</div>
+              <p>We compare weak and strong LLN under different moment/independence assumptions, and show how truncation + Kronecker lemma deliver almost-sure convergence in the finite variance case.</p>
+            </article>
+
             <article id="post-clt" class="post flow">
               <h4>Central Limit Theorem — intuition, hypotheses, and a quick proof sketch</h4>
               <div class="meta">Updated: Oct 30, 2025 • Tags: probability, convergence, CLT</div>
-              <p>
-                If \(X_1, X_2, \ldots\) are i.i.d. with mean \(\mu\) and variance \(\sigma^2 \in (0,\infty)\),
-                \[
-                  \frac{1}{\sigma\sqrt{n}}\sum_{i=1}^n (X_i-\mu) \;\xRightarrow{d}\; \mathcal{N}(0,1).
-                \]
-                Intuitively, normalization balances the spread so that the cumulative effect of many small, weakly dependent “kicks” approaches a Gaussian law.
-              </p>
-              <p><strong>Sketch:</strong> Expand the log-characteristic function via Taylor,
-                control the remainder with Lyapunov or Lindeberg, and invoke Lévy’s continuity theorem.
-              </p>
-              <blockquote>Takeaway: the CLT is a statement about the “shape” of sums, not about convergence in probability of the sums themselves.</blockquote>
+              <p>If $(X_i)$ are i.i.d. with mean $\\mu$ and variance $\\sigma^2\\in(0,\\infty)$, then $$\\frac{1}{\\sigma\\sqrt{n}}\\sum_{i=1}^n (X_i-\\mu) \\xRightarrow{d} \\mathcal N(0,1).$$ Intuitively, normalization balances the spread so that the cumulative effect of many small, weakly dependent “kicks” approaches a Gaussian law.</p>
+              <p><strong>Sketch:</strong> Expand the log-characteristic function via Taylor, bound remainders with Lyapunov or Lindeberg, and invoke Lévy’s continuity theorem.</p>
+              <blockquote>Takeaway: the CLT controls the <em>shape</em> of sums after centering/scaling; it does not give probability convergence of raw sums.</blockquote>
             </article>
 
-            <!-- POST #2 -->
             <article id="post-conv-modes" class="post flow">
               <h4>Modes of Convergence — why they differ and how to navigate them</h4>
               <div class="meta">Updated: Oct 30, 2025 • Tags: convergence, measure-theory</div>
-              <p>
-                We distinguish \(X_n \to X\) <em>a.s.</em>, in probability, in \(L^p\), and in distribution:
-                \[
-                  X_n \xrightarrow{a.s.} X \;\Rightarrow\; X_n \xrightarrow{P} X \;\Rightarrow\; X_n \xRightarrow{d} X,
-                \]
-                while \(L^p\) sits orthogonally (dominated convergence bridges \(L^p\) to a.s.).
-              </p>
-              <p><strong>Useful trick:</strong> to show \(X_n \Rightarrow X\), it suffices to prove \(\mathbb{E}f(X_n)\to\mathbb{E}f(X)\) for all bounded continuous \(f\) (Portmanteau/DUC).
-              </p>
+              <p>We distinguish $X_n \to X$ <em>a.s.</em>, in probability, in $L^p$, and in distribution: $$X_n \xrightarrow{a.s.} X \;\Rightarrow\; X_n \xrightarrow{P} X \;\Rightarrow\; X_n \xRightarrow{d} X,$$ while $L^p$ sits orthogonally (dominated convergence bridges $L^p$ to a.s.).</p>
+              <p><strong>Useful trick:</strong> to show $\\mathbb{E}f(X_n)\\to\\mathbb{E}f(X)$, it suffices to prove bounded continuous $f$ convergence (Portmanteau/DUC).</p>
             </article>
 
-            <!-- POST #3 -->
             <article id="post-dirichlet" class="post flow">
               <h4>Beta–Gamma–Dirichlet — the integral identities you’ll use forever</h4>
               <div class="meta">Updated: Oct 30, 2025 • Tags: integrals, beta, gamma</div>
-              <p>
-                The Beta integral
-                \[
-                  \mathrm{B}(\alpha,\beta)=\int_0^1 x^{\alpha-1}(1-x)^{\beta-1}\,dx
-                  = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
-                \]
-                extends to the Dirichlet integral over the simplex with the Jacobian trick and the Gamma change of variables.
-              </p>
-              <pre>\[
-\int_{\sum_{i=1}^k x_i=1,\, x_i\ge0}\prod_{i=1}^k x_i^{\alpha_i-1}\,dx
-= \frac{\prod_{i=1}^k \Gamma(\alpha_i)}{\Gamma\!\left(\sum_{i=1}^k \alpha_i\right)}.
-\]</pre>
-              <p>Proof by induction on \(k\) or via stick-breaking; both reveal the conjugacy structure ubiquitous in Bayesian models.</p>
+              <p>The Beta integral $$\\mathrm{B}(\\alpha,\\beta)=\\int_0^1 x^{\\alpha-1}(1-x)^{\\beta-1}\\,dx = \\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}$$ extends to the Dirichlet integral over the simplex with the Jacobian trick and the Gamma change of variables.</p>
+              <div class="math-display">$$\n\\int_{\\sum_{i=1}^k x_i=1,\\, x_i\\ge0}\\prod_{i=1}^k x_i^{\\alpha_i-1}\\,dx\n= \\frac{\\prod_{i=1}^k \\Gamma(\\alpha_i)}{\\Gamma\\!\\left(\\sum_{i=1}^k \\alpha_i\\right)}.\n$$</div>
+              <p>Proof by induction on $k$ or via stick-breaking; both reveal the conjugacy structure ubiquitous in Bayesian models.</p>
+            </article>
+
+            <article id="post-martingales" class="post flow">
+              <h4>Martingales & Optional Sampling — precise hypotheses, counterexamples, applications</h4>
+              <div class="meta">Draft • Tags: martingales, stopping times</div>
+              <p>We collect forms of optional sampling (UI, bounded stopping times, integrability), give counterexamples when hypotheses fail, and show applications to hitting times and gambler’s ruin.</p>
+            </article>
+            <article id="post-bm" class="post flow">
+              <h4>Brownian Motion — constructions, properties, and classic identities</h4>
+              <div class="meta">Draft • Tags: Brownian motion</div>
+              <p>We outline Donsker's invariance principle, reflection principle, and arcsine laws with short proofs.</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="reveal">
-      <div class="container">
-        <div class="section__hd"><h2 class="section__title flow">Contact</h2></div>
-        <div class="contact">
-          <a class="flow" href="mailto:nb3328@columbia.edu">Email</a>
-          <a class="flow" href="https://www.linkedin.com/in/nicolobonacorsi/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="flow" href="https://github.com/nicobonacorsi" target="_blank" rel="noopener">GitHub</a>
+    <!-- ROUTED BLOG PAGE (client-side) -->
+    <div id="blog" style="display:none;">
+      <section class="reveal">
+        <div class="container">
+          <div class="section__hd"><h2 class="section__title flow">Blog — Probability • Analysis • Measure</h2></div>
+          <p class="flow">Approfondimenti rigorosi con prove, esempi e riferimenti. Scegli una traccia qui sotto oppure apri l’<a href="#" id="openAtlas2">Atlas</a> per navigare per concetti.</p>
+          <div class="lib-grid">
+            <a class="lib-card flow" href="#/blog/probability"><h4>Probability</h4><p>Convergence, martingales, Brownian, limit theorems…</p></a>
+            <a class="lib-card flow" href="#/blog/analysis"><h4>Analysis</h4><p>Functional analysis, Fourier, PDE warmups…</p></a>
+            <a class="lib-card flow" href="#/blog/measure"><h4>Measure & Integration</h4><p>Outer measure, Carathéodory, DCT/MCT/Egorov/Lusin…</p></a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section class="reveal">
+        <div class="container">
+          <div class="section__hd"><h2 class="section__title flow" id="blogSectionTitle">Probability</h2></div>
+          <div class="notes-wrap">
+            <aside class="toc flow">
+              <h4>Contents</h4>
+              <ol id="blog-toc"></ol>
+            </aside>
+            <div class="posts" id="blog-posts"></div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <section id="contact" class="reveal">
+    <div class="container">
+      <div class="section__hd"><h2 class="section__title flow">Contact</h2></div>
+      <div class="contact">
+        <a class="flow" href="mailto:nb3328@columbia.edu">Email</a>
+        <a class="flow" href="https://www.linkedin.com/in/nicolobonacorsi/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="flow" href="https://github.com/nicobonacorsi" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -450,16 +553,22 @@
     </div>
   </footer>
 
-  <!-- MathJax (LaTeX) -->
   <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']], processEscapes: true },
-      options: { renderActions: { addMenu: [] } }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    // ===== KaTeX auto-render =====
+    function renderKatex(root = document.body){
+      if (window.renderMathInElement){
+        window.renderMathInElement(root, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
 
-  <script>
     // ===== Dark mode (with localStorage) =====
     const themeBtn = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
@@ -472,53 +581,200 @@
       setIcon();
     });
 
-    // ===== Reveal on scroll (section fade-in) =====
+    // ===== Section reveal =====
     const secObserver = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-in'); });
     }, { threshold: 0.16 });
     document.querySelectorAll('.reveal').forEach(el => secObserver.observe(el));
 
-    // ===== FLUID STAGGER on scroll (child-by-child) =====
+    // ===== Fluid stagger reveal =====
     const flowObserver = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
         const flows = e.target.querySelectorAll('.flow');
         flows.forEach((node, i) => {
-          node.style.setProperty('--d', `${i * 90}ms`);
+          node.style.setProperty('--d', `${i * 60}ms`);
           requestAnimationFrame(() => node.classList.add('is-in'));
         });
         flowObserver.unobserve(e.target);
       });
-    }, { threshold: 0.18 });
-    document.querySelectorAll('section').forEach(sec => flowObserver.observe(sec));
+    }, { threshold: 0.05 });
+    document.querySelectorAll('section, header.hero').forEach(sec => flowObserver.observe(sec));
+    document.querySelectorAll('.hero .flow').forEach(node => node.classList.add('is-in'));
 
-    // ===== Smooth anchor offset (navbar) =====
+    // ===== Smooth anchor offset =====
     const offset = 80;
     document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#/')) return; // let router handle
         e.preventDefault();
-        const id = link.getAttribute('href');
-        const target = document.querySelector(id);
+        const target = document.querySelector(href);
         if (!target) return;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       });
     });
 
-    // ===== Build TOC from posts =====
+    // ===== Build numbered TOC (home notes) =====
     const toc = document.getElementById('toc-list');
     if (toc) {
-      const posts = document.querySelectorAll('.posts .post');
-      posts.forEach(post => {
+      const posts = document.querySelectorAll('#notes .posts .post');
+      posts.forEach((post, idx) => {
         const h4 = post.querySelector('h4');
         if (!post.id) post.id = h4.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+        const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = `#${post.id}`;
-        a.textContent = h4.textContent;
-        toc.appendChild(a);
+        a.textContent = `${idx+1}. ${h4.textContent}`;
+        li.appendChild(a);
+        toc.appendChild(li);
       });
     }
-  </script>
-</body>
-</html>
 
+    // ===== Simple client router for #/blog =====
+    const homeEl = document.querySelector('main');
+    const blogEl = document.getElementById('blog');
+    const blogTitle = document.getElementById('blogSectionTitle');
+    const blogToc = document.getElementById('blog-toc');
+    const blogPosts = document.getElementById('blog-posts');
+
+    const BLOG_DATA = {
+      probability: [
+        { id:'p-clt', title:'Central Limit Theorem — clean proof sketch', date:'Oct 30, 2025', tags:'CLT, convergence', html:`<p>If $(X_i)$ i.i.d., $\\mathbb E X_i=\\mu$, $\\operatorname{Var} X_i=\\sigma^2\\in(0,\\infty)$, then $$\\frac{1}{\\sigma\\sqrt{n}}\\sum_{i=1}^n (X_i-\\mu) \\xRightarrow{d} \\mathcal N(0,1).$$ Sketch via Lindeberg and Lévy.</p>` },
+        { id:'p-borel', title:'Borel–Cantelli I/II — precise statements', date:'Oct 30, 2025', tags:'a.s., tail events', html:`<p>If $\\sum_n P(A_n)<\\infty$ then $P(A_n\\ \\text{i.o.})=0$. If $(A_n)$ independent and $\\sum_n P(A_n)=\\infty$, then $P(A_n\\ \\text{i.o.})=1$.</p>` },
+               { id:'p-optional', title:'Optional Stopping — bounded & UI cases', date:'Oct 30, 2025', tags:'martingale, stopping', html:`<p>If $(M_t)$ is a martingale and $T\\le K$ a.s., then $\\mathbb E[M_T]=\\mathbb E[M_0]$. If $(M_t)$ is uniformly integrable and $T$ is integrable with $T<\\infty$ a.s., then the equality still holds.</p><p><strong>Sketch:</strong> Approximate $T$ by $T\\wedge n$, use Doob optional stopping for bounded times and then pass to the limit via dominated convergence or UI.</p>` },
+      ],
+      analysis: [
+        { id:'a-fourier', title:'Fourier Series — convergence cheatsheet', date:'Oct 30, 2025', tags:'analysis, fourier', html:`<p>Dirichlet conditions, pointwise convergence at jump discontinuities (to mid-value), and $L^2$ convergence via Parseval.</p>` },
+        { id:'a-pde', title:'Heat Equation — separation of variables on [0,L]', date:'Oct 30, 2025', tags:'pde, separation', html:`<p>Eigenfunctions $\\{\\cos(n\\pi x/L)\\}$ for Neumann; decay rates $e^{-\\kappa (n\\pi/L)^2 t}$; initial data expansion gives closed form.</p>` }
+      ],
+      measure: [
+        { id:'m-caratheodory', title:'Carathéodory Extension — why it matters', date:'Oct 30, 2025', tags:'measure, foundations', html:`<p>From pre-measure on an algebra to a complete measure on the generated $\\sigma$-algebra. Outer measure + Carathéodory measurability yield uniqueness.</p>` },
+        { id:'m-dct', title:'DCT/MCT/Egorov/Lusin — the quadfecta', date:'Oct 30, 2025', tags:'measure, integration', html:`<p>How to pass limits inside integrals: monotone convergence, dominated convergence, almost-uniform convergence (Egorov) and “almost continuous” approximation (Lusin).</p>` }
+      ]
+    };
+
+    // ==== BLOG RENDERER ====
+    function renderBlog(category='probability'){
+      const data = BLOG_DATA[category] || BLOG_DATA.probability;
+      if (blogTitle) blogTitle.textContent =
+        category[0].toUpperCase()+category.slice(1);
+
+      // TOC
+      if (blogToc){
+        blogToc.innerHTML = '';
+        data.forEach((post, i) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `#/${category}/${post.id}`;
+          a.textContent = `${i+1}. ${post.title}`;
+          li.appendChild(a);
+          blogToc.appendChild(li);
+        });
+      }
+
+      // Posts
+      if (blogPosts){
+        blogPosts.innerHTML = data.map(p => `
+          <article id="${p.id}" class="post">
+            <h4>${p.title}</h4>
+            <div class="meta">${p.date} • Tags: ${p.tags}</div>
+            ${p.html}
+          </article>
+        `).join('');
+        // Render math if KaTeX auto-render is present
+        try { renderKatex && renderKatex(blogPosts); } catch(e){}
+      }
+    }
+
+    // ==== SIMPLE HASH ROUTER ====
+    const blogLink = document.getElementById('blogLink');
+    if (blogLink){
+      blogLink.addEventListener('click', (e)=>{
+        e.preventDefault();
+        location.hash = '#/blog/probability';
+      });
+    }
+
+    function show(el){ el && (el.style.display=''); }
+    function hide(el){ el && (el.style.display='none'); }
+
+    function route(){
+      const hash = location.hash || '';
+      const m = hash.match(/^#\/blog(?:\/([^\/]+))?(?:\/([^\/]+))?$/);
+      if (m){
+        const category = (m[1] || 'probability').toLowerCase();
+        const postId  = m[2] || null;
+        hide(homeEl); show(blogEl);
+        renderBlog(category);
+        // jump to post if deep-linked
+        if (postId){
+          const target = document.getElementById(postId);
+          if (target){
+            const top = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }
+        // math in case posts were reinserted
+        try { renderKatex && renderKatex(blogEl); } catch(e){}
+      } else {
+        show(homeEl); hide(blogEl);
+      }
+    }
+    window.addEventListener('hashchange', route);
+    document.addEventListener('DOMContentLoaded', route);
+
+    // ==== ATLAS OVERLAY (open from navbar and blog page) ====
+    const atlas = document.getElementById('atlas');
+    const openAtlas = document.getElementById('openAtlas');
+    const openAtlas2 = document.getElementById('openAtlas2');
+    const closeAtlas = document.getElementById('atlas-close');
+    const atlasBackdrop = document.getElementById('atlas-backdrop');
+    const atlasSearch = document.getElementById('atlas-search');
+    const atlasMap = document.getElementById('atlas-map');
+
+    function showAtlas(){
+      if (!atlas) return;
+      atlas.style.display='block';
+      atlas.setAttribute('aria-hidden','false');
+      // small focus tweak
+      setTimeout(()=> atlasSearch && atlasSearch.focus(), 10);
+    }
+    function hideAtlas(){
+      if (!atlas) return;
+      atlas.style.display='none';
+      atlas.setAttribute('aria-hidden','true');
+    }
+    [openAtlas, openAtlas2].forEach(btn=>{
+      if (btn) btn.addEventListener('click', (e)=>{ e.preventDefault(); showAtlas(); });
+    });
+    if (closeAtlas) closeAtlas.addEventListener('click', hideAtlas);
+    if (atlasBackdrop) atlasBackdrop.addEventListener('click', hideAtlas);
+    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') hideAtlas(); });
+
+    // Atlas live filter (by text and by tag buttons with data-atlas-tag)
+    function atlasNodes(){
+      return atlas ? Array.from(atlas.querySelectorAll('.map-node')) : [];
+    }
+    if (atlasSearch){
+      atlasSearch.addEventListener('input', ()=>{
+        const q = atlasSearch.value.toLowerCase();
+        atlasNodes().forEach(node=>{
+          const hay = (node.textContent||'').toLowerCase() + ' ' + (node.dataset.tags||'').toLowerCase();
+          node.style.display = hay.includes(q) ? '' : 'none';
+        });
+      });
+    }
+    document.querySelectorAll('[data-atlas-tag]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const tag = btn.textContent.trim().toLowerCase();
+        if (atlasSearch){
+          atlasSearch.value = tag;
+          atlasSearch.dispatchEvent(new Event('input'));
+        }
+      });
+    });
+
+    // ==== HOME NOTES TOC (ensure math rendered once) ====
+    try { renderKatex && renderKatex(document.getElementById('notes')); } catch(e){}
