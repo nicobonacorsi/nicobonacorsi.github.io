@@ -4,10 +4,10 @@
 
     <button id="edit-login-token" type="button">Login token</button>
     <button id="edit-current-page" type="button">Edit this page</button>
+    <button id="edit-manage-content" type="button">Manage content</button>
     <button id="edit-new-scientific" type="button">New scientific post</button>
     <button id="edit-new-personal" type="button">New personal post</button>
     <button id="edit-new-project" type="button">New project</button>
-    <button id="edit-delete-current-page" type="button">Delete this page</button>
     <button id="edit-upload-image" type="button">Upload image</button>
 
     <a href="https://github.dev/nicobonacorsi/nicobonacorsi.github.io" target="_blank" rel="noopener">
@@ -29,7 +29,7 @@
 
     <div class="site-edit-modal-actions">
       <button id="site-edit-modal-save" type="button">Save to GitHub</button>
-      <button id="site-edit-modal-cancel" type="button">Cancel</button>
+      <button id="site-edit-modal-cancel" type="button">Close</button>
     </div>
   </div>
 </div>
@@ -42,7 +42,7 @@
     bottom: 22px;
     transform: translateX(-50%);
     z-index: 99999;
-    width: min(1080px, calc(100vw - 28px));
+    width: min(1180px, calc(100vw - 28px));
     font-family: inherit;
   }
 
@@ -65,7 +65,7 @@
   }
 
   .edit-toolbar-inner strong {
-    color: #111111;
+    color: #111;
     margin-right: .2rem;
   }
 
@@ -74,8 +74,8 @@
   .site-edit-modal button {
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 999px;
-    background: #111111;
-    color: #ffffff !important;
+    background: #111;
+    color: #fff !important;
     padding: .42rem .75rem;
     font-size: .88rem;
     line-height: 1;
@@ -87,22 +87,22 @@
   .edit-toolbar-inner a:hover,
   .edit-toolbar-inner button:hover,
   .site-edit-modal button:hover {
-    background: #000000;
-    color: #ffffff !important;
+    background: #000;
+    color: #fff !important;
   }
 
   #hide-edit-toolbar,
   #site-edit-modal-cancel,
   #site-edit-modal-close {
     background: #f4f4f4;
-    color: #333333 !important;
+    color: #333 !important;
   }
 
   #hide-edit-toolbar:hover,
   #site-edit-modal-cancel:hover,
   #site-edit-modal-close:hover {
     background: #e9e9e9;
-    color: #111111 !important;
+    color: #111 !important;
   }
 
   .site-edit-modal {
@@ -121,11 +121,11 @@
   }
 
   .site-edit-modal-card {
-    width: min(980px, 100%);
+    width: min(1060px, 100%);
     max-height: 88vh;
     overflow: auto;
     border-radius: 22px;
-    background: #ffffff;
+    background: #fff;
     box-shadow: 0 24px 80px rgba(0,0,0,.25);
     padding: 1.2rem;
   }
@@ -175,7 +175,7 @@
   }
 
   .site-edit-help {
-    color: #666666;
+    color: #666;
     font-size: .9rem;
     line-height: 1.45;
     margin-top: .35rem;
@@ -194,9 +194,55 @@
     padding: .7rem .85rem;
     border-radius: 12px;
     background: #f6f6f6;
-    color: #333333;
+    color: #333;
     margin-bottom: 1rem;
     font-size: .92rem;
+  }
+
+  .content-manager-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-manager-list {
+    display: grid;
+    gap: .7rem;
+  }
+
+  .content-manager-item {
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 14px;
+    padding: .85rem;
+    background: #fafafa;
+  }
+
+  .content-manager-item-title {
+    font-weight: 700;
+    margin-bottom: .25rem;
+  }
+
+  .content-manager-item-path {
+    color: #666;
+    font-size: .86rem;
+    overflow-wrap: anywhere;
+    margin-bottom: .65rem;
+  }
+
+  .content-manager-item-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+
+  .danger-button {
+    background: #8b1a1a !important;
+    color: #fff !important;
+  }
+
+  .danger-button:hover {
+    background: #651111 !important;
   }
 
   @media (max-width: 720px) {
@@ -254,9 +300,7 @@
         "Paste your GitHub fine-grained token. It will be stored only in this browser tab session."
       );
 
-      if (!token) {
-        throw new Error("Missing GitHub token.");
-      }
+      if (!token) throw new Error("Missing GitHub token.");
 
       setToken(token.trim());
       return token.trim();
@@ -292,10 +336,39 @@
       return new Date().toISOString().slice(0, 10);
     }
 
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function parseFrontMatter(content) {
+      const data = {};
+      const match = content.match(/^---\s*([\s\S]*?)\s*---/);
+      if (!match) return data;
+
+      const yaml = match[1];
+
+      const title = yaml.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+      const categories = yaml.match(/^categories:\s*\[(.*?)\]\s*$/m);
+      const city = yaml.match(/^city:\s*["']?(.+?)["']?\s*$/m);
+      const scientificType = yaml.match(/^scientific_type:\s*["']?(.+?)["']?\s*$/m);
+
+      if (title) data.title = title[1].replace(/^["']|["']$/g, "");
+      if (categories) data.categories = categories[1].toLowerCase();
+      if (city) data.city = city[1].replace(/^["']|["']$/g, "");
+      if (scientificType) data.scientificType = scientificType[1].replace(/^["']|["']$/g, "");
+
+      return data;
+    }
+
     function openModal(title, html, saveHandler) {
       modalTitle.textContent = title;
       modalBody.innerHTML = html;
-      currentSaveHandler = saveHandler;
+      currentSaveHandler = saveHandler || null;
+      modalSave.style.display = saveHandler ? "inline-block" : "none";
       modal.classList.add("is-visible");
       modal.setAttribute("aria-hidden", "false");
     }
@@ -337,27 +410,32 @@
       };
     }
 
+    async function listDirectory(path) {
+      const res = await fetch(`${API_ROOT}/${encodeURIComponent(path).replaceAll("%2F", "/")}?ref=${BRANCH}`, {
+        headers: headers()
+      });
+
+      if (!res.ok) {
+        throw new Error(`Could not list ${path}. GitHub returned ${res.status}.`);
+      }
+
+      return await res.json();
+    }
+
     async function getExistingSha(path) {
       const res = await fetch(`${API_ROOT}/${encodeURIComponent(path).replaceAll("%2F", "/")}?ref=${BRANCH}`, {
         headers: headers()
       });
 
-      if (res.status === 404) {
-        return null;
-      }
-
-      if (!res.ok) {
-        return null;
-      }
+      if (res.status === 404) return null;
+      if (!res.ok) return null;
 
       const data = await res.json();
       return data.sha || null;
     }
 
     async function putFile(path, content, message, sha) {
-      if (!sha) {
-        sha = await getExistingSha(path);
-      }
+      if (!sha) sha = await getExistingSha(path);
 
       const body = {
         message: message,
@@ -365,9 +443,7 @@
         branch: BRANCH
       };
 
-      if (sha) {
-        body.sha = sha;
-      }
+      if (sha) body.sha = sha;
 
       const res = await fetch(`${API_ROOT}/${encodeURIComponent(path).replaceAll("%2F", "/")}`, {
         method: "PUT",
@@ -386,7 +462,7 @@
       return await res.json();
     }
 
-    async function deleteFile(path, message) {
+    async function deleteFile(path) {
       const sha = await getExistingSha(path);
 
       if (!sha) {
@@ -400,7 +476,7 @@
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: message,
+          message: `Delete ${path} from site edit mode`,
           sha: sha,
           branch: BRANCH
         })
@@ -414,22 +490,13 @@
       return await res.json();
     }
 
-    async function editCurrentPage() {
-      let path = toolbar.dataset.sourcePath || "index.html";
-
-      if (!path || path === "undefined") {
-        path = "index.html";
-      }
-
+    async function editFileByPath(path) {
       openModal(
         `Edit ${path}`,
         `
           <div class="site-edit-field">
             <label>File path</label>
-            <input id="edit-file-path" value="${path}">
-            <div class="site-edit-help">
-              This edits the source file in GitHub. For blog posts, this is the Markdown file.
-            </div>
+            <input id="edit-file-path" value="${escapeHtml(path)}">
           </div>
 
           <div class="site-edit-field">
@@ -455,6 +522,140 @@
       } catch (e) {
         setStatus(e.message);
       }
+    }
+
+    async function deleteFileByPath(path) {
+      const ok = confirm(`Delete this file from GitHub?\n\n${path}\n\nThis cannot be undone from the website.`);
+      if (!ok) return;
+
+      openModal(
+        `Delete ${path}`,
+        `<div class="site-edit-status">Ready to delete ${escapeHtml(path)}.</div>`,
+        async function () {
+          setStatus("Deleting from GitHub...");
+          await deleteFile(path);
+          setStatus("Deleted. GitHub Actions will rebuild the site in about 1–2 minutes. Reopen Manage content to refresh the list.");
+        }
+      );
+    }
+
+    async function editCurrentPage() {
+      let path = toolbar.dataset.sourcePath || "index.html";
+      if (!path || path === "undefined") path = "index.html";
+      await editFileByPath(path);
+    }
+
+    async function buildManagerList(kind) {
+      setStatus("Loading content from GitHub...");
+
+      let items = [];
+
+      if (kind === "scientific" || kind === "personal") {
+        const files = await listDirectory("_posts");
+        const markdownFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
+
+        for (const file of markdownFiles) {
+          try {
+            const full = await getFile(file.path);
+            const meta = parseFrontMatter(full.content);
+            const categories = meta.categories || "";
+
+            if (kind === "scientific" && !categories.includes("scientific")) continue;
+            if (kind === "personal" && !categories.includes("personal")) continue;
+
+            items.push({
+              path: file.path,
+              title: meta.title || file.name,
+              subtitle: kind === "scientific"
+                ? (meta.scientificType || "Scientific post")
+                : (meta.city ? `City: ${meta.city}` : "Personal post")
+            });
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+      }
+
+      if (kind === "projects") {
+        const files = await listDirectory("_projects");
+        const markdownFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
+
+        for (const file of markdownFiles) {
+          try {
+            const full = await getFile(file.path);
+            const meta = parseFrontMatter(full.content);
+
+            items.push({
+              path: file.path,
+              title: meta.title || file.name,
+              subtitle: "Project"
+            });
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+      }
+
+      items.sort((a, b) => b.path.localeCompare(a.path));
+
+      if (items.length === 0) {
+        document.getElementById("content-manager-list").innerHTML =
+          `<div class="site-edit-status">No items found.</div>`;
+        return;
+      }
+
+      document.getElementById("content-manager-list").innerHTML = items.map((item, index) => `
+        <div class="content-manager-item">
+          <div class="content-manager-item-title">${escapeHtml(item.title)}</div>
+          <div class="content-manager-item-path">${escapeHtml(item.subtitle)} · ${escapeHtml(item.path)}</div>
+          <div class="content-manager-item-actions">
+            <button type="button" data-manager-edit="${index}">Edit</button>
+            <button type="button" class="danger-button" data-manager-delete="${index}">Delete</button>
+          </div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll("[data-manager-edit]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = items[Number(button.dataset.managerEdit)];
+          editFileByPath(item.path);
+        });
+      });
+
+      document.querySelectorAll("[data-manager-delete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = items[Number(button.dataset.managerDelete)];
+          deleteFileByPath(item.path);
+        });
+      });
+
+      setStatus(`Loaded ${items.length} item(s) from GitHub.`);
+    }
+
+    function manageContent() {
+      openModal(
+        "Manage content",
+        `
+          <div class="site-edit-status" id="site-edit-status">
+            Choose what you want to manage. This list is read directly from GitHub online.
+          </div>
+
+          <div class="content-manager-tabs">
+            <button type="button" id="manage-scientific">Scientific posts</button>
+            <button type="button" id="manage-personal">Personal posts</button>
+            <button type="button" id="manage-projects">Projects</button>
+          </div>
+
+          <div id="content-manager-list" class="content-manager-list"></div>
+        `,
+        null
+      );
+
+      document.getElementById("manage-scientific").addEventListener("click", () => buildManagerList("scientific"));
+      document.getElementById("manage-personal").addEventListener("click", () => buildManagerList("personal"));
+      document.getElementById("manage-projects").addEventListener("click", () => buildManagerList("projects"));
+
+      buildManagerList("scientific");
     }
 
     function newScientificPost() {
@@ -485,24 +686,12 @@
           <div class="site-edit-field">
             <label>Tags</label>
             <input id="new-tags" placeholder="Probability, Stochastic Control, Optimal Stopping">
-            <div class="site-edit-help">
-              Separate tags with commas.
-            </div>
+            <div class="site-edit-help">Separate tags with commas.</div>
           </div>
 
           <div class="site-edit-field">
             <label>Body</label>
             <textarea id="new-body">Write your post here.
-
-You can write inline LaTeX like $X_t$.
-
-You can write display LaTeX:
-
-$$
-dX_t = \\mu(X_t)\\,dt + \\sigma(X_t)\\,dW_t.
-$$
-
-You can write numbered equations and references:
 
 The value function satisfies Equation \\eqref{eq:value}.
 
@@ -520,10 +709,7 @@ V(x)
           const title = document.getElementById("new-title").value.trim();
           const postDate = document.getElementById("new-date").value.trim();
           const scientificType = document.getElementById("new-scientific-type").value.trim();
-          const tags = document.getElementById("new-tags").value
-            .split(",")
-            .map(t => t.trim())
-            .filter(Boolean);
+          const tags = document.getElementById("new-tags").value.split(",").map(t => t.trim()).filter(Boolean);
           const body = document.getElementById("new-body").value;
 
           if (!title) throw new Error("Title is required.");
@@ -574,16 +760,13 @@ ${body}
           <div class="site-edit-field">
             <label>Tags / topics</label>
             <input id="new-tags" placeholder="Travel, Photography, Friends">
-            <div class="site-edit-help">
-              Separate tags with commas.
-            </div>
           </div>
 
           <div class="site-edit-field">
             <label>Body</label>
             <textarea id="new-body">Write your personal post here.
 
-You can add an image after uploading it:
+You can add an image like this:
 
 ![description](/images/uploads/my-image.jpg)
 </textarea>
@@ -593,10 +776,7 @@ You can add an image after uploading it:
           const title = document.getElementById("new-title").value.trim();
           const postDate = document.getElementById("new-date").value.trim();
           const city = document.getElementById("new-city").value.trim() || "Unspecified";
-          const tags = document.getElementById("new-tags").value
-            .split(",")
-            .map(t => t.trim())
-            .filter(Boolean);
+          const tags = document.getElementById("new-tags").value.split(",").map(t => t.trim()).filter(Boolean);
           const body = document.getElementById("new-body").value;
 
           if (!title) throw new Error("Title is required.");
@@ -641,13 +821,11 @@ ${body}
           <div class="site-edit-field">
             <label>Topics</label>
             <input id="new-project-topics" placeholder="Probability, Stochastic Control, Information Theory">
-            <div class="site-edit-help">Separate topics with commas.</div>
           </div>
 
           <div class="site-edit-field">
             <label>Image path</label>
             <input id="new-project-image" placeholder="/images/uploads/project-image.jpg">
-            <div class="site-edit-help">Optional. Upload the image first, then paste its path here.</div>
           </div>
 
           <div class="site-edit-field">
@@ -669,27 +847,21 @@ ${body}
             <label>Body</label>
             <textarea id="new-project-body">Write the project page here.
 
-You can use LaTeX:
-
 \\begin{equation}
-V(x)
+R(D)
 =
-\\sup_{\\tau}
-\\mathbb E_x\\left[e^{-r\\tau} g(X_\\tau)\\right].
-\\label{eq:value}
+\\inf I(X;\\widehat X).
+\\label{eq:project}
 \\end{equation}
 
-Then refer to Equation \\eqref{eq:value}.
+Then refer to Equation \\eqref{eq:project}.
 </textarea>
           </div>
         `,
         async function () {
           const title = document.getElementById("new-project-title").value.trim();
           const postDate = document.getElementById("new-project-date").value.trim();
-          const topics = document.getElementById("new-project-topics").value
-            .split(",")
-            .map(t => t.trim())
-            .filter(Boolean);
+          const topics = document.getElementById("new-project-topics").value.split(",").map(t => t.trim()).filter(Boolean);
           const image = document.getElementById("new-project-image").value.trim();
           const question = document.getElementById("new-project-question").value.trim();
           const keyIdea = document.getElementById("new-project-keyidea").value.trim();
@@ -698,9 +870,7 @@ Then refer to Equation \\eqref{eq:value}.
 
           if (!title) throw new Error("Project title is required.");
 
-          const slug = slugify(title);
-          const filename = `_projects/${slug}.md`;
-
+          const filename = `_projects/${slugify(title)}.md`;
           const yamlList = topics.map(t => `"${t.replaceAll('"', '\\"')}"`).join(", ");
 
           const content = `---
@@ -726,33 +896,6 @@ ${body}
       );
     }
 
-    async function deleteCurrentPage() {
-      let path = toolbar.dataset.sourcePath || "";
-
-      if (!path || path === "index.html" || path === "projects.html" || path.startsWith("blog/")) {
-        alert("Open the specific post or project page first, then use ?edit=1 and Delete this page. I will not delete index pages from here.");
-        return;
-      }
-
-      if (!(path.startsWith("_posts/") || path.startsWith("_projects/"))) {
-        alert("For safety, this delete button only deletes blog posts and project files.");
-        return;
-      }
-
-      const ok = confirm(`Delete this file from GitHub?\n\n${path}\n\nThis cannot be undone from the website.`);
-      if (!ok) return;
-
-      openModal(
-        `Delete ${path}`,
-        `<div class="site-edit-status">Ready to delete ${path}.</div>`,
-        async function () {
-          setStatus("Deleting from GitHub...");
-          await deleteFile(path, `Delete ${path} from site edit mode`);
-          setStatus("Deleted. GitHub Actions will rebuild the site in about 1–2 minutes.");
-        }
-      );
-    }
-
     function uploadImage() {
       openModal(
         "Upload image",
@@ -766,7 +909,7 @@ ${body}
             <label>Save as filename</label>
             <input id="upload-image-name" placeholder="my-image.jpg">
             <div class="site-edit-help">
-              The image will be saved in images/uploads/. After upload, use it as:
+              The image will be saved in images/uploads/. Use it as:
               ![description](/images/uploads/filename.jpg)
             </div>
           </div>
@@ -778,9 +921,7 @@ ${body}
           const file = fileInput.files[0];
           if (!file) throw new Error("Choose an image first.");
 
-          const safeName = (nameInput.value.trim() || file.name)
-            .replace(/[^a-zA-Z0-9._-]/g, "-");
-
+          const safeName = (nameInput.value.trim() || file.name).replace(/[^a-zA-Z0-9._-]/g, "-");
           const path = `images/uploads/${safeName}`;
 
           const dataUrl = await new Promise((resolve, reject) => {
@@ -791,18 +932,15 @@ ${body}
           });
 
           const base64Content = String(dataUrl).split(",")[1];
+          const existingSha = await getExistingSha(path);
 
-          const existingImageSha = await getExistingSha(path);
-
-          const imageBody = {
+          const body = {
             message: `Upload image ${safeName} from site edit mode`,
             content: base64Content,
             branch: BRANCH
           };
 
-          if (existingImageSha) {
-            imageBody.sha = existingImageSha;
-          }
+          if (existingSha) body.sha = existingSha;
 
           const res = await fetch(`${API_ROOT}/${encodeURIComponent(path).replaceAll("%2F", "/")}`, {
             method: "PUT",
@@ -810,7 +948,7 @@ ${body}
               ...headers(),
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(imageBody)
+            body: JSON.stringify(body)
           });
 
           if (!res.ok) {
@@ -835,29 +973,12 @@ ${body}
       }
     });
 
-    document.getElementById("edit-current-page")?.addEventListener("click", function () {
-      editCurrentPage();
-    });
-
-    document.getElementById("edit-new-scientific")?.addEventListener("click", function () {
-      newScientificPost();
-    });
-
-    document.getElementById("edit-new-personal")?.addEventListener("click", function () {
-      newPersonalPost();
-    });
-
-    document.getElementById("edit-new-project")?.addEventListener("click", function () {
-      newProject();
-    });
-
-    document.getElementById("edit-delete-current-page")?.addEventListener("click", function () {
-      deleteCurrentPage();
-    });
-
-    document.getElementById("edit-upload-image")?.addEventListener("click", function () {
-      uploadImage();
-    });
+    document.getElementById("edit-current-page")?.addEventListener("click", editCurrentPage);
+    document.getElementById("edit-manage-content")?.addEventListener("click", manageContent);
+    document.getElementById("edit-new-scientific")?.addEventListener("click", newScientificPost);
+    document.getElementById("edit-new-personal")?.addEventListener("click", newPersonalPost);
+    document.getElementById("edit-new-project")?.addEventListener("click", newProject);
+    document.getElementById("edit-upload-image")?.addEventListener("click", uploadImage);
 
     document.getElementById("hide-edit-toolbar")?.addEventListener("click", function () {
       toolbar.classList.remove("is-visible");
