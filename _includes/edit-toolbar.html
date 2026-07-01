@@ -8,7 +8,8 @@
     <button id="edit-new-scientific" type="button">New scientific post</button>
     <button id="edit-new-personal" type="button">New personal post</button>
     <button id="edit-new-project" type="button">New project</button>
-    <button id="edit-upload-image" type="button">Upload image</button>
+    <button id="edit-new-paper" type="button">New paper</button>
+    <button id="edit-upload-image" type="button">Upload media/file</button>
 
     <a href="https://github.dev/nicobonacorsi/nicobonacorsi.github.io" target="_blank" rel="noopener">
       Full editor
@@ -596,6 +597,26 @@
         }
       }
 
+      if (kind === "publications") {
+        const files = await listDirectory("_publications");
+        const markdownFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
+
+        for (const file of markdownFiles) {
+          try {
+            const full = await getFile(file.path);
+            const meta = parseFrontMatter(full.content);
+
+            items.push({
+              path: file.path,
+              title: meta.title || file.name,
+              subtitle: "Paper / publication"
+            });
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+      }
+
       items.sort((a, b) => b.path.localeCompare(a.path));
 
       if (items.length === 0) {
@@ -644,6 +665,7 @@
             <button type="button" id="manage-scientific">Scientific posts</button>
             <button type="button" id="manage-personal">Personal posts</button>
             <button type="button" id="manage-projects">Projects</button>
+            <button type="button" id="manage-publications">Papers</button>
           </div>
 
           <div id="content-manager-list" class="content-manager-list"></div>
@@ -654,6 +676,7 @@
       document.getElementById("manage-scientific").addEventListener("click", () => buildManagerList("scientific"));
       document.getElementById("manage-personal").addEventListener("click", () => buildManagerList("personal"));
       document.getElementById("manage-projects").addEventListener("click", () => buildManagerList("projects"));
+      document.getElementById("manage-publications").addEventListener("click", () => buildManagerList("publications"));
 
       buildManagerList("scientific");
     }
@@ -802,6 +825,171 @@ ${body}
       );
     }
 
+    function newPaper() {
+      const date = todayISO();
+
+      openModal(
+        "New paper / publication",
+        `
+          <div class="site-edit-field">
+            <label>Paper title</label>
+            <input id="new-paper-title" placeholder="My New Paper">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Date</label>
+            <input id="new-paper-date" value="${date}">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Authors</label>
+            <input id="new-paper-authors" value="Nicolò Bonacorsi">
+            <div class="site-edit-help">Separate authors with commas.</div>
+          </div>
+
+          <div class="site-edit-field">
+            <label>Venue</label>
+            <input id="new-paper-venue" placeholder="arXiv, IEEE ITW, journal name, conference name">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Status</label>
+            <input id="new-paper-status" placeholder="Preprint, Submitted, Accepted, Published">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Topics</label>
+            <input id="new-paper-topics" placeholder="Information Theory, Probability, Stochastic Control">
+            <div class="site-edit-help">Separate topics with commas.</div>
+          </div>
+
+          <div class="site-edit-field">
+            <label>Image path</label>
+            <input id="new-paper-image" placeholder="/images/uploads/paper-image.jpg">
+          </div>
+
+          <div class="site-edit-field">
+            <label>PDF URL</label>
+            <input id="new-paper-pdf" placeholder="https://.../paper.pdf or /files/paper.pdf">
+          </div>
+
+          <div class="site-edit-field">
+            <label>arXiv URL</label>
+            <input id="new-paper-arxiv" placeholder="https://arxiv.org/abs/...">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Code URL</label>
+            <input id="new-paper-code" placeholder="https://github.com/...">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Project URL</label>
+            <input id="new-paper-project" placeholder="/projects/project-slug/">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Abstract</label>
+            <textarea id="new-paper-abstract" style="min-height: 120px;">Write a short abstract here.</textarea>
+          </div>
+
+          <div class="site-edit-field">
+            <label>Body</label>
+            <textarea id="new-paper-body">Write extended paper notes here.
+
+You can add chapters:
+
+## Motivation
+
+## Main theorem
+
+You can add LaTeX:
+
+The result is stated in Equation \\eqref{eq:main}.
+
+\\begin{equation}
+R(D)
+=
+\\inf_{P_{\\widehat X|X}}
+I(X;\\widehat X).
+\\label{eq:main}
+\\end{equation}
+
+You can add images:
+
+![caption](/images/uploads/my-image.jpg)
+
+You can add video:
+
+<video controls src="/videos/uploads/demo.mp4"></video>
+
+You can add an HTML animation:
+
+<iframe src="/assets/uploads/animation.html" width="100%" height="520"></iframe>
+</textarea>
+          </div>
+
+          <div class="site-edit-field">
+            <label>BibTeX</label>
+            <textarea id="new-paper-bibtex" style="min-height: 180px;">@misc{key,
+  title={Title},
+  author={Bonacorsi, Nicolò},
+  year={2026}
+}</textarea>
+          </div>
+        `,
+        async function () {
+          const title = document.getElementById("new-paper-title").value.trim();
+          const paperDate = document.getElementById("new-paper-date").value.trim();
+          const authors = document.getElementById("new-paper-authors").value.split(",").map(t => t.trim()).filter(Boolean);
+          const venue = document.getElementById("new-paper-venue").value.trim();
+          const status = document.getElementById("new-paper-status").value.trim();
+          const topics = document.getElementById("new-paper-topics").value.split(",").map(t => t.trim()).filter(Boolean);
+          const image = document.getElementById("new-paper-image").value.trim();
+          const pdf = document.getElementById("new-paper-pdf").value.trim();
+          const arxiv = document.getElementById("new-paper-arxiv").value.trim();
+          const code = document.getElementById("new-paper-code").value.trim();
+          const project = document.getElementById("new-paper-project").value.trim();
+          const abstract = document.getElementById("new-paper-abstract").value.trim();
+          const body = document.getElementById("new-paper-body").value;
+          const bibtex = document.getElementById("new-paper-bibtex").value;
+
+          if (!title) throw new Error("Paper title is required.");
+
+          const filename = `_publications/${slugify(title)}.md`;
+
+          const yamlAuthors = authors.map(t => `"${t.replaceAll('"', '\\"')}"`).join(", ");
+          const yamlTopics = topics.map(t => `"${t.replaceAll('"', '\\"')}"`).join(", ");
+
+          const content = `---
+layout: publication
+title: "${title.replaceAll('"', '\\"')}"
+date: ${paperDate}
+authors: [${yamlAuthors}]
+venue: "${venue.replaceAll('"', '\\"')}"
+status: "${status.replaceAll('"', '\\"')}"
+topics: [${yamlTopics}]
+${image ? `image: "${image.replaceAll('"', '\\"')}"` : ""}
+${pdf ? `pdf_url: "${pdf.replaceAll('"', '\\"')}"` : ""}
+${arxiv ? `arxiv_url: "${arxiv.replaceAll('"', '\\"')}"` : ""}
+${code ? `code_url: "${code.replaceAll('"', '\\"')}"` : ""}
+${project ? `project_url: "${project.replaceAll('"', '\\"')}"` : ""}
+abstract: "${abstract.replaceAll('"', '\\"').replaceAll('\n', ' ')}"
+math: true
+bibtex: |
+${bibtex.split("\n").map(line => "  " + line).join("\n")}
+---
+
+${body}
+`;
+
+          setStatus(`Creating ${filename}...`);
+          await putFile(filename, content, `Create paper: ${title}`);
+          setStatus("Paper created. GitHub Actions will rebuild the site in about 1–2 minutes.");
+        }
+      );
+    }
+
     function newProject() {
       const date = todayISO();
 
@@ -898,31 +1086,46 @@ ${body}
 
     function uploadImage() {
       openModal(
-        "Upload image",
+        "Upload media / file",
         `
           <div class="site-edit-field">
-            <label>Choose image</label>
-            <input id="upload-image-file" type="file" accept="image/*">
+            <label>Choose file</label>
+            <input id="upload-image-file" type="file">
+          </div>
+
+          <div class="site-edit-field">
+            <label>Destination folder</label>
+            <select id="upload-folder">
+              <option value="images/uploads">Images</option>
+              <option value="videos/uploads">Videos</option>
+              <option value="assets/uploads">Animations / HTML / JS / generic assets</option>
+              <option value="files">PDFs and documents</option>
+            </select>
           </div>
 
           <div class="site-edit-field">
             <label>Save as filename</label>
-            <input id="upload-image-name" placeholder="my-image.jpg">
+            <input id="upload-image-name" placeholder="my-file.png">
             <div class="site-edit-help">
-              The image will be saved in images/uploads/. Use it as:
-              ![description](/images/uploads/filename.jpg)
+              Examples after upload:<br>
+              Image: ![caption](/images/uploads/name.jpg)<br>
+              Video: &lt;video controls src="/videos/uploads/name.mp4"&gt;&lt;/video&gt;<br>
+              Animation: &lt;iframe src="/assets/uploads/name.html" width="100%" height="520"&gt;&lt;/iframe&gt;<br>
+              PDF link: [Download PDF](/files/name.pdf)
             </div>
           </div>
         `,
         async function () {
           const fileInput = document.getElementById("upload-image-file");
           const nameInput = document.getElementById("upload-image-name");
+          const folderInput = document.getElementById("upload-folder");
 
           const file = fileInput.files[0];
-          if (!file) throw new Error("Choose an image first.");
+          if (!file) throw new Error("Choose a file first.");
 
           const safeName = (nameInput.value.trim() || file.name).replace(/[^a-zA-Z0-9._-]/g, "-");
-          const path = `images/uploads/${safeName}`;
+          const folder = folderInput.value;
+          const path = `${folder}/${safeName}`;
 
           const dataUrl = await new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -935,7 +1138,7 @@ ${body}
           const existingSha = await getExistingSha(path);
 
           const body = {
-            message: `Upload image ${safeName} from site edit mode`,
+            message: `Upload ${path} from site edit mode`,
             content: base64Content,
             branch: BRANCH
           };
@@ -953,10 +1156,10 @@ ${body}
 
           if (!res.ok) {
             const err = await res.text();
-            throw new Error(`Could not upload image. GitHub returned ${res.status}: ${err}`);
+            throw new Error(`Could not upload file. GitHub returned ${res.status}: ${err}`);
           }
 
-          setStatus(`Uploaded. Use this in a post: ![description](/images/uploads/${safeName})`);
+          setStatus(`Uploaded: /${path}`);
         }
       );
     }
@@ -978,6 +1181,7 @@ ${body}
     document.getElementById("edit-new-scientific")?.addEventListener("click", newScientificPost);
     document.getElementById("edit-new-personal")?.addEventListener("click", newPersonalPost);
     document.getElementById("edit-new-project")?.addEventListener("click", newProject);
+    document.getElementById("edit-new-paper")?.addEventListener("click", newPaper);
     document.getElementById("edit-upload-image")?.addEventListener("click", uploadImage);
 
     document.getElementById("hide-edit-toolbar")?.addEventListener("click", function () {

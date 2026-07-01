@@ -77,6 +77,9 @@ defaults:
 
 
 collections:
+  publications:
+    output: true
+    permalink: /publications/:slug/
   projects:
     output: true
     permalink: /projects/:slug/
