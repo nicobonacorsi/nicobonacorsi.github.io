@@ -1,30 +1,28 @@
-# Nicolò Bonacorsi Website — LLM Style Guide
+# Nicolò Bonacorsi Website — Permanent LLM Style Guide
 
-This file is the permanent instruction file for editing the website.
+This file defines the permanent rules for editing this Jekyll academic website.
 
 The goal is not to create something similar. The goal is to preserve the exact academic graphic style already used on the website.
 
-## Core rule
-
-When adding a new project, clone the existing academic project style.
-
-The canonical project template is:
-
-projects/credal-rate-distortion.html
+## Absolute rule
 
 Do not invent a new layout.
 
 Do not invent new CSS classes.
 
-Do not use a different visual system.
+Do not replace the current academic style with a generic Jekyll, markdown, or custom layout.
 
-Do not replace the academic pages style with a generic Jekyll page, markdown page, or custom layout.
+When adding a new project, publication, blog post, image, PDF, or page, first inspect the existing file that already has the correct style, then clone its structure and replace only the content.
 
-## Correct project page classes
+## Canonical project template
 
-A project detail page must use the same class system as the Credal project page.
+The canonical project detail template is:
 
-The important classes are:
+projects/credal-rate-distortion.html
+
+Before creating a new project page, inspect this file and reuse its real classes.
+
+The real project-detail classes currently used by the site are:
 
 - project-website
 - project-hero
@@ -45,12 +43,12 @@ The important classes are:
 - project-toc-title
 - project-main
 - project-section
+- project-figure
+- back-to-projects
 
-These classes define the exact academic-page style.
+These are the correct classes.
 
-## Wrong classes
-
-Do not use these unless they already exist in the canonical template:
+Do not use these invented or wrong classes for project pages:
 
 - project-detail
 - project-title
@@ -58,44 +56,50 @@ Do not use these unless they already exist in the canonical template:
 - project-page
 - project-hero-content
 - svd-project
-- custom wrapper classes invented for one page
+- custom one-off wrappers
 
-These create a different page style and are not allowed.
+unless they already exist in the canonical template.
 
 ## Correct project page structure
 
-Every project page must follow this structure:
+A project detail page must follow the same skeleton as projects/credal-rate-distortion.html:
 
-1. YAML front matter
-2. style block copied from the canonical project page
-3. section with class project-website
-4. div with class project-hero
-5. h1 with class project-hero-title
-6. metadata blocks using project-meta-block and project-meta-label
-7. optional affiliations and logos only if real
-8. div with class project-buttons
-9. div with class project-layout
-10. aside with class project-toc
-11. main with class project-main
-12. sections with class project-section
+1. YAML front matter.
+2. The same style block as the canonical project page.
+3. section with class project-website.
+4. div with class project-hero.
+5. h1 with class project-hero-title.
+6. metadata blocks using project-meta-block and project-meta-label.
+7. project-owner when relevant.
+8. project-hero-paper-authors when relevant.
+9. project-affiliations.
+10. project-logos only if real logos exist.
+11. project-venue.
+12. project-buttons containing project-button links.
+13. div with class project-layout.
+14. aside with class project-toc.
+15. main with class project-main.
+16. repeated section blocks with class project-section.
 
 The table of contents must stay on the left.
 
 The content must stay on the right.
 
-## Hero rules
+The page must visually match Credal Rate-Distortion Theory.
 
-The project title must use:
+## Project hero rules
 
-project-hero-title
+Use project-hero-title for the main title.
+
+Do not use another title class.
+
+Do not add a large thumbnail image inside the project detail page unless the canonical page has one.
+
+Project thumbnails belong in projects.html.
 
 The hero must stay centered.
 
-The title must use the same large academic style as the Credal Rate-Distortion project.
-
-Do not add a large internal thumbnail image inside the project page unless the existing canonical page uses one.
-
-Project thumbnails belong in projects.html, not inside the detail page.
+The metadata must use project-meta-block and project-meta-label.
 
 ## Logos and affiliations
 
@@ -103,41 +107,65 @@ Do not invent logos.
 
 Do not create fake university logos.
 
-Only use logos that already exist in the repository and are correct.
+Only use real logos that exist in the repository.
 
 If a real logo is not available, use text-only affiliation.
 
-## Buttons
+If a logo is added, it must use:
+
+- project-logos
+- project-logo-card
+- project-logo
+
+Do not use random image sizes or random logo containers.
+
+## Project buttons
 
 Buttons must use:
 
-project-buttons
-project-button
+- project-buttons
+- project-button
 
-Good button targets are internal anchors such as:
+Good button targets are:
 
-#mathematical-formulation
-#results
-#face-recognition
-#interactive-demo
-#bibtex
+- PDF
+- Code
+- Paper
+- arXiv
+- #mathematical-formulation
+- #results
+- #face-recognition
+- #interactive-demo
+- #bibtex
 
 Do not create new button styling.
 
-## Content sections
+If adding a PDF to a project, place the PDF in:
 
-Use this section format:
+files/
+
+Use a clean filename, for example:
+
+files/Face_Recognition_SVD_Project.pdf
+
+Use this href format:
+
+{{ '/files/Face_Recognition_SVD_Project.pdf' | relative_url }}
+
+## Main project content sections
+
+Use this section pattern:
 
 <section id="abstract" class="project-section">
   <h2>Abstract</h2>
   <p>Text here.</p>
 </section>
 
-Every main content section must use:
+Every main section must use:
 
 class="project-section"
 
-Preferred section titles:
+Recommended sections:
 
 - Abstract
 - Research question
@@ -145,7 +173,16 @@ Preferred section titles:
 - Mathematical formulation
 - Results
 - Conclusions
-- BibTeX
+- BibTeX when applicable
+
+For mathematical projects, also use domain-specific sections such as:
+
+- Crime data PCA
+- Regression model
+- SVD-based face recognition
+- Rank-dependent accuracy
+- Interactive demo
+- Images and video
 
 ## Math rules
 
@@ -176,18 +213,16 @@ Equation references must be written as:
 
 Equation $\eqref{eq:correlation}$
 
-## Do not include raw LaTeX document commands
+Do not include raw LaTeX document commands in website pages:
 
-Website pages must not include:
+- documentclass
+- usepackage
+- begin document
+- maketitle
+- tableofcontents
+- end document
 
-- \documentclass
-- \usepackage
-- \begin{document}
-- \maketitle
-- \tableofcontents
-- \end{document}
-
-Those commands belong to PDF/LaTeX documents, not website pages.
+Those belong to PDF/LaTeX documents, not website pages.
 
 ## Projects listing page
 
@@ -197,17 +232,76 @@ projects.html
 
 When adding a new project card:
 
-1. Do not rewrite the whole file.
-2. Do not modify the existing cards.
+1. Do not rewrite the whole page.
+2. Do not modify existing cards.
 3. Remove any previous broken card for the same project.
 4. Clone an existing article with class project-card.
-5. Keep the exact same classes.
+5. Keep the exact same class names.
 6. Replace only the link, image, title, metadata, tags, question, key idea, and results.
-7. Make sure the card link points to the correct project page.
+7. Make sure the image src points to a real file.
+8. Make sure the card link points to the correct project page.
+9. Make sure the card hover animation is preserved.
+10. Make sure author/name weight, tag shapes, and spacing match existing cards.
 
-Never mix old project content into a new card.
+Important classes for project cards:
 
-If cloning a Credal or Collatz card, replace every old title, old link, old question, old key idea, old result, old tag, and old image.
+- project-card
+- project-thumb
+- project-card-title
+- project-card-meta
+- project-tags
+- project-tag
+
+Never mix content from an old project into a new card.
+
+If cloning Credal or Collatz, replace every old title, link, image, tag, question, key idea, result, and project-specific text.
+
+## Project thumbnail rule
+
+If a card image is broken, check both:
+
+1. the img src in projects.html;
+2. the physical file in images/publications.
+
+A safe src format for root GitHub Pages is:
+
+/images/publications/file-name.svg
+
+or, if the existing card uses Liquid paths, preserve the existing style.
+
+After building, verify the file exists in:
+
+_site/images/publications/file-name.svg
+
+## Project tags and topic counts
+
+The topic counts in the Projects sidebar must be regenerated whenever a new project card is added.
+
+The counts must come from each project-card data-topics attribute.
+
+Every project card must have:
+
+data-topics="topic-slug another-topic-slug"
+
+Every visible project tag button must use the same slug.
+
+Every filter button must include both:
+
+data-topic-filter="topic-slug"
+data-filter="topic-slug"
+
+The All topics count must equal the number of project-card articles.
+
+A new project with tags must update:
+
+- data-topics on the article;
+- visible project-tag buttons;
+- sidebar filter buttons;
+- sidebar counts.
+
+Do not hardcode wrong counts.
+
+Do not leave a topic with count 1 if there are now 2 projects with that tag.
 
 ## Publications page
 
@@ -217,13 +311,24 @@ publications.html
 
 Do not change:
 
-- publication card image size
-- hover animation
-- author logos
-- topic filters
-- year filters
+- publication-card image size;
+- hover animation;
+- author logos;
+- topic filters;
+- year filters;
+- publication card spacing;
 
 unless explicitly requested.
+
+Publication pages and cards should preserve:
+
+- title;
+- authors;
+- author logos when available;
+- venue;
+- status;
+- topics;
+- buttons for PDF, Paper, arXiv, Code, Project when available.
 
 ## Home page
 
@@ -235,13 +340,146 @@ Do not modify it unless explicitly requested.
 
 Preserve:
 
-- portrait image
-- academic bio
-- icon links for CV, Email, Scholar, GitHub, LinkedIn
+- portrait image;
+- academic bio;
+- icon links for CV, Email, Scholar, GitHub, LinkedIn.
+
+If the icon links disappear, restore them.
+
+## CV page
+
+The CV page is:
+
+cv.html
+
+The downloadable CV should live in:
+
+files/
+
+Do not break the CV download button.
+
+## Blog system
+
+The site has a blog landing page and two blog sections:
+
+- blog/index.html
+- blog/scientific.html
+- blog/personal.html
+
+Do not create random standalone HTML blog pages.
+
+Blog posts should be markdown files inside _posts.
+
+## Scientific blog rules
+
+Scientific blog posts must use category scientific.
+
+Recommended front matter:
+
+layout: post
+title: "Post title"
+date: YYYY-MM-DD
+categories: [scientific]
+scientific_type: "Research Notes"
+tags: [Probability, Stochastic Control]
+math: true
+
+Allowed scientific_type values:
+
+- Research Notes
+- Course Notes
+- Discovery Ideas
+
+The scientific blog filters by:
+
+- scientific_type;
+- year;
+- tags/topics.
+
+When adding a scientific post, make sure the tags are meaningful and consistent with existing tag names.
+
+If editing blog/scientific.html, preserve the existing card style, filters, and counts.
+
+## Personal blog rules
+
+Personal blog posts must use category personal.
+
+Recommended front matter:
+
+layout: post
+title: "Post title"
+date: YYYY-MM-DD
+categories: [personal]
+city: "New York"
+tags: [Photography, Travel, Friends]
+
+The personal blog filters by:
+
+- year;
+- city;
+- tags/topics.
+
+If editing blog/personal.html, preserve the existing card style, filters, and counts.
+
+Do not mix personal posts into the scientific blog.
+
+Do not mix scientific posts into the personal blog.
+
+## Blog tag/count rules
+
+Whenever a blog listing page has filters and counts, the counts must correspond to the posts actually shown on that page.
+
+Do not hardcode outdated counts.
+
+Do not create a new tag button without making sure filtering works.
+
+Do not rename a tag in one place and forget to update the filter slug.
+
+For scientific posts, filters should read categories scientific and scientific_type.
+
+For personal posts, filters should read categories personal and city when available.
+
+## Upload and media rules
+
+Images for general use go in:
+
+images/uploads/
+
+Project/publication thumbnails usually go in:
+
+images/publications/
+
+Videos go in:
+
+videos/uploads/
+
+Interactive HTML exports go in:
+
+assets/uploads/
+
+PDFs and downloadable files go in:
+
+files/
+
+To embed an image:
+
+<img src="{{ '/images/uploads/file.png' | relative_url }}" alt="Description">
+
+To embed a video:
+
+<video controls src="{{ '/videos/uploads/file.mp4' | relative_url }}"></video>
+
+To embed an interactive HTML export:
+
+<iframe src="{{ '/assets/uploads/file.html' | relative_url }}" width="100%" height="560"></iframe>
+
+Do not assume Python can run on GitHub Pages.
+
+Python outputs must be exported as PNG, GIF, MP4, WebM, or HTML and then embedded.
 
 ## Global files
 
-Do not casually edit these files:
+Do not casually edit:
 
 - _layouts/default.html
 - _includes/head.html
@@ -249,37 +487,51 @@ Do not casually edit these files:
 - _includes/footer.html
 - _includes/mathjax.html
 
-Only edit global files if the user explicitly asks for a global layout change.
+Only edit global files if the user explicitly asks for global layout changes.
 
 ## Safe workflow for adding a new project
 
 1. Create backups in _dev_backups.
-2. Use projects/credal-rate-distortion.html as the template.
-3. Replace the front matter.
-4. Replace the hero content.
-5. Replace the table of contents.
-6. Replace the main project content.
-7. Add one clean card to projects.html.
-8. Run a local Jekyll build.
-9. Check the page locally before committing.
-10. Commit only if the rendering is correct.
+2. Clone projects/credal-rate-distortion.html.
+3. Replace front matter.
+4. Replace hero.
+5. Replace table of contents.
+6. Replace main content.
+7. Add PDF button if a PDF exists.
+8. Add one clean card to projects.html by cloning an existing project-card.
+9. Recalculate sidebar topic counts.
+10. Verify images exist.
+11. Verify PDFs exist.
+12. Run local Jekyll build.
+13. Check locally before committing.
+14. Commit only if the rendering is correct.
 
 ## Anti-disaster checks
 
-After building the site, front matter must not appear in the generated page.
-
-Use this check:
+After building, front matter must not appear in the generated page:
 
 grep -R "layout: default" _site/projects/PROJECT-SLUG/ && echo "BROKEN FRONT MATTER" || echo "OK front matter"
 
-Check that the new page does not accidentally contain text from an old project:
+Check that the new page does not accidentally contain old project names:
 
 grep -n "Credal\|Collatz" projects/PROJECT-SLUG.html
 
-If unrelated old project text appears, fix it before committing.
+Check that the project image exists:
+
+test -s images/publications/IMAGE.svg && echo "OK image exists"
+
+Check that it was copied into the built site:
+
+test -s _site/images/publications/IMAGE.svg && echo "OK built image exists"
+
+Check that the PDF exists:
+
+test -s files/FILE.pdf && echo "OK PDF exists"
+
+Check that it was copied into the built site:
+
+test -s _site/files/FILE.pdf && echo "OK built PDF exists"
 
 ## Standard LLM instruction
 
-When asking an LLM to add a project, say:
-
-Use the existing academic project style exactly. Do not create a new layout. Clone the structure and CSS classes from projects/credal-rate-distortion.html. Preserve the visual system: centered hero, project-hero-title, metadata blocks, black pill buttons, left project-toc, right project-main, and repeated project-section blocks. Add the new project content using the same structure. Then add one card to projects.html by cloning an existing project-card and replacing only the content. Do not modify global layout files.
+Use the existing academic project style exactly. Do not create a new layout. Clone the structure and CSS classes from projects/credal-rate-distortion.html. Preserve project-website, project-hero, project-hero-title, project-layout, project-toc, project-main, and project-section. Add the new content using the same structure. Then add one card to projects.html by cloning an existing project-card and replacing only the content. Recalculate topic counts from data-topics. Verify images and PDFs exist. Do not modify global layout files.

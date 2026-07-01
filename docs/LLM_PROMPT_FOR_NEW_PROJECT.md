@@ -1,8 +1,6 @@
 # Prompt for adding a new project
 
-Use this prompt when asking an LLM to add a new project to the website.
-
-I need you to add a new project to my Jekyll academic website.
+Add a new project to my Jekyll academic website.
 
 Use the existing academic project style exactly.
 
@@ -14,7 +12,7 @@ projects/credal-rate-distortion.html
 
 Clone its structure and CSS classes.
 
-The new project page must use:
+The project detail page must use the real classes already used by the template:
 
 - project-website
 - project-hero
@@ -24,6 +22,9 @@ The new project page must use:
 - project-owner
 - project-hero-paper-authors
 - project-affiliations
+- project-logos
+- project-logo-card
+- project-logo
 - project-venue
 - project-buttons
 - project-button
@@ -38,15 +39,19 @@ Do not use:
 - project-detail
 - project-page
 - project-shell
-- custom page-specific wrappers
+- custom wrappers
 
 Do not add fake logos.
 
-Only add logos if they are real and already available in the repository.
+Only use real logos that already exist in the repository.
 
-Do not put a large thumbnail image inside the detail page unless the template already does that.
+Do not insert a large project thumbnail inside the detail page unless the canonical template does that.
 
-For the projects listing page, edit projects.html by cloning one existing project-card.
+PDFs must go in files/.
+
+Project thumbnails must go in images/publications/.
+
+For the Projects listing page, edit projects.html by cloning one existing project-card.
 
 Keep the exact same classes and hover animation.
 
@@ -61,19 +66,19 @@ Replace only:
 - key idea
 - results
 
-Use MathJax syntax.
+After adding the card, recalculate the topic counts in the sidebar from all project-card data-topics attributes.
 
-Inline math:
+Every filter button must include both data-topic-filter and data-filter.
 
-$...$
+For blog posts, use _posts and the correct category.
 
-Display math:
+Scientific posts use categories: [scientific] and scientific_type.
 
-\[
-...
-\]
+Personal posts use categories: [personal] and city when relevant.
 
-Do not include LaTeX preamble commands such as documentclass, usepackage, begin document, maketitle, tableofcontents, or end document.
+Use MathJax syntax for math.
+
+Do not include LaTeX preamble commands.
 
 Before committing, run:
 
