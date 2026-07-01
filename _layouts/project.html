@@ -3,36 +3,194 @@ layout: default
 ---
 
 <style>
-  .project-page {
-    max-width: 980px;
+  .project-detail {
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 2.8rem 1.5rem 4rem;
+    padding: 2.7rem 1.5rem 4rem;
   }
 
   .project-hero {
     text-align: center;
-    margin-bottom: 2.6rem;
+    max-width: 980px;
+    margin: 0 auto 3rem;
   }
 
   .project-title {
-    font-size: 3rem;
+    font-size: clamp(2.35rem, 5vw, 4.2rem);
+    line-height: 1.06;
     font-weight: 500;
-    line-height: 1.12;
-    margin-bottom: .8rem;
+    margin: 0 0 1rem;
+    letter-spacing: -0.025em;
   }
 
-  .project-author {
-    color: #555;
+  .project-line {
+    color: #444;
     font-size: 1.08rem;
-    margin-bottom: 1rem;
+    line-height: 1.65;
+    margin: .35rem 0;
+  }
+
+  .project-author-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .18rem .35rem;
+  }
+
+  .project-author-item {
+    display: inline-flex;
+    align-items: center;
+    gap: .23rem;
+    color: #222;
+    text-decoration: none;
+  }
+
+  .project-author-item:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .project-aff-logo {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 3px;
+    vertical-align: -3px;
+  }
+
+  .project-affiliations {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .7rem 1.1rem;
+    margin: 1rem auto 1.25rem;
+    color: #555;
+    font-size: .98rem;
+  }
+
+  .project-affiliation {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+
+  .project-affiliation img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .project-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin: 1.15rem 0;
+  }
+
+  .project-buttons a {
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 999px;
+    padding: .44rem .86rem;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-size: .95rem;
+  }
+
+  .project-buttons a:hover {
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .project-hero-image {
+    display: block;
+    max-width: 620px;
+    width: 100%;
+    margin: 1.7rem auto 0;
+    border-radius: 22px;
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 16px 42px rgba(0,0,0,.06);
+  }
+
+  .project-shell {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-toc {
+    position: sticky;
+    top: 2rem;
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 18px;
+    padding: 1rem;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 10px 28px rgba(0,0,0,.035);
+  }
+
+  .project-toc-title {
+    font-weight: 700;
+    margin-bottom: .55rem;
+  }
+
+  .project-toc a {
+    display: block;
+    color: #555;
+    text-decoration: none;
+    padding: .34rem 0;
+    font-size: .95rem;
+    border-top: 1px solid rgba(0,0,0,.055);
+  }
+
+  .project-toc a:first-of-type {
+    border-top: none;
+  }
+
+  .project-toc a:hover {
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .project-main {
+    max-width: 820px;
+  }
+
+  .project-section {
+    border-top: 1px solid rgba(0,0,0,.09);
+    padding-top: 1.6rem;
+    margin-top: 1.8rem;
+  }
+
+  .project-section:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .project-section h2 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    margin: 0 0 .75rem;
+  }
+
+  .project-section p,
+  .project-main {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: #333;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: .45rem;
-    justify-content: center;
-    margin-top: 1rem;
+    margin-top: .75rem;
   }
 
   .project-tag {
@@ -40,52 +198,100 @@ layout: default
     background: #fafafa;
     color: #555;
     border-radius: 999px;
-    padding: .24rem .68rem;
-    font-size: .86rem;
+    padding: .22rem .64rem;
+    font-size: .85rem;
   }
 
-  .project-section {
-    border-top: 1px solid rgba(0,0,0,.08);
-    padding-top: 1.6rem;
-    margin-top: 1.6rem;
+  .project-main img,
+  .project-main video,
+  .project-main iframe {
+    max-width: 100%;
+    border-radius: 16px;
   }
 
-  .project-section h2 {
-    font-size: 1.55rem;
-    margin-bottom: .7rem;
-  }
-
-  .project-section p,
-  .project-body {
-    font-size: 1.08rem;
-    line-height: 1.72;
-    color: #333;
-  }
-
-  .project-image {
-    display: block;
-    max-width: 520px;
-    width: 100%;
-    margin: 1.5rem auto 0;
-    border-radius: 18px;
+  pre {
+    overflow-x: auto;
+    padding: 1rem;
+    background: #f7f7f7;
+    border-radius: 14px;
     border: 1px solid rgba(0,0,0,.08);
+  }
+
+  @media (max-width: 900px) {
+    .project-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .project-toc {
+      position: relative;
+      top: auto;
+    }
   }
 </style>
 
-<section class="project-page">
+<section class="project-detail">
   <div class="project-hero">
     <h1 class="project-title">{{ page.title }}</h1>
 
-    <div class="project-author">
-      Project of {{ page.author | default: "Nicolò Bonacorsi" }}
+    {% if page.project_of %}
+      <div class="project-line">
+        Project of
+        <span class="project-author-list">
+          {% for person in page.project_of %}
+            <a class="project-author-item" href="{{ person.url | default: '/' }}">
+              {{ person.name }}
+              {% if person.logo %}
+                <img class="project-aff-logo" src="{{ person.logo | relative_url }}" alt="{{ person.affiliation }}">
+              {% endif %}
+            </a>{% unless forloop.last %}<span>,</span>{% endunless %}
+          {% endfor %}
+        </span>
+      </div>
+    {% endif %}
+
+    {% if page.paper_authors %}
+      <div class="project-line">
+        Based on the paper by
+        <span class="project-author-list">
+          {% for person in page.paper_authors %}
+            <a class="project-author-item" href="{{ person.url | default: '/' }}" {% unless person.url == "/" %}target="_blank" rel="noopener"{% endunless %}>
+              {{ person.name }}
+              {% if person.logo %}
+                <img class="project-aff-logo" src="{{ person.logo | relative_url }}" alt="{{ person.affiliation }}">
+              {% endif %}
+            </a>{% unless forloop.last %}<span>,</span>{% endunless %}
+          {% endfor %}
+        </span>
+      </div>
+    {% endif %}
+
+    {% if page.affiliations %}
+      <div class="project-affiliations">
+        {% for aff in page.affiliations %}
+          <span class="project-affiliation">
+            {% if aff.logo %}
+              <img src="{{ aff.logo | relative_url }}" alt="{{ aff.name }}">
+            {% endif %}
+            {{ aff.name }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="project-buttons">
+      {% if page.paper_url %}<a href="{{ page.paper_url }}" target="_blank" rel="noopener">Paper</a>{% endif %}
+      {% if page.pdf_url %}<a href="{{ page.pdf_url }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+      {% if page.arxiv_url %}<a href="{{ page.arxiv_url }}" target="_blank" rel="noopener">arXiv</a>{% endif %}
+      {% if page.code_url %}<a href="{{ page.code_url }}" target="_blank" rel="noopener">Code</a>{% endif %}
+      {% if page.publication_url %}<a href="{{ page.publication_url | relative_url }}">Publication</a>{% endif %}
     </div>
 
     {% if page.image %}
-      <img class="project-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      <img class="project-hero-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
     {% endif %}
 
     {% if page.topics %}
-      <div class="project-tags">
+      <div class="project-tags" style="justify-content:center;">
         {% for topic in page.topics %}
           <span class="project-tag">{{ topic }}</span>
         {% endfor %}
@@ -93,28 +299,73 @@ layout: default
     {% endif %}
   </div>
 
-  {% if page.question %}
-    <div class="project-section">
-      <h2>Question</h2>
-      <p>{{ page.question }}</p>
-    </div>
-  {% endif %}
+  <div class="project-shell">
+    <aside class="project-toc">
+      <div class="project-toc-title">Contents</div>
+      {% if page.abstract %}<a href="#abstract">Abstract</a>{% endif %}
+      {% if page.question %}<a href="#question">Question</a>{% endif %}
+      {% if page.key_idea %}<a href="#key-idea">Key idea</a>{% endif %}
+      <a href="#mathematical-formulation">Mathematical formulation</a>
+      {% if page.interactive_demo %}<a href="#interactive-demo">Interactive demo</a>{% endif %}
+      {% if page.media_notes %}<a href="#images-video">Images and video</a>{% endif %}
+      {% if page.results %}<a href="#results">Results</a>{% endif %}
+      {% if page.bibtex %}<a href="#bibtex">BibTeX</a>{% endif %}
+    </aside>
 
-  {% if page.key_idea %}
-    <div class="project-section">
-      <h2>Key idea</h2>
-      <p>{{ page.key_idea }}</p>
-    </div>
-  {% endif %}
+    <main class="project-main">
+      {% if page.abstract %}
+        <section id="abstract" class="project-section">
+          <h2>Abstract</h2>
+          <p>{{ page.abstract }}</p>
+        </section>
+      {% endif %}
 
-  {% if page.results %}
-    <div class="project-section">
-      <h2>Results</h2>
-      <p>{{ page.results }}</p>
-    </div>
-  {% endif %}
+      {% if page.question %}
+        <section id="question" class="project-section">
+          <h2>Question</h2>
+          <p>{{ page.question }}</p>
+        </section>
+      {% endif %}
 
-  <div class="project-section project-body">
-    {{ content }}
+      {% if page.key_idea %}
+        <section id="key-idea" class="project-section">
+          <h2>Key idea</h2>
+          <p>{{ page.key_idea }}</p>
+        </section>
+      {% endif %}
+
+      <section id="mathematical-formulation" class="project-section">
+        <h2>Mathematical formulation</h2>
+        {{ content }}
+      </section>
+
+      {% if page.interactive_demo %}
+        <section id="interactive-demo" class="project-section">
+          <h2>Interactive demo</h2>
+          {{ page.interactive_demo | markdownify }}
+        </section>
+      {% endif %}
+
+      {% if page.media_notes %}
+        <section id="images-video" class="project-section">
+          <h2>Images and video</h2>
+          {{ page.media_notes | markdownify }}
+        </section>
+      {% endif %}
+
+      {% if page.results %}
+        <section id="results" class="project-section">
+          <h2>Results</h2>
+          <p>{{ page.results }}</p>
+        </section>
+      {% endif %}
+
+      {% if page.bibtex %}
+        <section id="bibtex" class="project-section">
+          <h2>BibTeX</h2>
+          <pre><code>{{ page.bibtex }}</code></pre>
+        </section>
+      {% endif %}
+    </main>
   </div>
 </section>

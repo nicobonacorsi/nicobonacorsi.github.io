@@ -3,6 +3,15 @@ layout: publication
 title: "Bayesian Modeling of Collatz Stopping Times: A Probabilistic Machine Learning Perspective"
 date: 2026-03-01
 authors: ["Nicolò Bonacorsi", "Matteo Bordoni"]
+author_items:
+  - name: "Nicolò Bonacorsi"
+    url: "/"
+    affiliation: "Columbia University"
+    logo: "/images/logos/columbia-crown.webp"
+  - name: "Matteo Bordoni"
+    url: "https://www.linkedin.com/in/matteo-bordoni-4b710a206"
+    affiliation: "Columbia University"
+    logo: "/images/logos/columbia-crown.webp"
 venue: "arXiv"
 status: "Preprint"
 topics: ["Bayesian Inference", "Probabilistic Machine Learning", "Number Theory", "Monte Carlo", "Heavy Tails"]

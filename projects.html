@@ -272,37 +272,61 @@ permalink: /projects/
 
   <div class="projects-layout">
     <div class="projects-list">
+<article
+        class="project-card"
+        data-topics="spectral-methods pca-svd face-recognition numerical-linear-algebra machine-learning"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/svd-face-recognition/' | relative_url }}" aria-label="Open Spectral Methods for High-Dimensional Prediction and Face Recognition project">
+          <img
+            class="project-thumb"
+            src="/images/publications/svd-face-recognition.svg"
+            alt="Spectral Methods for High-Dimensional Prediction and Face Recognition"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
 
-<article class="project-card" data-topics="spectral-methods pca-svd face-recognition numerical-linear-algebra machine-learning">
-  <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">
-    <img class="project-thumb" src="{{ '/images/publications/svd-face-recognition.svg' | relative_url }}" alt="Spectral Methods for High-Dimensional Prediction and Face Recognition">
-  </a>
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">
+              Spectral Methods for High-Dimensional Prediction and Face Recognition
+            </a>
+          </h2>
 
-  <div>
-    <h2 class="project-title">
-      <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">Spectral Methods for High-Dimensional Prediction and Face Recognition</a>
-    </h2>
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
 
-    <div class="project-card-meta">
-      Nicolò Bonacorsi
-    </div>
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="spectral-methods">Spectral Methods</button>
+            <button class="topic-chip" data-filter="pca-svd">PCA / SVD</button>
+            <button class="topic-chip" data-filter="face-recognition">Face Recognition</button>
+            <button class="topic-chip" data-filter="numerical-linear-algebra">Numerical Linear Algebra</button>
+            <button class="topic-chip" data-filter="machine-learning">Machine Learning</button>
+          </div>
 
-    <div class="project-tags">
-      <button class="project-tag" data-topic-filter="spectral-methods" data-filter="spectral-methods">Spectral Methods</button>
-      <button class="project-tag" data-topic-filter="pca-svd" data-filter="pca-svd">PCA / SVD</button>
-      <button class="project-tag" data-topic-filter="face-recognition" data-filter="face-recognition">Face Recognition</button>
-      <button class="project-tag" data-topic-filter="numerical-linear-algebra" data-filter="numerical-linear-algebra">Numerical Linear Algebra</button>
-      <button class="project-tag" data-topic-filter="machine-learning" data-filter="machine-learning">Machine Learning</button>
-    </div>
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            How should rate–distortion theory change when the source is not described by one probability law, but by a credal set of plausible distributions?
+          </p>
 
-    <p><strong>Question.</strong> How can PCA and SVD reduce high-dimensional crime-rate and face-image data while preserving predictive and recognition structure?</p>
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Replace a single probabilistic distortion constraint with uncertainty-aware admissibility over families of distributions, revealing a geometry of robust compression.
+          </p>
 
-    <p><strong>Key idea.</strong> Replace raw high-dimensional observations by coordinates in low-rank spectral subspaces: principal components for crime data and eigenfaces for image data.</p>
-
-    <p><strong>Results.</strong> Principal-component regression improves adjusted $R^2$ from 0.5544 to 0.8555, while the eigenfaces classifier reaches 98.3333% accuracy on the Olivetti dataset.</p>
-  </div>
-</article>
-
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            The project studies credal distortion, admissible codebooks, graph-coloring compression regimes, and finite-window phenomena between local and global uncertainty.
+          </p>
+        </div>
+      </article>
 
 <article
         class="project-card"
@@ -422,125 +446,78 @@ permalink: /projects/
     </div>
 
     <aside class="project-filter">
-      <div class="project-filter-title">Filter by topic</div>
-      <div class="project-filter-subtitle">
-        Select an area to show only the projects belonging to that research direction.
-      </div>
+  <div class="filter-block">
+    <div class="filter-title">Filter by topic</div>
+    <p class="filter-description">
+      Select an area to show only the projects belonging to that research direction.
+    </p>
 
-      <table class="filter-table">
-        <tbody>
-          <tr>
-            <td>
-              <button class="filter-button active" data-filter="all">
-                <span>All topics</span>
-                <span class="filter-count">2</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="information-theory">
-                <span>Information Theory</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="credal-uncertainty">
-                <span>Credal Uncertainty</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="rate-distortion">
-                <span>Rate–Distortion</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="uncertainty-quantification">
-                <span>Uncertainty Quantification</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="robust-compression">
-                <span>Robust Compression</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="bayesian-inference">
-                <span>Bayesian Inference</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="probabilistic-machine-learning">
-                <span>Probabilistic ML</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="number-theory">
-                <span>Number Theory</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="monte-carlo">
-                <span>Monte Carlo</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="heavy-tails">
-                <span>Heavy Tails</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    
-        <button class="filter-button" data-filter="spectral-methods" data-topic-filter="spectral-methods">
-          <span>Spectral Methods</span>
-        </button>
-
-        <button class="filter-button" data-filter="pca-svd" data-topic-filter="pca-svd">
-          <span>PCA / SVD</span>
-        </button>
-
-        <button class="filter-button" data-filter="face-recognition" data-topic-filter="face-recognition">
-          <span>Face Recognition</span>
-        </button>
-
-        <button class="filter-button" data-filter="numerical-linear-algebra" data-topic-filter="numerical-linear-algebra">
-          <span>Numerical Linear Algebra</span>
-        </button>
-
-        <button class="filter-button" data-filter="machine-learning" data-topic-filter="machine-learning">
-          <span>Machine Learning</span>
-        </button>
-
-    </aside>
+      <button class="filter-button active" data-topic-filter="all" data-filter="all">
+        <span>All topics</span>
+        <span class="filter-count">3</span>
+      </button>
+      <button class="filter-button" data-topic-filter="information-theory" data-filter="information-theory">
+        <span>Information Theory</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="credal-uncertainty" data-filter="credal-uncertainty">
+        <span>Credal Uncertainty</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="rate-distortion" data-filter="rate-distortion">
+        <span>Rate–Distortion</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="uncertainty-quantification" data-filter="uncertainty-quantification">
+        <span>Uncertainty Quantification</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="robust-compression" data-filter="robust-compression">
+        <span>Robust Compression</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="bayesian-inference" data-filter="bayesian-inference">
+        <span>Bayesian Inference</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="probabilistic-machine-learning" data-filter="probabilistic-machine-learning">
+        <span>Probabilistic Machine Learning</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="number-theory" data-filter="number-theory">
+        <span>Number Theory</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="monte-carlo" data-filter="monte-carlo">
+        <span>Monte Carlo</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="heavy-tails" data-filter="heavy-tails">
+        <span>Heavy Tails</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="spectral-methods" data-filter="spectral-methods">
+        <span>Spectral Methods</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="pca-svd" data-filter="pca-svd">
+        <span>PCA / SVD</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="face-recognition" data-filter="face-recognition">
+        <span>Face Recognition</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="numerical-linear-algebra" data-filter="numerical-linear-algebra">
+        <span>Numerical Linear Algebra</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="machine-learning" data-filter="machine-learning">
+        <span>Machine Learning</span>
+        <span class="filter-count">1</span>
+      </button>
+  </div>
+</aside>
   </div>
 </section>
 

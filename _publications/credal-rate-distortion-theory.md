@@ -3,13 +3,30 @@ layout: publication
 title: "Credal Rate–Distortion Theory"
 date: 2026-05-01
 authors: ["Nicolò Bonacorsi", "Michele Caprio", "Francesca Meneghello", "Francesco Restuccia"]
+author_items:
+  - name: "Nicolò Bonacorsi"
+    url: "/"
+    affiliation: "Columbia University"
+    logo: "/images/logos/columbia-crown.webp"
+  - name: "Michele Caprio"
+    url: "https://research.manchester.ac.uk/en/persons/michele-caprio/"
+    affiliation: "University of Manchester"
+    logo: "/images/logos/manchester-official.png"
+  - name: "Francesca Meneghello"
+    url: "https://coe.northeastern.edu/people/meneghello-francesca/"
+    affiliation: "Northeastern University"
+    logo: "/images/logos/northeastern-monogram.png"
+  - name: "Francesco Restuccia"
+    url: "https://coe.northeastern.edu/people/restuccia-francesco/"
+    affiliation: "Northeastern University"
+    logo: "/images/logos/northeastern-monogram.png"
 venue: "IEEE ITW 2026"
 status: "Submitted"
 topics: ["Information Theory", "Credal Uncertainty", "Rate–Distortion", "Robust Compression"]
 image: "/images/publications/credal.svg"
 pdf_url: "https://mentis.info/wp-content/uploads/2026/05/Credal_ITW_2026.pdf"
 project_url: "/projects/credal-rate-distortion/"
-abstract: "We develop a rate–distortion framework for source coding under credal uncertainty, where each input is represented by a set of plausible probability laws rather than a single distribution. The theory connects safe credal aggregation with directed distortion, graph coloring, graph entropy, and robust compression."
+abstract: "A robust rate–distortion framework for source coding under credal uncertainty, where the true source law is not known exactly but belongs to a set of plausible distributions."
 math: true
 bibtex: |
   @misc{bonacorsi2026credal,
@@ -19,6 +36,16 @@ bibtex: |
   }
 ---
 
-This paper studies compression when the object attached to each input is not a single probability law, but a credal set. We introduce a directed free-energy distortion for replacing several credal likelihoods by one aggregate credal set, and show that safe one-shot compression reduces exactly to a graph-coloring problem.
+This page contains extended notes, figures, proof sketches, and links related to the paper.
 
-In the block setting, local observers lead to graph-entropy rates, while finite-window observers reveal an intermediate regime that is genuinely regularized and does not collapse to a single-letter formula.
+The robust rate--distortion prototype can be written schematically as
+
+\begin{equation}
+R_{\mathcal P}(D)
+=
+\inf_{P_{\widehat X|X}}
+I_{\mathcal P}(X;\widehat X).
+\label{eq:credal-rd-paper}
+\end{equation}
+
+Equation $\eqref{eq:credal-rd-paper}$ represents the robust variational principle behind the construction.
