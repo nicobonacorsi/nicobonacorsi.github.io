@@ -10,7 +10,7 @@ image: "/images/publications/collatz.svg"
 arxiv_url: "https://arxiv.org/abs/2603.04479"
 paper_url: "https://arxiv.org/abs/2603.04479"
 project_url: "/projects/bayesian-collatz/"
-abstract: "A probabilistic study of Collatz total stopping times over n ≤ 10^7, combining Bayesian Negative Binomial regression with stochastic odd-block generative models to study overdispersion, modular structure, and predictive uncertainty."
+abstract: 'A probabilistic study of Collatz total stopping times over $n \le 10^7$, combining Bayesian Negative Binomial regression with stochastic odd-block generative models to study overdispersion, modular structure, and predictive uncertainty.'
 math: true
 bibtex: |
   @misc{bonacorsi2026collatz,
@@ -22,6 +22,20 @@ bibtex: |
   }
 ---
 
-This paper studies the empirical law of Collatz total stopping times for \(n \leq 10^7\). We compare a Bayesian hierarchical Negative Binomial regression, based on \(\log n\) and \(n \bmod 8\), with stochastic generators derived from the odd-block decomposition \(K = v_2(3m+1)\).
+This paper studies the empirical law of Collatz total stopping times for $n \le 10^7$. We compare a Bayesian hierarchical Negative Binomial regression, based on $\log n$ and $n \bmod 8$, with stochastic generators derived from the odd-block decomposition $K = v_2(3m+1)$.
 
 The regression model gives the strongest held-out predictive performance, while the odd-block models provide a mechanistic explanation of heavy tails and arithmetic heterogeneity.
+
+For example, the Collatz map is
+
+\begin{equation}
+T(n)
+=
+\begin{cases}
+n/2, & n \equiv 0 \pmod 2,\\
+3n+1, & n \equiv 1 \pmod 2.
+\end{cases}
+\label{eq:collatz-map}
+\end{equation}
+
+Equation $\eqref{eq:collatz-map}$ defines the deterministic dynamics, while the stochastic odd-block models approximate the distribution of the valuations $K = v_2(3m+1)$.
