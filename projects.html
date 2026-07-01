@@ -14,136 +14,222 @@ permalink: /projects/
   .projects-title {
     font-size: 2.7rem;
     font-weight: 400;
-    margin-bottom: .7rem;
-  }
-
-  .projects-intro {
-    color: #555;
-    font-size: 1.12rem;
-    line-height: 1.7;
-    max-width: 780px;
     margin-bottom: 2.4rem;
   }
 
   .projects-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 305px;
+    grid-template-columns: minmax(0, 1fr) 260px;
     gap: 3rem;
     align-items: start;
   }
 
+  .projects-list {
+    min-width: 0;
+  }
+
   .project-card {
     display: grid;
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: 1.4rem;
-    border-bottom: 1px solid rgba(0,0,0,.08);
-    padding: 1.7rem 0;
+    grid-template-columns: 250px 1fr;
+    gap: 2.2rem;
+    align-items: start;
+    margin-bottom: 3.2rem;
   }
 
   .project-card.is-hidden {
     display: none;
   }
 
+  .project-thumb-link {
+    position: relative;
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  }
+
   .project-thumb {
-    width: 180px;
-    height: 128px;
-    border-radius: 16px;
-    border: 1px solid rgba(0,0,0,.08);
-    background: #f7f7f7;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
+    border-radius: 18px;
+    transition: transform .28s ease, filter .28s ease;
   }
 
-  .project-card-title {
-    font-size: 1.55rem;
+  .project-thumb-link:hover .project-thumb {
+    transform: scale(1.055);
+    filter: saturate(1.08) contrast(1.03);
+  }
+
+  .thumb-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.62);
+    color: #444444;
+    opacity: 0;
+    transition: opacity .28s ease;
+  }
+
+  .thumb-overlay svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .project-thumb-link:hover .thumb-overlay {
+    opacity: 1;
+  }
+
+  .project-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
     font-weight: 700;
-    line-height: 1.25;
-    margin-bottom: .4rem;
+    margin: 0 0 .6rem;
   }
 
-  .project-card-title a {
-    color: #111;
+  .project-title a {
+    color: #111111;
     text-decoration: none;
   }
 
-  .project-card-title a:hover {
+  .project-title a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
-  .project-card-meta {
-    color: #777;
-    margin-bottom: .75rem;
+  .project-author {
+    color: #666666;
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
   }
 
-  .project-card p {
-    color: #444;
-    line-height: 1.62;
-    margin: .35rem 0;
+  .project-author strong {
+    color: #222222;
   }
 
-  .project-tags {
+  .project-topics {
     display: flex;
     flex-wrap: wrap;
     gap: .45rem;
-    margin-top: .8rem;
+    margin-bottom: 1.05rem;
   }
 
-  .project-tag {
+  .topic-chip {
     border: 1px solid rgba(0,0,0,.12);
-    background: #fafafa;
-    color: #555;
+    background: rgba(248,248,248,.9);
+    color: #555555;
     border-radius: 999px;
-    padding: .2rem .62rem;
-    font-size: .84rem;
+    padding: .22rem .62rem;
+    font-size: .86rem;
+    line-height: 1.35;
+    text-decoration: none;
     cursor: pointer;
-    font-family: inherit;
   }
 
-  .projects-filter {
+  .topic-chip:hover {
+    background: #eeeeee;
+    color: #222222;
+  }
+
+  .project-field {
+    font-size: 1.12rem;
+    line-height: 1.55;
+    margin-bottom: .75rem;
+  }
+
+  .project-field-label {
+    font-weight: 700;
+    color: #222222;
+  }
+
+  .project-filter {
     position: sticky;
     top: 2rem;
     border: 1px solid rgba(0,0,0,.09);
     border-radius: 18px;
-    padding: 1.15rem 1.1rem;
-    background: rgba(255,255,255,.88);
+    padding: 1.2rem 1.15rem;
+    background: rgba(255,255,255,.86);
     box-shadow: 0 10px 28px rgba(0,0,0,.035);
   }
 
-  .filter-title {
-    font-size: 1.1rem;
+  .project-filter-title {
+    font-size: 1.15rem;
     font-weight: 700;
-    margin-bottom: .7rem;
+    margin-bottom: .85rem;
+  }
+
+  .project-filter-subtitle {
+    font-size: .92rem;
+    color: #777777;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+
+  .filter-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .filter-table tr {
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+
+  .filter-table tr:first-child {
+    border-top: none;
   }
 
   .filter-button {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
     border: none;
     background: transparent;
-    color: #555;
+    color: #555555;
     text-align: left;
-    padding: .52rem 0;
+    padding: .62rem 0;
     font-family: inherit;
-    font-size: .96rem;
+    font-size: .98rem;
     cursor: pointer;
-    border-top: 1px solid rgba(0,0,0,.06);
   }
 
-  .filter-button:first-of-type {
-    border-top: none;
+  .filter-button:hover {
+    color: #111111;
   }
 
-  .filter-button:hover,
   .filter-button.active {
-    color: #111;
+    color: #111111;
     font-weight: 700;
   }
 
   .filter-count {
-    color: #999;
-    font-size: .82rem;
-    margin-left: .65rem;
+    color: #999999;
+    font-size: .88rem;
+  }
+
+  .projects-empty {
+    display: none;
+    color: #777777;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .projects-empty.is-visible {
+    display: block;
+  }
+
+  .stroke-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   @media (max-width: 980px) {
@@ -151,22 +237,32 @@ permalink: /projects/
       grid-template-columns: 1fr;
     }
 
-    .projects-filter {
+    .project-filter {
       position: relative;
       top: auto;
       order: -1;
     }
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 800px) {
     .project-card {
       grid-template-columns: 1fr;
+    }
+
+    .project-thumb-link {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
     }
 
     .project-thumb {
       width: 100%;
       height: auto;
-      max-height: 260px;
+      display: block;
+    }
+
+    .projects-title {
+      font-size: 2.2rem;
     }
   }
 </style>
@@ -174,123 +270,256 @@ permalink: /projects/
 <section class="projects-page">
   <h1 class="projects-title">Projects</h1>
 
-  <p class="projects-intro">
-    Research projects, mathematical explorations, simulations, and technical work.
-    Projects can be filtered by topic.
-  </p>
-
-  {% assign projects = site.projects | sort: "date" | reverse %}
-
   <div class="projects-layout">
-    <div>
-      {% for project in projects %}
-        <article
-          class="project-card"
-          data-topics="{% for topic in project.topics %}{{ topic | slugify }}{% unless forloop.last %}|{% endunless %}{% endfor %}"
-        >
-          <a href="{{ project.url | relative_url }}">
-            {% if project.image %}
-              <img class="project-thumb" src="{{ project.image | relative_url }}" alt="{{ project.title }}">
-            {% else %}
-              <div class="project-thumb"></div>
-            {% endif %}
-          </a>
+    <div class="projects-list">
+      <article
+        class="project-card"
+        data-topics="information-theory credal-uncertainty rate-distortion uncertainty-quantification robust-compression"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/credal-rate-distortion/' | relative_url }}" aria-label="Open Credal Rate-Distortion Theory project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/publications/credal.svg' | relative_url }}"
+            alt="Credal Rate-Distortion Theory project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
 
-          <div>
-            <h2 class="project-card-title">
-              <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
-            </h2>
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/credal-rate-distortion/' | relative_url }}">
+              Credal Rate–Distortion Theory
+            </a>
+          </h2>
 
-            <div class="project-card-meta">
-              Nicolò Bonacorsi
-            </div>
-
-            {% if project.question %}
-              <p><strong>Question.</strong> {{ project.question }}</p>
-            {% endif %}
-
-            {% if project.key_idea %}
-              <p><strong>Key idea.</strong> {{ project.key_idea }}</p>
-            {% endif %}
-
-            {% if project.results %}
-              <p><strong>Results.</strong> {{ project.results }}</p>
-            {% endif %}
-
-            {% if project.topics %}
-              <div class="project-tags">
-                {% for topic in project.topics %}
-                  <button class="project-tag" data-topic-filter="{{ topic | slugify }}">
-                    {{ topic }}
-                  </button>
-                {% endfor %}
-              </div>
-            {% endif %}
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
           </div>
-        </article>
-      {% endfor %}
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="information-theory">Information Theory</button>
+            <button class="topic-chip" data-filter="credal-uncertainty">Credal Uncertainty</button>
+            <button class="topic-chip" data-filter="rate-distortion">Rate–Distortion</button>
+            <button class="topic-chip" data-filter="uncertainty-quantification">Uncertainty Quantification</button>
+            <button class="topic-chip" data-filter="robust-compression">Robust Compression</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            How should rate–distortion theory change when the source is not described by one probability law, but by a credal set of plausible distributions?
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Replace a single probabilistic distortion constraint with uncertainty-aware admissibility over families of distributions, revealing a geometry of robust compression.
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            The project studies credal distortion, admissible codebooks, graph-coloring compression regimes, and finite-window phenomena between local and global uncertainty.
+          </p>
+        </div>
+      </article>
+
+      <article
+        class="project-card"
+        data-topics="bayesian-inference probabilistic-machine-learning number-theory monte-carlo heavy-tails"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/bayesian-collatz/' | relative_url }}" aria-label="Open Bayesian Collatz project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/publications/collatz.svg' | relative_url }}"
+            alt="Bayesian Modeling of Collatz Stopping Times project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
+
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/bayesian-collatz/' | relative_url }}">
+              Bayesian Modeling of Collatz Stopping Times
+            </a>
+          </h2>
+
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="bayesian-inference">Bayesian Inference</button>
+            <button class="topic-chip" data-filter="probabilistic-machine-learning">Probabilistic Machine Learning</button>
+            <button class="topic-chip" data-filter="number-theory">Number Theory</button>
+            <button class="topic-chip" data-filter="monte-carlo">Monte Carlo</button>
+            <button class="topic-chip" data-filter="heavy-tails">Heavy Tails</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            Can Collatz stopping times be modeled as structured random variables with arithmetic regimes, heavy tails, and calibrated predictive uncertainty?
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Treat stopping times as overdispersed count data and use Bayesian hierarchical modeling to capture residue-class effects and tail behavior.
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            The project builds a Bayesian pipeline for stopping-time data, including regime-conditioned models, Monte Carlo calibration, posterior checks, and distributional diagnostics.
+          </p>
+        </div>
+      </article>
+
+      <p id="projects-empty" class="projects-empty">
+        No projects match this topic yet.
+      </p>
     </div>
 
-    <aside class="projects-filter">
-      <div class="filter-title">Filter by topic</div>
+    <aside class="project-filter">
+      <div class="project-filter-title">Filter by topic</div>
+      <div class="project-filter-subtitle">
+        Select an area to show only the projects belonging to that research direction.
+      </div>
 
-      <button class="filter-button active" data-topic-filter="all">
-        <span>All topics</span>
-        <span class="filter-count" data-count-topic="all"></span>
-      </button>
-
-      {% assign all_topics = "" | split: "" %}
-      {% for project in projects %}
-        {% assign all_topics = all_topics | concat: project.topics %}
-      {% endfor %}
-      {% assign unique_topics = all_topics | uniq | sort %}
-
-      {% for topic in unique_topics %}
-        <button class="filter-button" data-topic-filter="{{ topic | slugify }}">
-          <span>{{ topic }}</span>
-          <span class="filter-count" data-count-topic="{{ topic | slugify }}"></span>
-        </button>
-      {% endfor %}
+      <table class="filter-table">
+        <tbody>
+          <tr>
+            <td>
+              <button class="filter-button active" data-filter="all">
+                <span>All topics</span>
+                <span class="filter-count">2</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="information-theory">
+                <span>Information Theory</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="credal-uncertainty">
+                <span>Credal Uncertainty</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="rate-distortion">
+                <span>Rate–Distortion</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="uncertainty-quantification">
+                <span>Uncertainty Quantification</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="robust-compression">
+                <span>Robust Compression</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="bayesian-inference">
+                <span>Bayesian Inference</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="probabilistic-machine-learning">
+                <span>Probabilistic ML</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="number-theory">
+                <span>Number Theory</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="monte-carlo">
+                <span>Monte Carlo</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="filter-button" data-filter="heavy-tails">
+                <span>Heavy Tails</span>
+                <span class="filter-count">1</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </aside>
   </div>
 </section>
 
 <script>
-  let activeTopic = "all";
+  const filterButtons = document.querySelectorAll("[data-filter]");
   const projectCards = document.querySelectorAll(".project-card");
+  const emptyMessage = document.getElementById("projects-empty");
 
-  function countProjectFilters() {
-    const cards = Array.from(projectCards);
+  function applyFilter(topic) {
+    let visibleCount = 0;
 
-    document.querySelectorAll("[data-count-topic]").forEach((el) => {
-      const key = el.dataset.countTopic;
-      const count = key === "all" ? cards.length : cards.filter((card) => {
-        const topics = card.dataset.topics ? card.dataset.topics.split("|") : [];
-        return topics.includes(key);
-      }).length;
-      el.textContent = count;
-    });
-  }
-
-  function applyProjectFilters() {
     projectCards.forEach((card) => {
-      const topics = card.dataset.topics ? card.dataset.topics.split("|") : [];
-      const show = activeTopic === "all" || topics.includes(activeTopic);
+      const topics = card.dataset.topics.split(" ");
+      const show = topic === "all" || topics.includes(topic);
+
       card.classList.toggle("is-hidden", !show);
+
+      if (show) {
+        visibleCount += 1;
+      }
     });
 
-    document.querySelectorAll("[data-topic-filter]").forEach((button) => {
-      button.classList.toggle("active", button.dataset.topicFilter === activeTopic);
+    emptyMessage.classList.toggle("is-visible", visibleCount === 0);
+
+    document.querySelectorAll(".filter-button").forEach((button) => {
+      button.classList.toggle("active", button.dataset.filter === topic);
     });
   }
 
-  document.querySelectorAll("[data-topic-filter]").forEach((button) => {
+  filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      activeTopic = button.dataset.topicFilter;
-      applyProjectFilters();
+      applyFilter(button.dataset.filter);
     });
   });
-
-  countProjectFilters();
-  applyProjectFilters();
 </script>

@@ -81,5 +81,5 @@ collections:
     output: true
     permalink: /publications/:slug/
   projects:
-    output: true
+    output: false
     permalink: /projects/:slug/
