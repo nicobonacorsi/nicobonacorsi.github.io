@@ -76,3 +76,10 @@ _site/
 .bundle/
 vendor/bundle/
 _dev_backups/
+
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/bundle/
+_dev_backups/
