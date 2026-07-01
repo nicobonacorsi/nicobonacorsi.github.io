@@ -1,75 +1,158 @@
 ---
 layout: default
-title: Keunhong Park
+title: Nicolò Bonacorsi
 ---
 
-<!-- Hero Section -->
-<section class="py-12 md:py-16 bg-surface">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="flex flex-col items-center text-center md:text-left md:flex-row md:items-start gap-8">
-      <!-- Portrait -->
-      <div class="flex-shrink-0">
-        <img src="{{ '/images/portrait.jpg' | relative_url }}"
-             alt="{{ site.name }}"
-             class="w-48 h-48 md:w-56 md:h-56 object-cover">
-      </div>
+<style>
+  body {
+    overflow-x: hidden;
+  }
 
-      <!-- Bio -->
-      <div class="flex-1">
-        <h1 class="font-display text-3xl md:text-4xl font-semibold text-text">
-          Hello, I'm {{ site.name }}
-        </h1>
-        <div class="text-text-body mt-4 max-w-prose leading-relaxed prose">
-          {{ site.description | markdownify }}
-        </div>
+  @media (min-width: 900px) {
+    html, body {
+      overflow-y: hidden;
+    }
 
-        <!-- Links -->
-        <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
-          <a href="{{ '/cv/' | relative_url }}" class="inline-flex items-center text-text-muted hover:text-text font-sans text-sm no-underline">
-            {% include icons/file.html class="w-4 h-4 mr-1.5" %}
-            CV
-          </a>
+    .home-page {
+      min-height: calc(100vh - 95px);
+      display: flex;
+      align-items: center;
+    }
+  }
 
-          <a href="https://scholar.google.com/citations?user={{ site.google_scholar }}" class="inline-flex items-center text-text-muted hover:text-text font-sans text-sm no-underline">
-            <i class="ai ai-google-scholar mr-1.5"></i>
-            Scholar
-          </a>
+  .portrait-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-          <a href="https://github.com/{{ site.github_username }}" class="inline-flex items-center text-text-muted hover:text-text font-sans text-sm no-underline">
-            {% include icons/github.html class="w-4 h-4 mr-1.5" %}
-            GitHub
-          </a>
+  .portrait-image {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
 
-          <a href="https://twitter.com/{{ site.twitter_username }}" class="inline-flex items-center text-text-muted hover:text-text font-sans text-sm no-underline">
-            {% include icons/twitter.html class="w-4 h-4 mr-1.5" %}
-            Twitter
-          </a>
-        </div>
+    -webkit-mask-image:
+      radial-gradient(ellipse at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0.92) 72%, rgba(0,0,0,0.45) 88%, rgba(0,0,0,0) 100%);
+    mask-image:
+      radial-gradient(ellipse at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0.92) 72%, rgba(0,0,0,0.45) 88%, rgba(0,0,0,0) 100%);
+
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.06));
+  }
+
+  .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #666666;
+    text-decoration: none;
+    font-size: 1.15rem;
+  }
+
+  .profile-link:hover {
+    color: #222222;
+  }
+
+  .profile-link svg {
+    width: 22px;
+    height: 22px;
+    color: currentColor;
+  }
+
+  .profile-link .stroke-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .profile-link .fill-icon {
+    fill: currentColor;
+  }
+</style>
+
+<section class="home-page max-w-5xl mx-auto px-6">
+  <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 items-center w-full">
+    <div class="portrait-wrap">
+      <img
+        src="{{ '/images/portrait.png' | relative_url }}"
+        alt="Nicolò Bonacorsi"
+        class="portrait-image md:mx-0"
+      >
+    </div>
+
+    <div>
+      <h1 class="text-4xl md:text-5xl font-normal leading-tight mb-6">
+        Hello, I'm Nicolò Bonacorsi
+      </h1>
+
+      <p class="text-lg leading-relaxed mb-5">
+        I am an M.S. student in Applied Mathematics at
+        <a href="https://www.columbia.edu/">Columbia University</a>.
+        My research interests include stochastic control, optimal stopping,
+        Hamilton-Jacobi-Bellman equations, free-boundary problems, uncertainty
+        quantification, credal uncertainty, information theory, robust
+        probabilistic compression, and mathematical finance.
+      </p>
+
+      <p class="text-lg leading-relaxed mb-7">
+        I am currently working with Professor Ioannis Karatzas at Columbia
+        University on stochastic control and optimal stopping, and with
+        Professor Francesco Restuccia at Northeastern University on credal
+        uncertainty and robust information-theoretic models.
+      </p>
+
+      <div class="profile-links">
+        <a class="profile-link" href="/cv/">
+          <svg viewBox="0 0 24 24">
+            <path class="stroke-icon" d="M7 3h7l5 5v13H7z"/>
+            <path class="stroke-icon" d="M14 3v5h5"/>
+            <path class="stroke-icon" d="M9 13h6"/>
+            <path class="stroke-icon" d="M9 17h6"/>
+          </svg>
+          <span>CV</span>
+        </a>
+
+        <a class="profile-link" href="mailto:nb3328@columbia.edu">
+          <svg viewBox="0 0 24 24">
+            <path class="stroke-icon" d="M4 6h16v12H4z"/>
+            <path class="stroke-icon" d="M4 7l8 6 8-6"/>
+          </svg>
+          <span>Email</span>
+        </a>
+
+        <a class="profile-link" href="https://scholar.google.com/citations?user=Z93cVpAAAAAJ&hl=en">
+          <svg viewBox="0 0 24 24">
+            <path class="fill-icon" d="M12 3L2 9l10 6 10-6-10-6z"/>
+            <path class="fill-icon" d="M6 12v4c0 2 3 4 6 4s6-2 6-4v-4l-6 3.5L6 12z"/>
+          </svg>
+          <span>Scholar</span>
+        </a>
+
+        <a class="profile-link" href="https://github.com/nicobonacorsi">
+          <svg viewBox="0 0 24 24">
+            <path class="fill-icon" d="M12 .9C5.9.9 1 5.8 1 11.9c0 4.9 3.2 9.1 7.7 10.5.6.1.8-.2.8-.6v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6 2.9 3.2 2.1.1-.7.4-1.1.7-1.4-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3.1 1.1.9-.2 1.8-.4 2.8-.4s1.9.1 2.8.4c2.1-1.4 3.1-1.1 3.1-1.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .4.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.5C23 5.8 18.1.9 12 .9z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <a class="profile-link" href="https://www.linkedin.com/in/nicolobonacorsi">
+          <svg viewBox="0 0 24 24">
+            <path class="fill-icon" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.4 8h4.2v14H.4V8zm7.1 0h4v1.9h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V22h-4.2v-6.8c0-1.6 0-3.7-2.3-3.7s-2.6 1.8-2.6 3.6V22H7.5V8z"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Highlights Section -->
-<section class="relative py-12 md:py-16">
-  <!-- Background with faded edges -->
-  <div class="absolute inset-0 bg-surface-muted" style="mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);"></div>
-  <div class="relative max-w-4xl mx-auto px-6">
-    <h2 class="font-display text-2xl font-semibold text-text mb-8">Highlights</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {% for highlight in site.data.highlights %}
-        {% include highlight.html h=highlight %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- Publications Section -->
-<section class="py-12 md:py-16 bg-surface">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="font-display text-2xl font-semibold text-text mb-8">Publications</h2>
-    {% for pub in site.data.publications %}
-      {% include publication.html pub=pub %}
-    {% endfor %}
   </div>
 </section>

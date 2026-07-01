@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220">
+  <rect width="220" height="220" rx="34" fill="#ffffff"/>
+  <rect x="10" y="10" width="200" height="200" rx="28" fill="#fff5f5" stroke="#eed0d0" stroke-width="2"/>
+  <circle cx="110" cy="82" r="34" fill="#C8102E"/>
+  <text x="110" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#ffffff">N</text>
+  <text x="110" y="145" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#1f2933">Northeastern</text>
+  <text x="110" y="174" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#1f2933">University</text>
+</svg>

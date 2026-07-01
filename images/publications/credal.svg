@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef5ff"/>
+      <stop offset="100%" stop-color="#f6efff"/>
+    </linearGradient>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8fb8ff" stop-opacity=".75"/>
+      <stop offset="100%" stop-color="#bba7ff" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="b" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ee6c7" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#8fb8ff" stop-opacity=".45"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="420" rx="26" fill="url(#bg)"/>
+  <ellipse cx="178" cy="206" rx="105" ry="72" fill="url(#a)"/>
+  <ellipse cx="242" cy="206" rx="105" ry="72" fill="url(#b)"/>
+  <path d="M95 282 C145 225, 190 303, 238 248 S314 201, 340 247" fill="none" stroke="#4b6078" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="130" cy="138" r="12" fill="#4b6078" opacity=".65"/>
+  <circle cx="286" cy="126" r="10" fill="#4b6078" opacity=".45"/>
+  <circle cx="321" cy="300" r="13" fill="#4b6078" opacity=".5"/>
+  <text x="210" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#3d4b5f">Credal R–D</text>
+</svg>

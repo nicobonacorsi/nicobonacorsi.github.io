@@ -1,0 +1,42 @@
+<style>
+  mjx-container[display="true"] {
+    display: block !important;
+    text-align: center !important;
+    margin: 1.35rem auto !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  mjx-container[display="true"] svg {
+    display: inline-block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  mjx-container:not([display="true"]) {
+    display: inline !important;
+  }
+
+  .math-box mjx-container[display="true"],
+  .post-content mjx-container[display="true"],
+  article mjx-container[display="true"],
+  .project-main mjx-container[display="true"] {
+    text-align: center !important;
+  }
+</style>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>

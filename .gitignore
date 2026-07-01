@@ -69,3 +69,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/bundle/
+_dev_backups/

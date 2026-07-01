@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff4e8"/>
+      <stop offset="100%" stop-color="#eef3ff"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8a15f"/>
+      <stop offset="100%" stop-color="#758edb"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="420" rx="26" fill="url(#bg)"/>
+  <path d="M70 305 C110 250, 128 275, 160 210 S215 94, 250 156 S282 286, 350 120" fill="none" stroke="url(#line)" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#4b6078">
+    <circle cx="70" cy="305" r="10"/>
+    <circle cx="160" cy="210" r="10"/>
+    <circle cx="250" cy="156" r="10"/>
+    <circle cx="350" cy="120" r="10"/>
+  </g>
+  <path d="M90 332 H340" stroke="#4b6078" stroke-width="4" opacity=".35" stroke-linecap="round"/>
+  <path d="M108 332 V315 M170 332 V315 M232 332 V315 M294 332 V315" stroke="#4b6078" stroke-width="3" opacity=".28" stroke-linecap="round"/>
+  <text x="210" y="372" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#3d4b5f">Collatz Times</text>
+</svg>
