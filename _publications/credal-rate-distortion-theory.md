@@ -9,7 +9,7 @@ topics: ["Information Theory", "Credal Uncertainty", "Rate–Distortion", "Robus
 image: "/images/publications/credal.svg"
 pdf_url: "https://mentis.info/wp-content/uploads/2026/05/Credal_ITW_2026.pdf"
 project_url: "/projects/credal-rate-distortion/"
-abstract: "A robust rate–distortion framework for source coding under credal uncertainty, where the true source law is not known exactly but belongs to a set of plausible distributions."
+abstract: "We develop a rate–distortion framework for source coding under credal uncertainty, where each input is represented by a set of plausible probability laws rather than a single distribution. The theory connects safe credal aggregation with directed distortion, graph coloring, graph entropy, and robust compression."
 math: true
 bibtex: |
   @misc{bonacorsi2026credal,
@@ -19,16 +19,6 @@ bibtex: |
   }
 ---
 
-This page can contain extended notes, figures, videos, animations, proof sketches, and links related to the paper.
+This paper studies compression when the object attached to each input is not a single probability law, but a credal set. We introduce a directed free-energy distortion for replacing several credal likelihoods by one aggregate credal set, and show that safe one-shot compression reduces exactly to a graph-coloring problem.
 
-For example:
-
-\begin{equation}
-R_{\mathcal P}(D)
-=
-\inf_{P_{\widehat X|X}}
-I_{\mathcal P}(X;\widehat X).
-\label{eq:credal-rd-paper}
-\end{equation}
-
-Equation \eqref{eq:credal-rd-paper} is a schematic representation of the robust variational principle.
+In the block setting, local observers lead to graph-entropy rates, while finite-window observers reveal an intermediate regime that is genuinely regularized and does not collapse to a single-letter formula.
