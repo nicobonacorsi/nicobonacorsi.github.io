@@ -1,0 +1,120 @@
+---
+layout: default
+---
+
+<style>
+  .project-page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2.8rem 1.5rem 4rem;
+  }
+
+  .project-hero {
+    text-align: center;
+    margin-bottom: 2.6rem;
+  }
+
+  .project-title {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.12;
+    margin-bottom: .8rem;
+  }
+
+  .project-author {
+    color: #555;
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .project-tag {
+    border: 1px solid rgba(0,0,0,.12);
+    background: #fafafa;
+    color: #555;
+    border-radius: 999px;
+    padding: .24rem .68rem;
+    font-size: .86rem;
+  }
+
+  .project-section {
+    border-top: 1px solid rgba(0,0,0,.08);
+    padding-top: 1.6rem;
+    margin-top: 1.6rem;
+  }
+
+  .project-section h2 {
+    font-size: 1.55rem;
+    margin-bottom: .7rem;
+  }
+
+  .project-section p,
+  .project-body {
+    font-size: 1.08rem;
+    line-height: 1.72;
+    color: #333;
+  }
+
+  .project-image {
+    display: block;
+    max-width: 520px;
+    width: 100%;
+    margin: 1.5rem auto 0;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+</style>
+
+<section class="project-page">
+  <div class="project-hero">
+    <h1 class="project-title">{{ page.title }}</h1>
+
+    <div class="project-author">
+      Project of {{ page.author | default: "Nicolò Bonacorsi" }}
+    </div>
+
+    {% if page.image %}
+      <img class="project-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    {% endif %}
+
+    {% if page.topics %}
+      <div class="project-tags">
+        {% for topic in page.topics %}
+          <span class="project-tag">{{ topic }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if page.question %}
+    <div class="project-section">
+      <h2>Question</h2>
+      <p>{{ page.question }}</p>
+    </div>
+  {% endif %}
+
+  {% if page.key_idea %}
+    <div class="project-section">
+      <h2>Key idea</h2>
+      <p>{{ page.key_idea }}</p>
+    </div>
+  {% endif %}
+
+  {% if page.results %}
+    <div class="project-section">
+      <h2>Results</h2>
+      <p>{{ page.results }}</p>
+    </div>
+  {% endif %}
+
+  <div class="project-section project-body">
+    {{ content }}
+  </div>
+</section>
