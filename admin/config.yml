@@ -1,0 +1,124 @@
+backend:
+  name: github
+  repo: nicobonacorsi/nicobonacorsi.github.io
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://nicobonacorsi.github.io"
+display_url: "https://nicobonacorsi.github.io"
+logo_url: "/images/portrait.png"
+
+collections:
+  - name: "scientific_posts"
+    label: "Scientific Blog"
+    label_singular: "Scientific Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    filter:
+      field: "categories"
+      value: "scientific"
+    fields:
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "post"
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+
+      - label: "Category"
+        name: "categories"
+        widget: "hidden"
+        default: "scientific"
+
+      - label: "Scientific Type"
+        name: "scientific_type"
+        widget: "select"
+        options:
+          - "Research Notes"
+          - "Course Notes"
+          - "Discovery Ideas"
+        default: "Research Notes"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        summary: "{{fields.tag}}"
+        field:
+          label: "Tag"
+          name: "tag"
+          widget: "string"
+
+      - label: "Enable MathJax / LaTeX"
+        name: "math"
+        widget: "boolean"
+        default: true
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+        hint: "You can write Markdown, links, images, inline LaTeX with $...$, display LaTeX with $$...$$, and numbered equations with \\begin{equation}...\\end{equation}."
+
+  - name: "personal_posts"
+    label: "Personal Blog"
+    label_singular: "Personal Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    filter:
+      field: "categories"
+      value: "personal"
+    fields:
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "post"
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+
+      - label: "Category"
+        name: "categories"
+        widget: "hidden"
+        default: "personal"
+
+      - label: "City"
+        name: "city"
+        widget: "string"
+        default: "New York"
+
+      - label: "Tags / Topics"
+        name: "tags"
+        widget: "list"
+        summary: "{{fields.tag}}"
+        field:
+          label: "Tag"
+          name: "tag"
+          widget: "string"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+        hint: "You can write text, upload images, add links, and create personal posts directly from here."
