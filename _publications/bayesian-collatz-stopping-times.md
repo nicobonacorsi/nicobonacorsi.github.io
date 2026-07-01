@@ -10,7 +10,7 @@ image: "/images/publications/collatz.svg"
 arxiv_url: "https://arxiv.org/abs/2603.04479"
 paper_url: "https://arxiv.org/abs/2603.04479"
 project_url: "/projects/bayesian-collatz/"
-abstract: "A probabilistic study of Collatz total stopping times over $n \leq 10^7$, combining Bayesian Negative Binomial regression with stochastic odd-block generative models to study overdispersion, modular structure, and predictive uncertainty."
+abstract: "A probabilistic study of Collatz total stopping times over n ≤ 10^7, combining Bayesian Negative Binomial regression with stochastic odd-block generative models to study overdispersion, modular structure, and predictive uncertainty."
 math: true
 bibtex: |
   @misc{bonacorsi2026collatz,
