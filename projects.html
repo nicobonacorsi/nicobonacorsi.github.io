@@ -272,7 +272,39 @@ permalink: /projects/
 
   <div class="projects-layout">
     <div class="projects-list">
-      <article
+
+<article class="project-card" data-topics="spectral-methods pca-svd face-recognition numerical-linear-algebra machine-learning">
+  <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">
+    <img class="project-thumb" src="{{ '/images/publications/svd-face-recognition.svg' | relative_url }}" alt="Spectral Methods for High-Dimensional Prediction and Face Recognition">
+  </a>
+
+  <div>
+    <h2 class="project-title">
+      <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">Spectral Methods for High-Dimensional Prediction and Face Recognition</a>
+    </h2>
+
+    <div class="project-card-meta">
+      Nicolò Bonacorsi
+    </div>
+
+    <div class="project-tags">
+      <button class="project-tag" data-topic-filter="spectral-methods" data-filter="spectral-methods">Spectral Methods</button>
+      <button class="project-tag" data-topic-filter="pca-svd" data-filter="pca-svd">PCA / SVD</button>
+      <button class="project-tag" data-topic-filter="face-recognition" data-filter="face-recognition">Face Recognition</button>
+      <button class="project-tag" data-topic-filter="numerical-linear-algebra" data-filter="numerical-linear-algebra">Numerical Linear Algebra</button>
+      <button class="project-tag" data-topic-filter="machine-learning" data-filter="machine-learning">Machine Learning</button>
+    </div>
+
+    <p><strong>Question.</strong> How can PCA and SVD reduce high-dimensional crime-rate and face-image data while preserving predictive and recognition structure?</p>
+
+    <p><strong>Key idea.</strong> Replace raw high-dimensional observations by coordinates in low-rank spectral subspaces: principal components for crime data and eigenfaces for image data.</p>
+
+    <p><strong>Results.</strong> Principal-component regression improves adjusted $R^2$ from 0.5544 to 0.8555, while the eigenfaces classifier reaches 98.3333% accuracy on the Olivetti dataset.</p>
+  </div>
+</article>
+
+
+<article
         class="project-card"
         data-topics="information-theory credal-uncertainty rate-distortion uncertainty-quantification robust-compression"
       >
@@ -487,6 +519,27 @@ permalink: /projects/
           </tr>
         </tbody>
       </table>
+    
+        <button class="filter-button" data-filter="spectral-methods" data-topic-filter="spectral-methods">
+          <span>Spectral Methods</span>
+        </button>
+
+        <button class="filter-button" data-filter="pca-svd" data-topic-filter="pca-svd">
+          <span>PCA / SVD</span>
+        </button>
+
+        <button class="filter-button" data-filter="face-recognition" data-topic-filter="face-recognition">
+          <span>Face Recognition</span>
+        </button>
+
+        <button class="filter-button" data-filter="numerical-linear-algebra" data-topic-filter="numerical-linear-algebra">
+          <span>Numerical Linear Algebra</span>
+        </button>
+
+        <button class="filter-button" data-filter="machine-learning" data-topic-filter="machine-learning">
+          <span>Machine Learning</span>
+        </button>
+
     </aside>
   </div>
 </section>

@@ -1,0 +1,856 @@
+---
+layout: default
+title: "Spectral Methods for High-Dimensional Prediction and Face Recognition"
+permalink: /projects/svd-face-recognition/
+math: true
+---
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .project-website {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  .project-hero {
+    text-align: center;
+    max-width: 1050px;
+    margin: 0 auto 4.5rem;
+  }
+
+  .project-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(3rem, 6vw, 5.3rem);
+    line-height: 1.03;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    color: #333333;
+    margin-bottom: 1.6rem;
+  }
+
+  .project-hero-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: #1e88e5;
+    margin-bottom: .8rem;
+  }
+
+  .project-hero-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-hero-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-affiliations {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 1.8rem;
+  }
+
+
+  .project-meta-block {
+    margin-bottom: 1.05rem;
+  }
+
+  .project-meta-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: #888888;
+    margin-bottom: .25rem;
+  }
+
+  .project-owner,
+  .project-hero-paper-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    color: #1e88e5;
+  }
+
+  .project-owner a,
+  .project-hero-paper-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-owner a:hover,
+  .project-hero-paper-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-logo-card {
+    width: 104px;
+    height: 104px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(0,0,0,.075);
+    border: 1px solid rgba(0,0,0,.06);
+    text-decoration: none;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+
+  .project-logo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(0,0,0,.11);
+  }
+
+  .project-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .project-logo {
+    max-width: 86px;
+    max-height: 78px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .project-venue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #444444;
+    margin-bottom: 1.4rem;
+  }
+
+  .project-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-radius: 999px;
+    background: #333333;
+    color: #ffffff;
+    padding: .48rem 1.05rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .project-button:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .project-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-toc {
+    position: sticky;
+    top: 2rem;
+    padding-top: .3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .project-toc-title {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #999999;
+    margin-bottom: .9rem;
+  }
+
+  .project-toc a {
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    padding: .38rem 0 .38rem .85rem;
+    border-left: 2px solid rgba(0,0,0,.08);
+    font-size: .98rem;
+  }
+
+  .project-toc a:hover {
+    color: #111111;
+    border-left-color: #999999;
+  }
+
+  .project-main {
+    min-width: 0;
+  }
+
+  .project-section {
+    padding: 3.2rem 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+
+  .project-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .project-section h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-section p {
+    font-size: 1.16rem;
+    line-height: 1.75;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+
+  .project-figure {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .project-figure img {
+    width: 100%;
+    max-width: 760px;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.06);
+  }
+
+  .caption {
+    font-size: .95rem;
+    color: #777777;
+    margin-top: .75rem;
+  }
+
+  .math-box {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.4rem 0;
+    overflow-x: auto;
+  }
+
+  .interactive-box {
+    background: linear-gradient(135deg, rgba(238,245,255,.95), rgba(246,239,255,.95));
+    border: 1px solid rgba(80,110,160,.14);
+    border-radius: 18px;
+    padding: 1.4rem;
+    margin: 1.7rem 0;
+  }
+
+  .interactive-box input {
+    width: 100%;
+    margin: .8rem 0;
+  }
+
+  .interactive-result {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background: rgba(255,255,255,.72);
+    border-radius: 12px;
+    padding: .9rem;
+    margin-top: .8rem;
+  }
+
+  .video-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f3f3f3;
+    margin: 1.7rem 0;
+  }
+
+  .video-box iframe,
+  .video-box video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bibtex-box {
+    background: #f4f4f4;
+    border-radius: 12px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  .back-to-projects {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #666666;
+    text-decoration: none;
+  }
+
+  .back-to-projects:hover {
+    color: #111111;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .project-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .project-toc {
+      position: relative;
+      top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .8rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-toc-title {
+      width: 100%;
+      margin-bottom: .2rem;
+    }
+
+    .project-toc a {
+      border-left: none;
+      padding: .2rem 0;
+    }
+  }
+</style>
+
+
+
+<section class="project-website">
+  
+<div class="project-hero">
+  <h1 class="project-hero-title">Spectral Methods for High-Dimensional Prediction and Face Recognition</h1>
+
+  <div class="project-meta-block">
+    <div class="project-meta-label">Project of</div>
+    <div class="project-owner">
+      <a href="{{ '/' | relative_url }}">Nicolò Bonacorsi</a><sup>1</sup>
+    </div>
+  </div>
+
+  <div class="project-meta-block">
+    <div class="project-meta-label">Based on the project</div>
+    <div class="project-hero-paper-authors">
+      <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">Face Recognition: An SVD-Based Approach for Identifying Criminals</a>
+    </div>
+  </div>
+
+  <div class="project-affiliations">
+    <sup>1</sup>Sapienza University of Rome
+  </div>
+
+  <div class="project-venue">
+    Numerical linear algebra project, 2024
+  </div>
+
+  <div class="project-buttons">
+    <a class="project-button" href="#mathematical-formulation">Mathematics</a>
+    <a class="project-button" href="#face-recognition">Face Recognition</a>
+    <a class="project-button" href="#results">Results</a>
+  </div>
+</div>
+
+<div class="project-layout">
+    
+<aside class="project-toc">
+  <div class="project-toc-title">Contents</div>
+  <a href="#abstract">Abstract</a>
+  <a href="#question">Question</a>
+  <a href="#key-idea">Key idea</a>
+  <a href="#mathematical-formulation">Mathematical formulation</a>
+  <a href="#crime-data">Crime data PCA</a>
+  <a href="#regression">Regression</a>
+  <a href="#face-recognition">Eigenfaces</a>
+  <a href="#results">Results</a>
+  <a href="#conclusions">Conclusions</a>
+</aside>
+
+
+    
+<main class="project-main">
+  <section id="abstract" class="project-section">
+    <h2>Abstract</h2>
+    <p>
+      This project explores the application of Singular Value Decomposition and Principal Component Analysis to two related problems: dimensionality reduction for structured tabular data and face recognition in high-dimensional image spaces.
+      The first part uses PCA to reduce the dimensionality of a crime-rate dataset containing observations from 50 U.S. states and seven crime variables.
+      The reduced representation is then used to construct a multivariate linear regression model for predicting homicide rates.
+      The second part develops a facial-recognition algorithm based on the eigenfaces method: each new image is projected into a low-dimensional face subspace, and recognition is performed by comparing the projected coordinates with those stored in the database.
+    </p>
+    <p>
+      <strong>Keywords.</strong> Face Recognition, PCA, SVD, Linear Regression, Eigenfaces, Low-Rank Approximation.
+    </p>
+  </section>
+
+  <section id="question" class="project-section">
+    <h2>Research question</h2>
+    <p>
+      How can spectral decompositions reduce the dimensionality of high-dimensional crime-rate and face-image data while preserving enough structure for prediction and recognition?
+    </p>
+  </section>
+
+  <section id="key-idea" class="project-section">
+    <h2>Key idea</h2>
+    <p>
+      The key idea is to replace raw high-dimensional observations with coordinates in low-rank spectral subspaces.
+      For crime data, the relevant coordinates are principal components.
+      For face images, the relevant coordinates are projections onto the face subspace generated by the dominant singular vectors of the centered image matrix.
+    </p>
+  </section>
+
+  <section id="mathematical-formulation" class="project-section">
+    <h2>Mathematical formulation</h2>
+
+    <p>
+      PCA constructs artificial variables as linear combinations of the original variables:
+    </p>
+
+    \[
+    \begin{array}{c}
+    Y_1 = a_{10}+a_{11}X_1+\dots+a_{1p}X_p,\\
+    \vdots\\
+    Y_k = a_{k0}+a_{k1}X_1+\dots+a_{kp}X_p,\\
+    \vdots\\
+    Y_p = a_{p0}+a_{p1}X_1+\dots+a_{pp}X_p.
+    \end{array}
+    \]
+
+    <p>
+      The principal components are mutually uncorrelated, ordered by decreasing variance, and preserve total variance:
+    </p>
+
+    \[
+    \operatorname{Cov}(Y_i,Y_k)=0\quad(i\neq k),
+    \qquad
+    V(Y_1)\geq V(Y_2)\geq\dots\geq V(Y_p),
+    \]
+
+    \[
+    \sum_{i=1}^{p}V(X_i)=\sum_{i=1}^{p}V(Y_i).
+    \]
+
+    <p>
+      The standardized observations are
+    </p>
+
+    \[
+    Z_{ij}
+    =
+    \frac{X_{ij}-\tilde X_j}{\sqrt{\operatorname{Var}(X_j)}},
+    \qquad
+    \tilde X_j=\frac{1}{n}\sum_{i=1}^{n}X_{ij}.
+    \]
+
+    <p>
+      The correlation matrix is
+    </p>
+
+    \[
+    R=\frac{Z^TZ}{n-1}.
+    \]
+
+    <p>
+      Since the data are centered, each principal component has the form
+    </p>
+
+    \[
+    Y_i=\underline a_i^TZ.
+    \]
+
+    <p>
+      The first component maximizes $V(Y_1)$ under $\underline a_1^T\underline a_1=1$.
+      Since
+    </p>
+
+    \[
+    V(Y_1)=\underline a_1^T R\underline a_1,
+    \]
+
+    <p>
+      the Lagrangian is
+    </p>
+
+    \[
+    \phi(\underline a_1,\lambda_1)
+    =
+    \underline a_1^TR\underline a_1
+    -
+    \lambda_1(\underline a_1^T\underline a_1-1).
+    \]
+
+    <p>
+      Differentiating gives
+    </p>
+
+    \[
+    (R-\lambda_1I_p)\underline a_1=0.
+    \]
+
+    <p>
+      Therefore, the principal components are obtained from the eigenvalues and eigenvectors of $R$:
+    </p>
+
+    \[
+    V(Y_1)=\lambda_1\geq V(Y_2)=\lambda_2\geq\dots\geq V(Y_p)=\lambda_p.
+    \]
+
+    <p>
+      The singular value decomposition of a data matrix $A$ is
+    </p>
+
+    \[
+    A=U\Sigma V^T.
+    \]
+
+    <p>
+      Hence
+    </p>
+
+    \[
+    A^TA=V\Sigma^T\Sigma V^T,
+    \qquad
+    AA^T=U\Sigma\Sigma^TU^T.
+    \]
+
+    <p>
+      For $R=\frac{Z^TZ}{n-1}$, the right singular vectors give the principal directions and the eigenvalues satisfy
+    </p>
+
+    \[
+    \lambda_i=\frac{\sigma_i^2}{n-1}.
+    \]
+
+    <p>
+      The principal components are obtained as
+    </p>
+
+    \[
+    ZV=U\Sigma.
+    \]
+  </section>
+
+  <section id="crime-data" class="project-section">
+    <h2>Crime data PCA</h2>
+
+    <p>
+      The crime-rate dataset is a matrix in $\mathbb{R}^{50\times 7}$, with 50 U.S. states and seven variables measured as crimes per 100,000 inhabitants:
+      homicide, kidnapping, robbery, assault, burglary, theft, and motor vehicle theft.
+    </p>
+
+    <p>
+      The symmetric QR method gives the eigenvalues
+    </p>
+
+    \[
+    4.1150,\quad 1.2387,\quad 0.7258,\quad 0.3164,\quad 0.2580,\quad 0.2220,\quad 0.1241.
+    \]
+
+    <p>
+      Since only the first two eigenvalues are greater than one, the first two principal components are retained:
+    </p>
+
+    \[
+    Y_1
+    =
+    0.303Z_1+0.4318Z_2+0.3969Z_3+0.3967Z_4+0.4402Z_5+0.3575Z_6+0.2952Z_7,
+    \]
+
+    \[
+    Y_2
+    =
+    0.6292Z_1+0.1694Z_2-0.0423Z_3+0.3435Z_4-0.2022Z_5-0.4023Z_6-0.5024Z_7.
+    \]
+
+    <p>
+      The first component acts as an overall danger index.
+      The second component separates violent-crime structure from property-crime structure.
+    </p>
+
+    <p>
+      The rank-2 approximation is
+    </p>
+
+    \[
+    R_2
+    =
+    U_{R,(:,1:2)}
+    \Sigma_{R,(1:2,1:2)}
+    V^T_{R,(:,1:2)}.
+    \]
+
+    <p>
+      By the Eckart–Young theorem, this is the best rank-2 approximation.
+      In the project,
+    </p>
+
+    \[
+    \|R-R_2\|=0.7258.
+    \]
+  </section>
+
+  <section id="regression" class="project-section">
+    <h2>Regression model</h2>
+
+    <p>
+      The full multivariate linear regression model is
+    </p>
+
+    \[
+    y=X\beta+\epsilon,
+    \qquad
+    E(\epsilon)=0,
+    \qquad
+    \Sigma_\epsilon=\sigma^2I_n.
+    \]
+
+    <p>
+      Least squares minimizes
+    </p>
+
+    \[
+    \phi(\beta)=(y-X\beta)^T(y-X\beta),
+    \]
+
+    <p>
+      leading to the normal equations
+    </p>
+
+    \[
+    X^TX\beta=X^Ty.
+    \]
+
+    <p>
+      If $X^TX$ is invertible, then
+    </p>
+
+    \[
+    \beta_{OLS}=(X^TX)^{-1}X^Ty.
+    \]
+
+    <p>
+      For the complete regression model, the QR method gives
+    </p>
+
+    \[
+    \hat\beta_{OLS}
+    =
+    (0,\ 0.4445,\ 0.2690,\ 0.2806,\ 0.2511,\ -0.4958,\ -0.2424)^T,
+    \]
+
+    <p>
+      with
+    </p>
+
+    \[
+    R^2_{adjusted}=0.5544.
+    \]
+
+    <p>
+      The reduced regression model trained on the first two principal components has
+    </p>
+
+    \[
+    \beta_{PC_{OLS}}=(0,\ 0.3003,\ 0.6292),
+    \]
+
+    <p>
+      and reaches
+    </p>
+
+    \[
+    R^2_{adjusted}=0.8555.
+    \]
+
+    <p>
+      Thus, the principal-component model explains a larger portion of variance using two artificial variables instead of the seven original predictors.
+    </p>
+  </section>
+
+  <section id="face-recognition" class="project-section">
+    <h2>SVD-based face recognition</h2>
+
+    <p>
+      Each face has $m\times n=M$ pixels and is represented as a column vector $f_i\in\mathbb{R}^M$.
+      The training set of $N$ images is
+    </p>
+
+    \[
+    S=[f_1,\ldots,f_N].
+    \]
+
+    <p>
+      The mean face is
+    </p>
+
+    \[
+    \overline f=\frac{1}{N}\sum_{i=1}^{N}f_i.
+    \]
+
+    <p>
+      The centered matrix is
+    </p>
+
+    \[
+    A=[f_1-\overline f,\ldots,f_N-\overline f].
+    \]
+
+    <p>
+      If $\operatorname{rank}(A)=r\leq N\ll M$, then
+    </p>
+
+    \[
+    A=U\Sigma V^T.
+    \]
+
+    <p>
+      The columns $u_1,\ldots,u_r$ form an orthonormal basis for the face subspace.
+      These vectors are the eigenfaces.
+    </p>
+
+    <p>
+      A new face $f$ is represented by
+    </p>
+
+    \[
+    x=[u_1,\ldots,u_r]^T(f-\overline f).
+    \]
+
+    <p>
+      For each training face $f_i$:
+    </p>
+
+    \[
+    x_i=[u_1,\ldots,u_r]^T(f_i-\overline f).
+    \]
+
+    <p>
+      Recognition is performed by minimizing
+    </p>
+
+    \[
+    \epsilon_i=\|x-x_i\|_2.
+    \]
+
+    <p>
+      Instead of computing eigenvectors of $AA^T$, which is $M\times M$, the algorithm computes eigenvectors of the smaller matrix $A^TA$, which is $N\times N$:
+    </p>
+
+    \[
+    A^TA v_i=\mu_i v_i.
+    \]
+
+    <p>
+      Since $A^TA$ and $AA^T$ share the same nonzero eigenvalues, the left singular vectors can be recovered from $AV$ and normalized.
+    </p>
+
+    <p>
+      The Olivetti dataset contains 10 images for each of 40 individuals, for $N=400$ images.
+      Each image is grayscale with size $112\times92$ pixels.
+      With a 0.7/0.3 train/test split, the full-rank eigenfaces classifier reaches
+    </p>
+
+    \[
+    98.3333\%.
+    \]
+
+    <p>
+      The accuracy $\theta$ depends nonlinearly on training-set size $s$ and rank $r$:
+    </p>
+
+    \[
+    \theta=f(s,r).
+    \]
+
+    <p>
+      A possible exponential form is
+    </p>
+
+    \[
+    \theta(s,r)=1-\theta_0e^{-g(s,r)}.
+    \]
+
+    <p>
+      The project proposes the explicit form
+    </p>
+
+    \[
+    \theta(s,r)
+    =
+    1-k\cdot e^{-\left(\frac{\alpha s}{\beta+r}\right)}.
+    \]
+  </section>
+
+  <section id="results" class="project-section">
+    <h2>Results</h2>
+
+    <p>
+      The project selects two principal components, improves the adjusted coefficient of determination from $0.5544$ to $0.8555$, and obtains $98.3333\%$ full-rank eigenfaces accuracy on the Olivetti dataset.
+    </p>
+  </section>
+
+  <section id="conclusions" class="project-section">
+    <h2>Conclusions</h2>
+
+    <p>
+      Singular Value Decomposition is a powerful tool for high-dimensional data.
+      In the crime-rate application, PCA reduces seven correlated variables to two interpretable directions and improves regression performance.
+      In the face-recognition application, SVD builds a low-dimensional face subspace in which recognition is performed efficiently through nearest-neighbor comparison.
+    </p>
+
+    <p>
+      Future improvements include image preprocessing, scaling and alignment, comparison with convolutional neural networks, live video recognition, and more advanced spectral or quantum-inspired recognition methods.
+    </p>
+  </section>
+</main>
+
+  </div>
+</section>
+
+<script>
+  const credalSlider = document.getElementById("credal-slider");
+  const credalValue = document.getElementById("credal-value");
+  const credalOutput = document.getElementById("credal-output");
+
+  if (credalSlider) {
+    credalSlider.addEventListener("input", () => {
+      const v = Number(credalSlider.value) / 100;
+      credalValue.textContent = v.toFixed(2);
+      credalOutput.textContent =
+        v < 0.25
+          ? "Low ambiguity: the problem behaves closer to a classical single-prior compression problem."
+          : v < 0.65
+            ? "Intermediate ambiguity: finite-window and regularized phenomena become important."
+            : "High ambiguity: admissibility constraints become global and robust-combinatorial.";
+    });
+  }
+</script>

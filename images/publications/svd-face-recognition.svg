@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fbfbfb"/>
+      <stop offset="100%" stop-color="#ededed"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="420" rx="34" fill="url(#bg)"/>
+  <g opacity=".35" stroke="#cfcfcf">
+    <path d="M70 80h580M70 140h580M70 200h580M70 260h580M70 320h580"/>
+    <path d="M120 50v320M190 50v320M260 50v320M330 50v320M400 50v320M470 50v320M540 50v320M610 50v320"/>
+  </g>
+  <g transform="translate(92 72)">
+    <rect width="178" height="238" rx="24" fill="#fff" stroke="#ddd"/>
+    <circle cx="89" cy="84" r="54" fill="#dac8b8"/>
+    <path d="M38 214c20-54 82-54 102 0" fill="#d1b7a0"/>
+    <circle cx="70" cy="76" r="6" fill="#222"/>
+    <circle cx="108" cy="76" r="6" fill="#222"/>
+    <path d="M72 116c14 9 24 9 38 0" stroke="#5a4638" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g font-family="Georgia, Times New Roman, serif" fill="#111">
+    <text x="330" y="130" font-size="42">A = UΣVᵀ</text>
+    <text x="330" y="185" font-size="27">PCA / SVD</text>
+    <text x="330" y="228" font-size="27">Eigenfaces</text>
+    <text x="330" y="271" font-size="27">Low-rank recognition</text>
+  </g>
+</svg>
