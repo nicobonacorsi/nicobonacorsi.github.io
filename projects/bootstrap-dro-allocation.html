@@ -1,0 +1,826 @@
+---
+layout: default
+title: "Bootstrap-Calibrated Distributionally Robust Allocation"
+permalink: /projects/bootstrap-dro-allocation/
+math: true
+---
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .project-website {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  .project-hero {
+    text-align: center;
+    max-width: 1050px;
+    margin: 0 auto 4.5rem;
+  }
+
+  .project-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(3rem, 6vw, 5.3rem);
+    line-height: 1.03;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    color: #333333;
+    margin-bottom: 1.6rem;
+  }
+
+  .project-hero-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: #1e88e5;
+    margin-bottom: .8rem;
+  }
+
+  .project-hero-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-hero-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-affiliations {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 1.8rem;
+  }
+
+
+  .project-meta-block {
+    margin-bottom: 1.05rem;
+  }
+
+  .project-meta-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: #888888;
+    margin-bottom: .25rem;
+  }
+
+  .project-owner,
+  .project-hero-paper-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    color: #1e88e5;
+  }
+
+  .project-owner a,
+  .project-hero-paper-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-owner a:hover,
+  .project-hero-paper-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-logo-card {
+    width: 104px;
+    height: 104px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(0,0,0,.075);
+    border: 1px solid rgba(0,0,0,.06);
+    text-decoration: none;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+
+  .project-logo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(0,0,0,.11);
+  }
+
+  .project-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .project-logo {
+    max-width: 86px;
+    max-height: 78px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .project-venue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #444444;
+    margin-bottom: 1.4rem;
+  }
+
+  .project-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-radius: 999px;
+    background: #333333;
+    color: #ffffff;
+    padding: .48rem 1.05rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .project-button:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .project-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-toc {
+    position: sticky;
+    top: 2rem;
+    padding-top: .3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .project-toc-title {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #999999;
+    margin-bottom: .9rem;
+  }
+
+  .project-toc a {
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    padding: .38rem 0 .38rem .85rem;
+    border-left: 2px solid rgba(0,0,0,.08);
+    font-size: .98rem;
+  }
+
+  .project-toc a:hover {
+    color: #111111;
+    border-left-color: #999999;
+  }
+
+  .project-main {
+    min-width: 0;
+  }
+
+  .project-section {
+    padding: 3.2rem 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+
+  .project-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .project-section h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-section p {
+    font-size: 1.16rem;
+    line-height: 1.75;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+
+  .project-figure {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .project-figure img {
+    width: 100%;
+    max-width: 760px;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.06);
+  }
+
+  .caption {
+    font-size: .95rem;
+    color: #777777;
+    margin-top: .75rem;
+  }
+
+  .math-box {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.4rem 0;
+    overflow-x: auto;
+  }
+
+  .interactive-box {
+    background: linear-gradient(135deg, rgba(238,245,255,.95), rgba(246,239,255,.95));
+    border: 1px solid rgba(80,110,160,.14);
+    border-radius: 18px;
+    padding: 1.4rem;
+    margin: 1.7rem 0;
+  }
+
+  .interactive-box input {
+    width: 100%;
+    margin: .8rem 0;
+  }
+
+  .interactive-result {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background: rgba(255,255,255,.72);
+    border-radius: 12px;
+    padding: .9rem;
+    margin-top: .8rem;
+  }
+
+  .video-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f3f3f3;
+    margin: 1.7rem 0;
+  }
+
+  .video-box iframe,
+  .video-box video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bibtex-box {
+    background: #f4f4f4;
+    border-radius: 12px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  .back-to-projects {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #666666;
+    text-decoration: none;
+  }
+
+  .back-to-projects:hover {
+    color: #111111;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .project-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .project-toc {
+      position: relative;
+      top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .8rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-toc-title {
+      width: 100%;
+      margin-bottom: .2rem;
+    }
+
+    .project-toc a {
+      border-left: none;
+      padding: .2rem 0;
+    }
+  }
+
+  .project-section h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin: 2rem 0 .85rem;
+  }
+
+</style>
+
+
+
+<section class="project-website">
+  
+<div class="project-hero">
+  <h1 class="project-hero-title">Bootstrap-Calibrated Distributionally Robust Allocation</h1>
+
+  <div class="project-meta-block">
+    <div class="project-meta-label">Project of</div>
+    <div class="project-owner">
+      <a href="{{ '/' | relative_url }}">Nicolò Bonacorsi</a>
+    </div>
+  </div>
+
+  <div class="project-affiliations">
+    Independent Quantitative Research
+  </div>
+
+  <div class="project-venue">
+    Research project, 2026
+  </div>
+
+  <div class="project-buttons">
+      <a class="project-button" href="{{ '/files/Nicolo_Bonacorsi_Quant_Research_Report_2026.pdf' | relative_url }}" target="_blank" rel="noopener">Full Report</a>
+      <a class="project-button" href="{{ '/files/Nicolo_Bonacorsi_Quant_Code_2026.zip' | relative_url }}" target="_blank" rel="noopener">Code</a>
+      <a class="project-button" href="#ambiguity-set">Mathematics</a>
+      <a class="project-button" href="#results">Results</a>
+    </div>
+</div>
+
+<div class="project-layout">
+    <aside class="project-toc">
+  <div class="project-toc-title">Contents</div>
+  <a href="#abstract">Abstract</a>
+  <a href="#research-design">Research design</a>
+  <a href="#continuous-panel">Continuous panel</a>
+  <a href="#ambiguity-set">Ambiguity set</a>
+  <a href="#optimization">Optimization</a>
+  <a href="#results">Results</a>
+  <a href="#sensitivity">Sensitivity</a>
+  <a href="#audit">Audit controls</a>
+  <a href="#extensions">Extensions</a>
+  <a href="#configuration">Configuration</a>
+  <a href="#diagnostics">Diagnostics</a>
+  <a href="#conclusion">Conclusion</a>
+  <a href="#sources">Data source</a>
+</aside>
+
+    <main class="project-main">
+  <section id="abstract" class="project-section">
+    <h2>Abstract</h2>
+    <p>
+      This study aggregates the Kenneth French 100 size–book-to-market portfolios into a continuous
+      25-portfolio panel using lagged capitalization weights. At each monthly rebalance, circular-block
+      bootstrap resampling estimates dispersion in the sample eigenvector directions. Directional upper
+      quantiles generate a positive-semidefinite covariance matrix for an exact capped long-only quadratic
+      program. Hyperparameters are selected on 2000–2012 and evaluated over 2013–2026.
+    </p>
+    <p>
+      The resulting portfolio records 16.45% annualized volatility, compared with 20.15% for equal weight and
+      16.46% for validation-selected Ledoit–Wolf GMV. The relative volatility reduction versus equal weight is
+      18.39%, with a paired block-bootstrap 95% interval of 14.95–22.58%. Performance is essentially tied with
+      Ledoit–Wolf, while the bootstrap estimator provides an explicit directional decomposition of covariance
+      uncertainty.
+    </p>
+  </section>
+
+  <section id="research-design" class="project-section">
+    <h2>Research design</h2>
+    <p>
+      The two studies in the full report follow the same quantitative architecture: estimate uncertainty,
+      preserve temporal causality, and embed the estimate directly in the decision rule. In the allocation
+      model, bootstrap dispersion modifies the covariance matrix before optimization. The empirical design
+      combines fixed validation and evaluation periods, explicit transaction-cost accounting,
+      dependence-aware inference, benchmark portfolios, and machine-checkable temporal audits.
+    </p>
+
+    <h3>Experimental chronology</h3>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Stage</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Allocation study</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Volatility study</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Role in the empirical workflow</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Historical estimation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Through 1999</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Through 2004</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Initial rolling estimates and feature construction</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Development</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">–</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2005–2008</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Ridge-expert specification and QLIKE loss cap</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Validation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2000–2012</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2009–2012</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Hyperparameter selection and calibration design</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Evaluation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2013–2026</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2013–2026</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Fixed-model comparison with benchmark strategies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      All model updates and portfolio optimizations use information available at the decision date. The final
+      specification is reported separately over 2013–2026 after validation choices have been fixed.
+    </p>
+
+    <h3>Data and accounting conventions</h3>
+    <p>
+      The allocation study uses the Kenneth French daily 100 size–book-to-market portfolio archive. Raw
+      snapshots and SHA-256 hashes are included in the accompanying repository. Portfolio returns include
+      explicit turnover costs.
+    </p>
+  </section>
+
+  <section id="continuous-panel" class="project-section">
+    <h2>Construction of a continuous characteristic panel</h2>
+    <p>
+      The source archive contains 100 value-weighted portfolios on a \(10\times10\)
+      size–book-to-market grid. Extreme cells may be empty for an entire portfolio-formation year and are
+      represented by missing-value codes. Dropping every day on which any cell is empty would introduce
+      artificial gaps. Instead, adjacent \(2\times2\) cells are aggregated into 25 portfolios.
+    </p>
+    <p>
+      Let \(R_{i,t}\) denote the return of cell \(i\), \(N_{i,t}\) its firm count, and
+      \(S_{i,t}\) its reported average firm size. For an aggregated group \(g\), the implemented return is
+    </p>
+    <div class="math-box">
+      \[
+      R_{g,t}
+      =
+      \frac{
+      \sum_{i\in g:\,R_{i,t}\ \mathrm{observed}}
+      M_{i,t-1}R_{i,t}
+      }{
+      \sum_{i\in g:\,R_{i,t}\ \mathrm{observed}}
+      M_{i,t-1}
+      },
+      \qquad
+      M_{i,t-1}=N_{i,t-1}S_{i,t-1}.
+      \tag{1}
+      \]
+    </div>
+    <p>
+      Empty cells receive zero weight. The capitalization measure is lagged, so same-day returns do not affect
+      aggregation weights. The result is a complete 25-column panel from July 1963 through May 2026.
+    </p>
+  </section>
+
+  <section id="ambiguity-set" class="project-section">
+    <h2>Directional bootstrap ambiguity set</h2>
+    <p>
+      At a rebalance date \(t\), let \(X_t\in\mathbb R^{L\times p}\) be the trailing return matrix and write
+      the sample covariance as
+    </p>
+    <div class="math-box">
+      \[
+      S_t
+      =
+      U_t\operatorname{diag}(\lambda_{1,t},\ldots,\lambda_{p,t})U_t^\top.
+      \tag{2}
+      \]
+    </div>
+    <p>
+      Circular moving-block resamples preserve short-range temporal dependence. For each bootstrap draw
+      \(b\), the resampled data are projected onto the fixed sample eigenvectors, producing directional
+      variances \(\lambda^{*(b)}_{j,t}\). For quantile level \(q\),
+    </p>
+    <div class="math-box">
+      \[
+      \bar\lambda_{j,t}(q)
+      =
+      \max\left\{
+      \lambda_{j,t},
+      Q_q\!\left(
+      \lambda^{*(1)}_{j,t},\ldots,\lambda^{*(B)}_{j,t}
+      \right)
+      \right\},
+      \tag{3}
+      \]
+      \[
+      \bar\Sigma_t(q)
+      =
+      U_t\operatorname{diag}
+      \left(
+      \bar\lambda_{1,t},\ldots,\bar\lambda_{p,t}
+      \right)U_t^\top.
+      \tag{4}
+      \]
+    </div>
+    <p>
+      This matrix is the worst element, for every feasible long-only portfolio, in the rectangular set
+    </p>
+    <div class="math-box">
+      \[
+      \mathcal U_t(q)
+      =
+      \left\{
+      U_t\operatorname{diag}(d)U_t^\top:
+      \lambda_{j,t}\le d_j\le\bar\lambda_{j,t}(q)
+      \right\}.
+      \tag{5}
+      \]
+    </div>
+    <p>
+      The set is positive semidefinite by construction and inflates estimated variance in directions supported
+      by bootstrap dispersion. The specification isolates eigenvalue uncertainty in the sample eigenspace,
+      producing a directional and economically interpretable risk adjustment.
+    </p>
+  </section>
+
+  <section id="optimization" class="project-section">
+    <h2>Optimization and trading rule</h2>
+    <p>
+      Let \(w_t^-\) be the pre-trade portfolio obtained by drifting the previous target weights through
+      realized returns. The monthly target solves
+    </p>
+    <div class="math-box">
+      \[
+      \min_{w\in\mathbb R^p}
+      \quad
+      w^\top
+      \frac{\widehat\Sigma_t}{\operatorname{tr}(\widehat\Sigma_t)/p}
+      w
+      +
+      \gamma\lVert w-w_t^-\rVert_2^2,
+      \tag{6}
+      \]
+      \[
+      \mathbf 1^\top w=1,
+      \qquad
+      0\le w_i\le c.
+      \tag{7}
+      \]
+    </div>
+    <p>
+      The trace normalization fixes the scale of the displacement penalty across covariance estimates. A
+      specialized active-set solver is used; the supplied test suite compares its objective value with a
+      generic SLSQP solution to tolerance \(10^{-9}\).
+    </p>
+    <p>
+      The validation grid is \(L\in\{252,504\}\), \(q\in\{0.75,0.90,0.95\}\),
+      \(c\in\{0.10,0.20\}\), and \(\gamma\in\{0,0.5,2\}\). The unique objective is minimum net
+      annualized volatility over 2000–2012. The selected configuration is
+    </p>
+    <div class="math-box">
+      \[
+      L=252,\qquad q=0.75,\qquad c=0.20,\qquad \gamma=0,
+      \]
+    </div>
+    <p>
+      with 21-day blocks and 128 bootstrap replications at each rebalance. Since validation selects
+      \(\gamma=0\), turnover is controlled through monthly rebalancing, weight caps, and net-of-cost model
+      selection rather than an explicit displacement penalty.
+    </p>
+    <p>
+      At each rebalance, the strategy pays
+    </p>
+    <div class="math-box">
+      \[
+      C_t
+      =
+      10^{-3}
+      \sum_{i=1}^p
+      \left|
+      w^{\mathrm{target}}_{i,t}-w^-_{i,t}
+      \right|,
+      \tag{8}
+      \]
+    </div>
+    <p>
+      which is 10 basis points per dollar traded under the full \(L^1\) weight-change convention.
+    </p>
+  </section>
+
+  <section id="results" class="project-section">
+    <h2>Evaluation results</h2>
+    <p>
+      The table reports 2 January 2013–29 May 2026. Costs are 10 basis points per dollar traded.
+    </p>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Strategy</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">CAGR</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Volatility</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Sharpe</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Max drawdown</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Annual \(L^1\) turnover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Bootstrap upper covariance</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">12.90%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">16.45%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.820</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−36.51%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">1.26</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Ledoit–Wolf GMV</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">12.87%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">16.46%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.818</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−36.68%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">1.25</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Sample GMV</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">12.79%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">16.46%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.814</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−36.66%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">1.23</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Equal weight</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">13.12%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">20.15%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.713</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−41.26%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.22</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Inverse volatility</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">13.28%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">19.67%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.733</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−40.75%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.29</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The primary portfolio lowers annualized volatility by 18.39% relative to equal weight. A paired circular
+      moving-block bootstrap, resampling candidate and benchmark returns jointly with 21-day blocks and 5,000
+      replications, gives a 95% interval of 14.95–22.58%. The Sharpe difference relative to equal weight is
+      positive but less decisive: its 95% interval is −0.052 to 0.290.
+    </p>
+    <p>
+      Relative to validation-selected Ledoit–Wolf GMV, the volatility reduction is 0.11%, with a paired 95%
+      interval of 0.01–0.23%. The two methods therefore occupy the same empirical risk region. The bootstrap
+      construction adds a transparent decomposition of the covariance adjustment across sample eigenvector
+      directions.
+    </p>
+
+    <div class="project-figure">
+      <img src="{{ '/images/projects/bootstrap-dro-allocation/confirmation-rolling-volatility.png' | relative_url }}"
+           alt="Rolling 63-day annualized volatility">
+      <div class="caption">
+        Rolling 63-day annualized volatility. The covariance-based portfolios remain close to one another and
+        below equal weight for most of the evaluation period.
+      </div>
+    </div>
+
+    <div class="project-figure">
+      <img src="{{ '/images/projects/bootstrap-dro-allocation/confirmation-wealth-and-drawdown.png' | relative_url }}"
+           alt="Cumulative wealth and drawdown for allocation strategies">
+      <div class="caption">
+        Cumulative wealth and drawdown. The covariance-based portfolios primarily improve the risk path,
+        while equal weight reaches comparable terminal wealth through higher market exposure.
+      </div>
+    </div>
+  </section>
+
+  <section id="sensitivity" class="project-section">
+    <h2>Sensitivity and risk calibration</h2>
+    <p>
+      Changing the estimator block length from 5 to 63 days and the number of bootstrap replications from 64
+      to 256 leaves evaluation volatility between 16.44% and 16.45%. The mean \(L^1\) distance from the primary
+      target weights remains below 0.013. At 50 basis points per dollar traded, CAGR falls from 12.90% to
+      12.33%, while volatility is essentially unchanged.
+    </p>
+    <p>
+      The mean next-month realized-to-predicted volatility ratio is 0.941 for the bootstrap covariance and
+      0.998 for Ledoit–Wolf. The directional upper covariance is conservative on average. Forecast dispersion
+      remains substantial during abrupt volatility transitions, highlighting the value of dynamic regime
+      information beyond a static monthly covariance estimate.
+    </p>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/bootstrap-dro-allocation/risk-forecast-calibration.png' | relative_url }}"
+           alt="Ex-ante risk calibration">
+      <div class="caption">
+        Ex-ante portfolio-risk forecasts and next-month realized volatility, with the 45-degree line as the
+        calibration reference.
+      </div>
+    </div>
+  </section>
+
+  <section id="audit" class="project-section">
+    <h2>Reproducibility and audit controls</h2>
+    <p>
+      The repository regenerates every reported table and figure from immutable public-data snapshots in a
+      Python 3.12 environment through a single execution script. The audit suite verifies:
+    </p>
+    <ul style="font-size:1.12rem; line-height:1.7; color:#333333;">
+      <li>SHA-256 verification of all five raw data snapshots;</li>
+      <li>feasibility tests for capped-simplex projections and selected portfolio weights;</li>
+      <li>an active-set QP objective comparison against SLSQP at \(10^{-9}\) tolerance;</li>
+      <li>positive-semidefinite and trace-inflation checks for bootstrap covariance matrices;</li>
+      <li>continuity and completeness checks for the 25-portfolio panel;</li>
+      <li>strict future-target and label-maturity checks;</li>
+      <li>overlap checks requiring calibration observations to come from the same interlaced stream with disjoint target windows;</li>
+      <li>accounting identities for all-cash and all-SPY strategies;</li>
+      <li>non-empty artifact checks for every generated output.</li>
+    </ul>
+    <p>
+      All ten integrity tests pass, and the raw-data manifest verifies every snapshot without a hash mismatch.
+      The tests cover data continuity, optimization feasibility, temporal causality, calibration overlap,
+      accounting identities, and artifact generation.
+    </p>
+  </section>
+
+  <section id="extensions" class="project-section">
+    <h2>Scope and research extensions</h2>
+    <p>
+      The current allocation experiment uses academic characteristic portfolios, which provide a long and
+      internally consistent panel for comparing covariance estimators. A constituent-level implementation
+      would add security-specific spreads, impact, capacity, taxes, and point-in-time membership.
+    </p>
+    <p>
+      The present ambiguity set perturbs eigenvalues in a fixed sample eigenspace. Joint
+      eigenvalue–eigenvector uncertainty and structural-break adaptation define the next extension.
+      A natural refinement is a simultaneous confidence region for portfolio variance over the capped simplex,
+      replacing coordinatewise directional quantiles with a set calibrated directly to uniform risk
+      underestimation. Constituent-level point-in-time data would then allow the displacement penalty and
+      rebalance frequency to be selected under nonlinear execution costs.
+    </p>
+  </section>
+
+  <section id="configuration" class="project-section">
+    <h2>Selected configuration</h2>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead><tr><th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Component</th><th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Selected value</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Lookback</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">252 trading days</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Bootstrap block length</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">21 trading days</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Bootstrap replications</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">128 per rebalance</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Directional quantile</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.75</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Maximum portfolio weight</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.20</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Displacement penalty</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Rebalance frequency</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Monthly</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Transaction cost</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">10 bps per dollar traded</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Validation objective</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Minimum net annualized volatility, 2000–2012</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="diagnostics" class="project-section">
+    <h2>Additional diagnostics</h2>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/bootstrap-dro-allocation/rmt-regime-diagnostics.png' | relative_url }}"
+           alt="Correlation-spectrum regime diagnostics">
+      <div class="caption">
+        The upper panel records the number of sample eigenvalues above the Marchenko–Pastur reference edge;
+        the lower panel shows the trace share associated with those directions.
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion" class="project-section">
+    <h2>Conclusion</h2>
+    <p>
+      The allocation study integrates bootstrap-estimated directional uncertainty into an exact convex
+      portfolio problem. The resulting portfolio reduces annualized volatility by 18.39% relative to equal
+      weight and matches the risk performance of Ledoit–Wolf GMV while preserving an interpretable
+      decomposition of covariance uncertainty.
+    </p>
+    <p>
+      The contribution is not a claim of economically large dominance over Ledoit–Wolf. It is a reproducible
+      workflow in which covariance uncertainty is estimated explicitly, audited for temporal validity, and
+      carried through to a portfolio decision with transaction-cost accounting and dependence-aware inference.
+    </p>
+  </section>
+
+  <section id="sources" class="project-section">
+    <h2>Public data source</h2>
+    <p>
+      Kenneth French Data Library, daily 100 portfolios formed on size and book-to-market. The exact raw
+      snapshot and its SHA-256 hash are included in the downloadable research bundle.
+    </p>
+    <a class="back-to-projects" href="{{ '/projects/' | relative_url }}">← Back to projects</a>
+  </section>
+</main>
+  </div>
+</section>
+
+<script>
+  const credalSlider = document.getElementById("credal-slider");
+  const credalValue = document.getElementById("credal-value");
+  const credalOutput = document.getElementById("credal-output");
+
+  if (credalSlider) {
+    credalSlider.addEventListener("input", () => {
+      const v = Number(credalSlider.value) / 100;
+      credalValue.textContent = v.toFixed(2);
+      credalOutput.textContent =
+        v < 0.25
+          ? "Low ambiguity: the problem behaves closer to a classical single-prior compression problem."
+          : v < 0.65
+            ? "Intermediate ambiguity: finite-window and regularized phenomena become important."
+            : "High ambiguity: admissibility constraints become global and robust-combinatorial.";
+    });
+  }
+</script>

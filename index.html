@@ -105,6 +105,20 @@ permalink: /
       justify-content: center;
     }
   }
+
+  .home-inline-link {
+    color: #1e88e5;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(30,136,229,.28);
+    transition: color .18s ease, border-color .18s ease;
+  }
+
+  .home-inline-link:hover {
+    color: #0d5fa8;
+    border-bottom-color: currentColor;
+    text-decoration: none;
+  }
+
 </style>
 
 <section class="home-page">
@@ -116,17 +130,28 @@ permalink: /
     <div>
       <h1 class="home-title">Hello, I'm Nicolò Bonacorsi</h1>
 
-      <p class="home-text">
-        I am an M.S. student and researcher in Applied Mathematics at Columbia University.
-        My research interests include stochastic control, optimal stopping, Hamilton–Jacobi–Bellman equations,
-        free-boundary problems, uncertainty quantification, credal uncertainty, information theory,
-        robust probabilistic compression, and mathematical finance.
+            <p class="home-text">
+        I am an M.S. student and researcher in Applied Mathematics at <a class="home-inline-link" href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a>.
+        My research interests include
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Stochastic_control" target="_blank" rel="noopener">stochastic control</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Optimal_stopping" target="_blank" rel="noopener">optimal stopping</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Hamilton%E2%80%93Jacobi%E2%80%93Bellman_equation" target="_blank" rel="noopener">Hamilton–Jacobi–Bellman equations</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Imprecise_probability" target="_blank" rel="noopener">imprecise probabilities</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Uncertainty_quantification" target="_blank" rel="noopener">uncertainty quantification</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Credal_set" target="_blank" rel="noopener">credal uncertainty</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Information_theory" target="_blank" rel="noopener">information theory</a>,
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Rate%E2%80%93distortion_theory" target="_blank" rel="noopener">robust probabilistic compression</a>,
+        and
+        <a class="home-inline-link" href="https://en.wikipedia.org/wiki/Mathematical_finance" target="_blank" rel="noopener">mathematical finance</a>.
       </p>
 
-      <p class="home-text">
-        I am currently working with Professor Ioannis Karatzas at Columbia University on stochastic control
-        and optimal stopping, and with Professor Francesco Restuccia at Northeastern University on credal
-        uncertainty, robust information-theoretic models, and uncertainty-aware compression.
+            <p class="home-text">
+        I am currently working with
+        <a class="home-inline-link" href="https://stat.columbia.edu/department-directory/faculty/name/ioannis-karatzas/" target="_blank" rel="noopener">Professor Ioannis Karatzas</a>
+        at <a class="home-inline-link" href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> on stochastic control and optimal stopping, and with
+        <a class="home-inline-link" href="https://coe.northeastern.edu/people/restuccia-francesco/" target="_blank" rel="noopener">Professor Francesco Restuccia</a>
+        at Northeastern University on credal uncertainty, robust information-theoretic models, and
+        uncertainty-aware compression.
       </p>
 
       <div class="home-links">

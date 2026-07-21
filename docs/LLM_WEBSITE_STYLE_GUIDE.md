@@ -535,3 +535,77 @@ test -s _site/files/FILE.pdf && echo "OK built PDF exists"
 ## Standard LLM instruction
 
 Use the existing academic project style exactly. Do not create a new layout. Clone the structure and CSS classes from projects/credal-rate-distortion.html. Preserve project-website, project-hero, project-hero-title, project-layout, project-toc, project-main, and project-section. Add the new content using the same structure. Then add one card to projects.html by cloning an existing project-card and replacing only the content. Recalculate topic counts from data-topics. Verify images and PDFs exist. Do not modify global layout files.
+
+
+## Quantitative research project pages
+
+The public-data quant research bundle contains two independent projects and must be represented as two separate cards and two separate detail pages:
+
+- Bootstrap-Calibrated Distributionally Robust Allocation
+- Maturity-Safe Distributional Volatility Forecasting and Risk Control
+
+Both pages must clone `projects/credal-rate-distortion.html` and preserve its exact style block and real classes. Do not merge them into one generic portfolio page.
+
+Quant pages must preserve:
+- development, validation, and confirmation chronology;
+- mathematical definitions and optimization/forecasting equations;
+- benchmarks, inference, negative results, and limitations;
+- real result figures and a downloadable code/data bundle;
+- exact `project-card`, thumbnail hover, topic chips, filters, and topic counts.
+
+Do not claim alpha when the reported number is CAGR. Do not claim material dominance over Ledoit–Wolf. Do not claim the QLIKE improvement is statistically significant. Do not call the interlaced upper bound a finite-sample conformal guarantee.
+
+
+## Full-paper project content rule
+
+When a project is based on a supplied paper or research report, the website page must not be reduced to a short summary unless the user explicitly asks for an abbreviated page.
+
+For the two July 2026 quantitative research projects, preserve all paper-level material relevant to each study:
+- research design and chronology;
+- data and accounting conventions;
+- every mathematical definition and numbered equation;
+- optimization or forecasting construction;
+- complete benchmark tables;
+- confidence intervals, HAC tests, coverage diagnostics, and sensitivity results;
+- all relevant figures and captions;
+- reproducibility and audit controls;
+- limitations, negative results, scope, and research extensions;
+- selected configuration tables and public-data sources;
+- buttons for the full report PDF and the complete code/data bundle.
+
+Do not omit unfavorable benchmark comparisons. Do not turn CAGR into alpha. Do not describe the small Ledoit–Wolf difference as economically material. Do not describe the QLIKE difference as statistically significant. Do not describe interlaced calibration as a finite-sample conformal guarantee.
+
+
+## Downloadable code-package rule
+
+When publishing source code for a project, create a clean code-only archive unless the user explicitly requests a complete reproducibility package.
+
+The clean code archive may contain:
+- source `.py` files;
+- package `__init__.py` files;
+- execution scripts;
+- tests;
+- `requirements.txt`.
+
+Do not include:
+- prompt files;
+- LLM instructions;
+- reviewer prompts;
+- private notes;
+- CV bullets;
+- interview-defense documents;
+- raw datasets;
+- generated results;
+- figures;
+- research drafts.
+
+Use a project button labeled `Code`, not `Code & Data`, when the linked archive contains code only.
+
+## Home-page hyperlink rule
+
+In the Home biography:
+- link research topics to the corresponding English Wikipedia article;
+- link professor names to their official university profile;
+- open external links in a new tab with `target="_blank"` and `rel="noopener"`;
+- preserve the existing biography text, typography, portrait, and button layout;
+- use the existing subtle inline-link style rather than pill buttons inside prose.

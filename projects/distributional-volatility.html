@@ -1,0 +1,891 @@
+---
+layout: default
+title: "Maturity-Safe Distributional Volatility Forecasting and Risk Control"
+permalink: /projects/distributional-volatility/
+math: true
+---
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .project-website {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  .project-hero {
+    text-align: center;
+    max-width: 1050px;
+    margin: 0 auto 4.5rem;
+  }
+
+  .project-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(3rem, 6vw, 5.3rem);
+    line-height: 1.03;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    color: #333333;
+    margin-bottom: 1.6rem;
+  }
+
+  .project-hero-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: #1e88e5;
+    margin-bottom: .8rem;
+  }
+
+  .project-hero-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-hero-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-affiliations {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 1.8rem;
+  }
+
+
+  .project-meta-block {
+    margin-bottom: 1.05rem;
+  }
+
+  .project-meta-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: #888888;
+    margin-bottom: .25rem;
+  }
+
+  .project-owner,
+  .project-hero-paper-authors {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    color: #1e88e5;
+  }
+
+  .project-owner a,
+  .project-hero-paper-authors a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-owner a:hover,
+  .project-hero-paper-authors a:hover {
+    text-decoration: underline;
+  }
+
+  .project-logo-card {
+    width: 104px;
+    height: 104px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(0,0,0,.075);
+    border: 1px solid rgba(0,0,0,.06);
+    text-decoration: none;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+
+  .project-logo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(0,0,0,.11);
+  }
+
+  .project-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .project-logo {
+    max-width: 86px;
+    max-height: 78px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .project-venue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #444444;
+    margin-bottom: 1.4rem;
+  }
+
+  .project-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-radius: 999px;
+    background: #333333;
+    color: #ffffff;
+    padding: .48rem 1.05rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .project-button:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .project-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-toc {
+    position: sticky;
+    top: 2rem;
+    padding-top: .3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .project-toc-title {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #999999;
+    margin-bottom: .9rem;
+  }
+
+  .project-toc a {
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    padding: .38rem 0 .38rem .85rem;
+    border-left: 2px solid rgba(0,0,0,.08);
+    font-size: .98rem;
+  }
+
+  .project-toc a:hover {
+    color: #111111;
+    border-left-color: #999999;
+  }
+
+  .project-main {
+    min-width: 0;
+  }
+
+  .project-section {
+    padding: 3.2rem 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+
+  .project-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .project-section h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-section p {
+    font-size: 1.16rem;
+    line-height: 1.75;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+
+  .project-figure {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .project-figure img {
+    width: 100%;
+    max-width: 760px;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.06);
+  }
+
+  .caption {
+    font-size: .95rem;
+    color: #777777;
+    margin-top: .75rem;
+  }
+
+  .math-box {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.4rem 0;
+    overflow-x: auto;
+  }
+
+  .interactive-box {
+    background: linear-gradient(135deg, rgba(238,245,255,.95), rgba(246,239,255,.95));
+    border: 1px solid rgba(80,110,160,.14);
+    border-radius: 18px;
+    padding: 1.4rem;
+    margin: 1.7rem 0;
+  }
+
+  .interactive-box input {
+    width: 100%;
+    margin: .8rem 0;
+  }
+
+  .interactive-result {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background: rgba(255,255,255,.72);
+    border-radius: 12px;
+    padding: .9rem;
+    margin-top: .8rem;
+  }
+
+  .video-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f3f3f3;
+    margin: 1.7rem 0;
+  }
+
+  .video-box iframe,
+  .video-box video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bibtex-box {
+    background: #f4f4f4;
+    border-radius: 12px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  .back-to-projects {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #666666;
+    text-decoration: none;
+  }
+
+  .back-to-projects:hover {
+    color: #111111;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .project-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .project-toc {
+      position: relative;
+      top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .8rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-toc-title {
+      width: 100%;
+      margin-bottom: .2rem;
+    }
+
+    .project-toc a {
+      border-left: none;
+      padding: .2rem 0;
+    }
+  }
+
+  .project-section h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin: 2rem 0 .85rem;
+  }
+
+</style>
+
+
+
+<section class="project-website">
+  
+<div class="project-hero">
+  <h1 class="project-hero-title">Maturity-Safe Distributional Volatility Forecasting and Risk Control</h1>
+
+  <div class="project-meta-block">
+    <div class="project-meta-label">Project of</div>
+    <div class="project-owner">
+      <a href="{{ '/' | relative_url }}">Nicolò Bonacorsi</a>
+    </div>
+  </div>
+
+  <div class="project-affiliations">
+    Independent Quantitative Research
+  </div>
+
+  <div class="project-venue">
+    Research project, 2026
+  </div>
+
+  <div class="project-buttons">
+      <a class="project-button" href="{{ '/files/Nicolo_Bonacorsi_Quant_Research_Report_2026.pdf' | relative_url }}" target="_blank" rel="noopener">Full Report</a>
+      <a class="project-button" href="{{ '/files/Nicolo_Bonacorsi_Quant_Code_2026.zip' | relative_url }}" target="_blank" rel="noopener">Code</a>
+      <a class="project-button" href="#target">Mathematics</a>
+      <a class="project-button" href="#results">Results</a>
+    </div>
+</div>
+
+<div class="project-layout">
+    <aside class="project-toc">
+  <div class="project-toc-title">Contents</div>
+  <a href="#abstract">Abstract</a>
+  <a href="#research-design">Research design</a>
+  <a href="#target">Target and chronology</a>
+  <a href="#experts">Experts and Hedge</a>
+  <a href="#calibration">Calibration</a>
+  <a href="#forecast-evaluation">Forecast evaluation</a>
+  <a href="#economic-rule">Decision rule</a>
+  <a href="#results">Strategy results</a>
+  <a href="#audit">Audit controls</a>
+  <a href="#extensions">Extensions</a>
+  <a href="#configuration">Configuration</a>
+  <a href="#conclusion">Conclusion</a>
+  <a href="#sources">Data sources</a>
+</aside>
+
+    <main class="project-main">
+  <section id="abstract" class="project-section">
+    <h2>Abstract</h2>
+    <p>
+      This study forecasts annualized variance over the next 22 trading days. Labels enter estimation only
+      after their complete target windows have matured. Six experts are combined quarterly through
+      bounded-loss Hedge aggregation, and a 90% upper forecast is calibrated across 22 interlaced residual
+      streams with non-overlapping target windows within each stream.
+    </p>
+    <p>
+      Over 2013–2026, the ensemble reduces QLIKE by 3.34% and log-RMSE by 14.94% relative to raw VIX
+      variance. The corresponding HAC p-values are 0.608 for QLIKE loss differences and
+      \(3.20\times10^{-15}\) for squared log-error differences. Empirical upper-bound coverage is 89.03%.
+      The upper-forecast controller reaches 8.30% annualized volatility and an 11.56% maximum drawdown,
+      compared with 16.81% and 33.72% for SPY buy-and-hold; standard VIX targeting retains the stronger
+      risk-adjusted return.
+    </p>
+  </section>
+
+  <section id="research-design" class="project-section">
+    <h2>Research design</h2>
+    <p>
+      The two studies in the full report follow the same quantitative architecture: estimate uncertainty,
+      preserve temporal causality, and embed the estimate directly in the decision rule. In the volatility
+      model, matured forecast errors determine both expert weights and the upper variance forecast used for
+      exposure control.
+    </p>
+    <p>
+      The empirical design combines fixed development, validation, and evaluation periods, explicit
+      transaction-cost accounting, dependence-aware inference, benchmark strategies, and machine-checkable
+      temporal audits.
+    </p>
+
+    <h3>Experimental chronology</h3>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Stage</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Allocation study</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Volatility study</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Role in the empirical workflow</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Historical estimation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Through 1999</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Through 2004</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Initial rolling estimates and feature construction</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Development</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">–</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2005–2008</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Ridge-expert specification and QLIKE loss cap</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Validation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2000–2012</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2009–2012</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Hyperparameter selection and calibration design</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Evaluation</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2013–2026</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">2013–2026</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Fixed-model comparison with benchmark strategies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      All model updates and residual calibrations use information available at the decision date. The final
+      specification is reported over 2013–2026 after development and validation choices have been fixed.
+    </p>
+
+    <h3>Data and accounting conventions</h3>
+    <p>
+      The volatility study uses SPX closes, Cboe VIX history, SPY adjusted-close total returns, and the FRED
+      three-month Treasury constant-maturity yield. Raw snapshots and SHA-256 hashes are included in the
+      accompanying repository.
+    </p>
+    <p>
+      Uninvested capital earns the Treasury proxy and leverage above one is financed at the same rate. This
+      common-rate financing convention isolates the forecasting and exposure mechanisms from broker-specific
+      funding schedules.
+    </p>
+  </section>
+
+  <section id="target" class="project-section">
+    <h2>Target and information set</h2>
+    <p>
+      At forecast origin \(t\), the target is annualized variance over the next 22 trading days:
+    </p>
+    <div class="math-box">
+      \[
+      RV^{(22)}_{t,+}
+      =
+      \frac{252}{22}
+      \sum_{j=1}^{22}r_{t+j}^2.
+      \tag{9}
+      \]
+    </div>
+    <p>
+      Every origin stores the final date of its target window. A historical label from origin \(s\) may enter
+      a model refit or residual calibration at date \(t\) only when
+    </p>
+    <div class="math-box">
+      \[
+      \operatorname{target\_end}(s)<t.
+      \tag{10}
+      \]
+    </div>
+    <p>
+      The strict inequality prevents the current close from entering a target used at that same close. This
+      restriction is enforced in emitted audit files and in unit tests.
+    </p>
+  </section>
+
+  <section id="experts" class="project-section">
+    <h2>Expert forecasts and bounded-loss Hedge</h2>
+    <p>The forecast panel contains six experts:</p>
+    <ol style="font-size:1.12rem; line-height:1.75; color:#333333;">
+      <li>ridge regression using log VIX variance;</li>
+      <li>ridge regression using VIX and HAR-style 5-, 22-, and 66-day variance features;</li>
+      <li>ridge regression adding downside-return and VIX-change features;</li>
+      <li>raw VIX variance;</li>
+      <li>trailing 22-day variance;</li>
+      <li>EWMA variance with decay 0.94.</li>
+    </ol>
+    <p>
+      Ridge penalties and Duan smearing factors are selected for each regression expert on 2005–2008. Models
+      are then refit quarterly on expanding samples of fully matured labels.
+    </p>
+    <p>
+      For realized variance \(y\) and forecast \(\widehat y\), the QLIKE loss is
+    </p>
+    <div class="math-box">
+      \[
+      \ell(y,\widehat y)
+      =
+      \frac{y}{\widehat y}
+      -
+      \log\left(
+      \frac{y}{\widehat y}
+      \right)
+      -
+      1.
+      \tag{11}
+      \]
+    </div>
+    <p>
+      The loss cap \(L=4.738868\) is fixed as the 99th percentile of pooled expert losses on the development
+      period. At each quarterly update, the latest \(n\le504\) matured observations are used. With \(K=6\),
+    </p>
+    <div class="math-box">
+      \[
+      \widetilde\ell_{k,s}
+      =
+      \min\{\ell_{k,s},L\},
+      \qquad
+      \eta_t
+      =
+      \sqrt{
+      \frac{8\log K}{nL^2}
+      },
+      \tag{12}
+      \]
+      \[
+      \pi_{k,t}
+      =
+      \frac{
+      \exp\left(
+      -\eta_t\sum_s\widetilde\ell_{k,s}
+      \right)
+      }{
+      \sum_{j=1}^K
+      \exp\left(
+      -\eta_t\sum_s\widetilde\ell_{j,s}
+      \right)
+      },
+      \qquad
+      \widehat v_t
+      =
+      \sum_{k=1}^K
+      \pi_{k,t}\widehat v_{k,t}.
+      \tag{13}
+      \]
+    </div>
+    <p>
+      The two-year memory allows the ensemble to adapt across volatility regimes. The learning rate is
+      determined analytically by the bounded-loss Hedge expression.
+    </p>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/distributional-volatility/hedge-expert-weights.png' | relative_url }}"
+           alt="Quarterly Hedge expert weights">
+      <div class="caption">
+        Quarterly Hedge weights. The aggregation rule reallocates weight gradually as relative expert
+        performance changes.
+      </div>
+    </div>
+  </section>
+
+  <section id="calibration" class="project-section">
+    <h2>Interlaced upper-forecast calibration</h2>
+    <p>Define the log residual</p>
+    <div class="math-box">
+      \[
+      e_s
+      =
+      \log RV^{(22)}_{s,+}
+      -
+      \log\widehat v_s.
+      \tag{14}
+      \]
+    </div>
+    <p>
+      Forecast origins are divided into 22 streams according to their index modulo 22. Consecutive origins in
+      a stream are 22 trading days apart, so their forward target windows do not overlap. At origin \(t\),
+      calibration uses at most the latest 63 matured residuals in the same stream:
+    </p>
+    <div class="math-box">
+      \[
+      h(s)=h(t),
+      \qquad
+      \operatorname{target\_end}(s)<t.
+      \tag{15}
+      \]
+    </div>
+    <p>The 90% upper forecast is</p>
+    <div class="math-box">
+      \[
+      U_t
+      =
+      \widehat v_t
+      \exp\left\{
+      Q_{0.90}(e_s)
+      \right\}.
+      \tag{16}
+      \]
+    </div>
+    <p>
+      The interlaced design is selected as the primary calibration method because every within-stream residual
+      sample is built from disjoint forward windows. A pooled residual estimator achieves lower validation
+      pinball loss, while the interlaced estimator offers cleaner dependence control for horizon-overlapping
+      targets.
+    </p>
+    <p>
+      The interlaced construction addresses target overlap; it is not presented as a finite-sample conformal
+      guarantee under market nonstationarity.
+    </p>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/distributional-volatility/forecast-and-upper-bound.png' | relative_url }}"
+           alt="Distributional volatility forecast">
+      <div class="caption">
+        Point forecasts, realized forward variance, and the calibrated 90% upper forecast. The upper series
+        widens sharply in stressed periods.
+      </div>
+    </div>
+  </section>
+
+  <section id="forecast-evaluation" class="project-section">
+    <h2>Forecast evaluation</h2>
+    <p>
+      The table reports performance on 3,381 evaluation origins. Lower QLIKE and log-RMSE are better.
+    </p>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Forecast</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">QLIKE</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Log-RMSE</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Log-MAE</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Level correlation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Hedge ensemble</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.3820</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.7755</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.6140</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.4614</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Raw VIX variance</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.3952</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.9117</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.7647</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.4542</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Trailing 22-day variance</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.6419</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.9078</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.6994</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.2997</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Relative to raw VIX variance, QLIKE falls by 3.34%. A Newey–West test with 21 lags yields
+      \(p=0.608\) for the mean QLIKE-loss difference. Log-RMSE falls by 14.94%, and the HAC test on squared
+      log-error differences yields \(p=3.20\times10^{-15}\). The ensemble’s strongest improvement is therefore
+      in multiplicative forecast accuracy rather than average QLIKE loss.
+    </p>
+    <p>
+      Overall upper-bound coverage is 89.03% at a nominal 90%, across 3,381 evaluable forecasts. Coverage is
+      86.58% in the lowest validation-defined VIX quintile and ranges from 90.66% to 95.68% in the middle three
+      quintiles. Aggregate calibration is close to nominal, with systematic variation across volatility
+      regimes.
+    </p>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/distributional-volatility/confirmation-rolling-coverage.png' | relative_url }}"
+           alt="Rolling empirical coverage">
+      <div class="caption">
+        Rolling one-year empirical coverage. Calibration varies across market regimes while remaining close to
+        the 90% target in aggregate.
+      </div>
+    </div>
+  </section>
+
+  <section id="economic-rule" class="project-section">
+    <h2>Economic decision rule</h2>
+    <p>At the close of day \(t\), the next-day SPY exposure is</p>
+    <div class="math-box">
+      \[
+      \ell_t
+      =
+      \operatorname{clip}
+      \left(
+      \frac{0.12}{\sqrt{U_t}},
+      0.2,
+      1.5
+      \right).
+      \tag{17}
+      \]
+    </div>
+    <p>
+      Let \(R^{SPY}_{t+1}\) be the next adjusted-close total return and \(R_t^f\) the daily Treasury proxy.
+      With one basis point per unit change in exposure,
+    </p>
+    <div class="math-box">
+      \[
+      R^p_{t+1}
+      =
+      \ell_tR^{SPY}_{t+1}
+      +
+      (1-\ell_t)R_t^f
+      -
+      10^{-4}|\ell_t-\ell_{t-1}|.
+      \tag{18}
+      \]
+    </div>
+    <p>
+      Benchmarks include buy-and-hold, standard VIX targeting, point-forecast targeting, constant exposure
+      fixed from validation, and a VIX rule scaled using validation-period mean exposure. An equal-exposure
+      VIX series isolates timing effects from average market exposure.
+    </p>
+  </section>
+
+  <section id="results" class="project-section">
+    <h2>SPY risk-control results</h2>
+    <p>
+      The table reports 2 January 2013–14 July 2026. Sharpe is measured over the cash proxy.
+    </p>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Strategy</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">CAGR</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Volatility</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Sharpe over cash</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Max drawdown</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Average exposure</th>
+            <th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Annual turnover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Distributional upper bound</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">8.76%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">8.30%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.839</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−11.56%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.665</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">10.33</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Standard VIX target</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">9.90%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">9.33%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.867</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−13.89%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.745</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">9.67</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Point-forecast target</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">10.91%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">10.84%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.846</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−15.56%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.871</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">9.94</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Fixed validation exposure</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">7.52%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">7.12%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.804</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−15.33%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.424</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.00</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">VIX, validation-matched exposure</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">8.09%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">7.23%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.866</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−10.58%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.573</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">7.42</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">SPY buy-and-hold</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">14.88%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">16.81%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.804</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">−33.72%</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">1.000</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The distributional controller reduces maximum drawdown by 22.16 percentage points relative to
+      buy-and-hold and by 3.77 points relative to fixed validation exposure. Its average exposure is 0.665, so
+      comparison with buy-and-hold reflects both risk scaling and timing.
+    </p>
+    <p>
+      Standard VIX targeting records a higher Sharpe over cash, while the validation-matched VIX rule also
+      achieves a slightly smaller drawdown. At equal average exposure, the distributional rule improves
+      maximum drawdown by 0.79 percentage points. The principal economic effect is stronger downside
+      compression around high upper-variance forecasts.
+    </p>
+    <div class="project-figure">
+      <img src="{{ '/images/projects/distributional-volatility/confirmation-wealth-and-drawdown.png' | relative_url }}"
+           alt="SPY risk-control wealth and drawdown">
+      <div class="caption">
+        Cumulative wealth and drawdown. Buy-and-hold compounds faster because it carries full exposure; the
+        controlled strategies trade return for lower risk.
+      </div>
+    </div>
+  </section>
+
+  <section id="audit" class="project-section">
+    <h2>Reproducibility and audit controls</h2>
+    <p>
+      The repository regenerates every reported table and figure from immutable public-data snapshots in a
+      Python 3.12 environment through a single execution script. The audit suite verifies:
+    </p>
+    <ul style="font-size:1.12rem; line-height:1.7; color:#333333;">
+      <li>SHA-256 verification of all five raw data snapshots;</li>
+      <li>feasibility tests for capped-simplex projections and selected portfolio weights;</li>
+      <li>an active-set QP objective comparison against SLSQP at \(10^{-9}\) tolerance;</li>
+      <li>positive-semidefinite and trace-inflation checks for bootstrap covariance matrices;</li>
+      <li>continuity and completeness checks for the 25-portfolio panel;</li>
+      <li>strict future-target and label-maturity checks;</li>
+      <li>overlap checks requiring calibration observations to come from the same interlaced stream with disjoint target windows;</li>
+      <li>accounting identities for all-cash and all-SPY strategies;</li>
+      <li>non-empty artifact checks for every generated output.</li>
+    </ul>
+    <p>
+      All ten integrity tests pass, and the raw-data manifest verifies every snapshot without a hash mismatch.
+      The tests cover data continuity, optimization feasibility, temporal causality, calibration overlap,
+      accounting identities, and artifact generation.
+    </p>
+  </section>
+
+  <section id="extensions" class="project-section">
+    <h2>Scope and research extensions</h2>
+    <p>
+      The volatility experiment uses daily squared returns as the forward-variance proxy. Intraday realized
+      kernels, HARQ measurement-error corrections, option-surface features, and point-in-time
+      variance-risk-premium measures would sharpen both the target and the feature set.
+    </p>
+    <p>
+      The interlaced construction controls overlap within calibration streams; regime-conditioned residual
+      models offer the next step toward conditional coverage. An execution-oriented extension would implement
+      exposure through liquid index futures with observed funding, bid–ask spreads, and roll costs. A
+      pre-specified evaluation on an additional market or forward period would then measure portability of
+      expert weights, calibration quantiles, and exposure mapping.
+    </p>
+  </section>
+
+  <section id="configuration" class="project-section">
+    <h2>Selected configuration</h2>
+    <div class="math-box">
+      <table style="width:100%; border-collapse:collapse; font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; font-size:.96rem;">
+        <thead><tr><th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Component</th><th style="text-align:left; padding:.65rem .7rem; border-bottom:2px solid rgba(0,0,0,.18); white-space:nowrap;">Fixed value</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Forecast horizon</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">22 trading days</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Expert count</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">6</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Hedge memory</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Up to 504 matured forecasts</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">QLIKE loss cap</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">4.738868, fixed on 2005–2008</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Model refit frequency</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Quarterly</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Calibration streams</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">22</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Scores per stream</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Up to 63</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Nominal upper quantile</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.90</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Target volatility</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">12% annualized</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Exposure range</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">0.2 to 1.5</td></tr>
+          <tr><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">Transaction cost</td><td style="padding:.62rem .7rem; border-bottom:1px solid rgba(0,0,0,.08); vertical-align:top;">1 bp per unit exposure change</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="conclusion" class="project-section">
+    <h2>Conclusion</h2>
+    <p>
+      The volatility study combines maturity-safe expert aggregation with non-overlapping residual
+      calibration. The ensemble materially improves log-scale forecast accuracy relative to raw VIX variance,
+      and the calibrated upper forecast supports an exposure rule with substantially lower volatility and
+      drawdown than buy-and-hold.
+    </p>
+    <p>
+      VIX targeting remains the stronger benchmark on risk-adjusted return. This locates the contribution in
+      distributional forecasting, temporal integrity, and downside-sensitive control rather than universal
+      economic dominance.
+    </p>
+  </section>
+
+  <section id="sources" class="project-section">
+    <h2>Public data sources</h2>
+    <ul style="font-size:1.12rem; line-height:1.7; color:#333333;">
+      <li>Cboe VIX historical data;</li>
+      <li>FRED DGS3MO, three-month Treasury constant-maturity rate;</li>
+      <li>Yahoo Finance chart snapshots for SPX and SPY, stored as immutable JSON files.</li>
+    </ul>
+    <p>
+      Exact snapshots and SHA-256 hashes are included in the downloadable research bundle.
+    </p>
+    <a class="back-to-projects" href="{{ '/projects/' | relative_url }}">← Back to projects</a>
+  </section>
+</main>
+  </div>
+</section>
+
+<script>
+  const credalSlider = document.getElementById("credal-slider");
+  const credalValue = document.getElementById("credal-value");
+  const credalOutput = document.getElementById("credal-output");
+
+  if (credalSlider) {
+    credalSlider.addEventListener("input", () => {
+      const v = Number(credalSlider.value) / 100;
+      credalValue.textContent = v.toFixed(2);
+      credalOutput.textContent =
+        v < 0.25
+          ? "Low ambiguity: the problem behaves closer to a classical single-prior compression problem."
+          : v < 0.65
+            ? "Intermediate ambiguity: finite-window and regularized phenomena become important."
+            : "High ambiguity: admissibility constraints become global and robust-combinatorial.";
+    });
+  }
+</script>
