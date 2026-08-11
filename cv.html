@@ -384,16 +384,42 @@ permalink: /cv/
       height: 650px;
     }
   }
+
+  .cv-bullets {
+    margin: .65rem 0 0 1.15rem;
+    padding: 0;
+    color: #444444;
+    line-height: 1.62;
+  }
+
+  .cv-bullets li {
+    margin-bottom: .48rem;
+    padding-left: .15rem;
+  }
+
+  .cv-skill-line {
+    margin-bottom: .75rem !important;
+  }
+
+  .cv-skill-line strong {
+    color: #222222;
+  }
+
 </style>
 
 <section class="cv-page">
+
   <header class="cv-top">
     <div>
       <h1 class="cv-name">Nicolò Bonacorsi</h1>
-        <p class="cv-role">Researcher in Probability, Stochastic Control, Optimal Stopping, and Information Theory</p>
+      <p class="cv-role">
+        M.S. Student in Applied Mathematics · Stochastic Control ·
+        Information Theory · Bayesian Modeling · Quantitative Research
+      </p>
     </div>
 
     <nav class="cv-contact-list" aria-label="CV contacts">
+
       <a class="cv-contact-link" href="{{ '/' | relative_url }}">
         <svg viewBox="0 0 24 24">
           <circle class="stroke-icon" cx="12" cy="12" r="9"/>
@@ -404,28 +430,6 @@ permalink: /cv/
         <span>nicobonacorsi.github.io</span>
       </a>
 
-      <a class="cv-contact-link" href="https://github.com/nicobonacorsi">
-        <svg viewBox="0 0 24 24">
-          <path class="fill-icon" d="M12 .9C5.9.9 1 5.8 1 11.9c0 4.9 3.2 9.1 7.7 10.5.6.1.8-.2.8-.6v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6 2.9 3.2 2.1.1-.7.4-1.1.7-1.4-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3.1 1.1.9-.2 1.8-.4 2.8-.4s1.9.1 2.8.4c2.1-1.4 3.1-1.1 3.1-1.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .4.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.5C23 5.8 18.1.9 12 .9z"/>
-        </svg>
-        <span>nicobonacorsi</span>
-      </a>
-
-      <a class="cv-contact-link" href="https://www.linkedin.com/in/nicolobonacorsi">
-        <svg viewBox="0 0 24 24">
-          <path class="fill-icon" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.4 8h4.2v14H.4V8zm7.1 0h4v1.9h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V22h-4.2v-6.8c0-1.6 0-3.7-2.3-3.7s-2.6 1.8-2.6 3.6V22H7.5V8z"/>
-        </svg>
-        <span>nicolobonacorsi</span>
-      </a>
-
-      <a class="cv-contact-link" href="https://scholar.google.com/citations?user=Z93cVpAAAAAJ&hl=en">
-        <svg viewBox="0 0 24 24">
-          <path class="fill-icon" d="M12 3L2 9l10 6 10-6-10-6z"/>
-          <path class="fill-icon" d="M6 12v4c0 2 3 4 6 4s6-2 6-4v-4l-6 3.5L6 12z"/>
-        </svg>
-        <span>Google Scholar</span>
-      </a>
-
       <a class="cv-contact-link" href="mailto:nb3328@columbia.edu">
         <svg viewBox="0 0 24 24">
           <path class="stroke-icon" d="M4 6h16v12H4z"/>
@@ -434,7 +438,37 @@ permalink: /cv/
         <span>nb3328@columbia.edu</span>
       </a>
 
-      <a class="cv-contact-link cv-download" href="{{ '/files/Nicolo_Bonacorsi_CV.pdf' | relative_url }}" download>
+      <a class="cv-contact-link" href="tel:+16463941928">
+        <span>+1 (646) 394-1928</span>
+      </a>
+
+      <a class="cv-contact-link"
+         href="https://www.linkedin.com/in/nicolobonacorsi"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <path class="fill-icon" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.4 8h4.2v14H.4V8zm7.1 0h4v1.9h.1c.6-1.1 2-2.3 4.1-2.3 4.4 0 5.2 2.9 5.2 6.7V22h-4.2v-6.8c0-1.6 0-3.7-2.3-3.7s-2.6 1.8-2.6 3.6V22H7.5V8z"/>
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+
+      <a class="cv-contact-link"
+         href="https://github.com/nicobonacorsi"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <path class="fill-icon" d="M12 .9C5.9.9 1 5.8 1 11.9c0 4.9 3.2 9.1 7.7 10.5.6.1.8-.2.8-.6v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6 2.9 3.2 2.1.1-.7.4-1.1.7-1.4-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3.1 1.1.9-.2 1.8-.4 2.8-.4s1.9.1 2.8.4c2.1-1.4 3.1-1.1 3.1-1.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .4.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.5C23 5.8 18.1.9 12 .9z"/>
+        </svg>
+        <span>GitHub</span>
+      </a>
+
+      <a class="cv-contact-link"
+         href="https://scholar.google.com/citations?user=Z93cVpAAAAAJ&hl=en"
+         target="_blank" rel="noopener">
+        <span>Google Scholar</span>
+      </a>
+
+      <a class="cv-contact-link cv-download"
+         href="{{ '/files/Nicolo_Bonacorsi_CV.pdf' | relative_url }}"
+         target="_blank">
         <svg viewBox="0 0 24 24">
           <path class="stroke-icon" d="M12 3v12"/>
           <path class="stroke-icon" d="M7 10l5 5 5-5"/>
@@ -444,179 +478,451 @@ permalink: /cv/
       </a>
     </nav>
   </header>
-<p class="cv-intro">
-    A roadmap of my academic path, research experience, and publications across
-    applied mathematics, stochastic control, optimal stopping, uncertainty
-    quantification, information theory, Bayesian modeling, and probabilistic machine learning.
+
+  <p class="cv-intro">
+    M.S. student in Applied Mathematics at Columbia University working across
+    stochastic control and optimal stopping, credal information theory,
+    Bayesian modeling, and quantitative research.
   </p>
 
+
+  <!-- ================================================= -->
+  <!-- EDUCATION -->
+  <!-- ================================================= -->
 
   <section class="cv-section">
     <h2 class="cv-section-title">Education</h2>
 
     <div class="cv-roadmap">
+
       <article class="cv-item">
         <div class="cv-card">
+
           <div class="cv-date">Aug 2025 – Dec 2026</div>
-          <h3>MS in Applied Mathematics</h3>
-          <div class="cv-place">Columbia University · New York, NY</div>
+
+          <h3>
+            <a href="https://www.columbia.edu/"
+               target="_blank" rel="noopener">
+              MS in Applied Mathematics
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            Columbia University · New York, NY
+          </div>
+
           <p>
-            Graduate studies in applied mathematics. Teaching Assistant for APMA E4300
-            Numerical Methods from Jan 2026.
+            M.S. in Applied Mathematics. Teaching Assistant for
+            APMA E4300 Numerical Methods.
           </p>
+
           <div class="cv-tags">
             <span class="cv-tag">Applied Mathematics</span>
-            <span class="cv-tag">Probability</span>
             <span class="cv-tag">Numerical Methods</span>
           </div>
+
         </div>
       </article>
 
+
       <article class="cv-item">
         <div class="cv-card">
+
           <div class="cv-date">Sep 2022 – Sep 2025</div>
-          <h3>BS in Mathematical Sciences for Artificial Intelligence</h3>
-          <div class="cv-place">Sapienza University of Rome · Rome, Italy</div>
-          <p>
-            Final grade: 110/110 cum laude. GPA: 3.99/4.00.
-          </p>
-          <div class="cv-tags">
-            <span class="cv-tag">Artificial Intelligence</span>
-            <span class="cv-tag">Machine Learning</span>
-            <span class="cv-tag">Numerical Methods</span>
+
+          <h3>
+            <a href="https://www.uniroma1.it/en/"
+               target="_blank" rel="noopener">
+              BS in Mathematical Sciences for Artificial Intelligence
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            Sapienza University of Rome · Rome, Italy
           </div>
+
+          <p>
+            GPA: 3.99/4.00. Final Grade: 110/110 cum laude.
+          </p>
+
+          <div class="cv-tags">
+            <span class="cv-tag">Mathematics</span>
+            <span class="cv-tag">Artificial Intelligence</span>
+          </div>
+
         </div>
       </article>
 
+
       <article class="cv-item">
         <div class="cv-card">
+
           <div class="cv-date">Sep 2021 – Jul 2024</div>
-          <h3>BS in Statistical Sciences</h3>
-          <div class="cv-place">University of Bologna · Bologna, Italy</div>
+
+          <h3>
+            <a href="https://www.unibo.it/en"
+               target="_blank" rel="noopener">
+              BS in Statistical Sciences
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            University of Bologna · Bologna, Italy
+          </div>
+
           <p>
-            Final grade: 110/110 cum laude. GPA: 3.95/4.00.
-            Award: University of Bologna Prize for Outstanding Student.
+            GPA: 3.95/4.00. Final Grade: 110/110 cum laude.
+            Recipient of the University of Bologna Prize for Outstanding Student.
           </p>
+
           <div class="cv-tags">
             <span class="cv-tag">Statistics</span>
-            <span class="cv-tag">Bayesian Inference</span>
-            <span class="cv-tag">Time Series</span>
+            <span class="cv-tag">Statistical Modeling</span>
           </div>
+
         </div>
       </article>
+
     </div>
   </section>
 
+
+  <!-- ================================================= -->
+  <!-- RESEARCH & PUBLICATIONS -->
+  <!-- ================================================= -->
+
   <section class="cv-section">
-    <h2 class="cv-section-title">Experience</h2>
+    <h2 class="cv-section-title">Research &amp; Publications</h2>
 
     <div class="cv-roadmap">
+
+
+      <!-- COLUMBIA / KARATZAS -->
+
       <article class="cv-item">
         <div class="cv-card">
+
           <div class="cv-date">Dec 2025 – Present</div>
+
           <h3>Graduate Researcher</h3>
-          <div class="cv-place">Columbia University · Supervisor: Professor Ioannis Karatzas</div>
+
+          <div class="cv-place">
+            <a href="https://www.columbia.edu/"
+               target="_blank" rel="noopener">
+              Columbia University
+            </a>
+            · New York, NY · Supervisor:
+            <a href="https://stat.columbia.edu/department-directory/faculty/name/ioannis-karatzas/"
+               target="_blank" rel="noopener">
+              Professor Ioannis Karatzas
+            </a>
+          </div>
+
           <p>
-            Research on stochastic control and optimal stopping for controlled diffusions
-            with endogenous drift and volatility, HJB free-boundary problems, shadow-price
-            reductions, verification, and threshold-type policies.
+            Derived a tractable one-dimensional free-boundary formulation for a
+            stochastic control-and-stopping problem with jointly optimized drift
+            and volatility, characterizing optimal state-dependent feedback
+            policies and endogenous stopping thresholds. Established regularity
+            and verification conditions for finite-cost feedback controls,
+            including degenerate zero-volatility policies outside classical
+            smooth-verification settings.
           </p>
+
           <div class="cv-tags">
             <span class="cv-tag">Stochastic Control</span>
             <span class="cv-tag">Optimal Stopping</span>
             <span class="cv-tag">HJB Equations</span>
           </div>
+
         </div>
       </article>
 
+
+      <!-- NORTHEASTERN / RESTUCCIA -->
+
       <article class="cv-item">
         <div class="cv-card">
+
           <div class="cv-date">Dec 2025 – Present</div>
-          <h3>Graduate Researcher</h3>
-          <div class="cv-place">Northeastern University · Supervisor: Professor Francesco Restuccia</div>
+
+          <h3>
+            <a href="{{ '/projects/credal-rate-distortion/' | relative_url }}">
+              Research Intern
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            <a href="https://www.northeastern.edu/"
+               target="_blank" rel="noopener">
+              Northeastern University
+            </a>
+            – MENTIS Laboratory · Boston, MA · Supervisor:
+            <a href="https://coe.northeastern.edu/people/restuccia-francesco/"
+               target="_blank" rel="noopener">
+              Professor Francesco Restuccia
+            </a>
+          </div>
+
           <p>
-            Research on credal uncertainty, robust probabilistic compression, credal
-            rate–distortion theory, uncertainty-aware information theory, graph-coloring
-            compression, and finite-window regimes.
+            Formulated a rate–distortion optimization framework under set-valued
+            predictive uncertainty, preserving distributional ambiguity through
+            compression and deriving structural characterizations of optimal
+            representations across multiple information regimes.
           </p>
+
           <div class="cv-tags">
-            <span class="cv-tag">Credal Uncertainty</span>
+            <span class="cv-tag">Research Intern</span>
+            <span class="cv-tag">Imprecise Probabilities</span>
             <span class="cv-tag">Information Theory</span>
-            <span class="cv-tag">Robust Compression</span>
           </div>
+
         </div>
       </article>
 
+
+      <!-- CREDAL PAPER -->
+
       <article class="cv-item">
         <div class="cv-card">
-          <div class="cv-date">Jun 2019 – Jun 2025</div>
-          <h3>Quantitative Research Lead & Co-Founder</h3>
-          <div class="cv-place">EndParty Group · Bologna, Italy</div>
-          <p>
-            Built forecasting models for event revenues and sponsorship returns,
-            and developed data-driven sponsorship analyses supporting business decisions.
-          </p>
-          <div class="cv-tags">
-            <span class="cv-tag">Forecasting</span>
-            <span class="cv-tag">Quantitative Modeling</span>
-            <span class="cv-tag">Business Analytics</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
 
-  <section class="cv-section">
-    <h2 class="cv-section-title">Publications</h2>
+          <div class="cv-date">IEEE ITW 2026</div>
 
-    <div class="cv-roadmap">
-      <article class="cv-item">
-        <div class="cv-card">
-          <div class="cv-date">2026</div>
           <h3>
             <a href="{{ '/projects/credal-rate-distortion/' | relative_url }}">
               Credal Rate–Distortion Theory
             </a>
           </h3>
+
           <div class="cv-place">
-            Nicolò Bonacorsi, Michele Caprio, Francesca Meneghello, Francesco Restuccia
+            N. Bonacorsi, M. Caprio, F. Meneghello, F. Restuccia
           </div>
+
           <p>
-            Submitted to IEEE Information Theory Workshop (ITW) 2026. Research on credal
-            uncertainty, robust compression, graph-coloring laws, and uncertainty-aware
-            rate–distortion structure.
+            Proved that zero-distortion credal coding reduces to graph-based
+            combinatorial optimization and built an LP/graph-coloring pipeline
+            solving 54,000 set-membership programs. The evaluation compressed
+            60 SVHN credal sets into 14 codewords (4.29×) with zero
+            incompatibility violations, versus 18.6% for an equal-size
+            barycentric baseline.
           </p>
+
           <div class="cv-tags">
-            <span class="cv-tag">Information Theory</span>
+            <span class="cv-tag">IEEE ITW 2026</span>
             <span class="cv-tag">Credal Sets</span>
-            <span class="cv-tag">Rate–Distortion</span>
+            <span class="cv-tag">Graph Coloring</span>
           </div>
+
         </div>
       </article>
 
+
+      <!-- COLLATZ -->
+
       <article class="cv-item">
         <div class="cv-card">
-          <div class="cv-date">2026</div>
+
+          <div class="cv-date">Aug 2025 – Dec 2025</div>
+
           <h3>
-            <a href="{{ '/projects/bayesian-collatz/' | relative_url }}">
+            <a href="https://arxiv.org/abs/2603.04479"
+               target="_blank" rel="noopener">
               Bayesian Modeling of Collatz Stopping Times
             </a>
           </h3>
+
           <div class="cv-place">
-            Nicolò Bonacorsi and Matteo Bordoni
+            Columbia University · New York, NY ·
+            N. Bonacorsi, M. Bordoni
           </div>
+
           <p>
-            arXiv:2603.04479. A probabilistic machine-learning perspective on Collatz
-            stopping times using Bayesian modeling, overdispersed count data, arithmetic
-            regimes, and posterior calibration.
+            Modeled Collatz stopping times over integers up to 10 million using
+            a hierarchical Bayesian negative-binomial specification with partial
+            pooling across modulo-8 residue classes. Regime conditioning reduced
+            Wasserstein distance to the empirical distribution by 3.2×,
+            improving right-tail fidelity, posterior calibration, and overall
+            distributional fit.
           </p>
+
           <div class="cv-tags">
             <span class="cv-tag">Bayesian Modeling</span>
-            <span class="cv-tag">Collatz</span>
-            <span class="cv-tag">Heavy Tails</span>
+            <span class="cv-tag">Monte Carlo</span>
+            <span class="cv-tag">Probabilistic ML</span>
           </div>
+
         </div>
       </article>
+
     </div>
   </section>
+
+
+  <!-- ================================================= -->
+  <!-- QUANTITATIVE RESEARCH PROJECTS -->
+  <!-- ================================================= -->
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Quantitative Research Projects</h2>
+
+    <div class="cv-roadmap">
+
+
+      <article class="cv-item">
+        <div class="cv-card">
+
+          <div class="cv-date">May 2026 – Jul 2026</div>
+
+          <h3>
+            <a href="{{ '/projects/bootstrap-dro-allocation/' | relative_url }}">
+              Bootstrap-Calibrated Distributionally Robust Allocation
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            Independent Quantitative Research · New York, NY
+          </div>
+
+          <p>
+            Built a distributionally robust allocation pipeline for 25
+            Fama–French size–value portfolios using circular-block bootstrap
+            covariance ambiguity and a custom active-set solver. Reduced
+            out-of-sample annualized volatility by 18.4% versus equal weight
+            over the 2013–2026 walk-forward evaluation
+            (16.45% vs. 20.15%), with model selection restricted to
+            2000–2012 data; achieved a 12.90% CAGR and 0.82 net Sharpe
+            after 10 bps transaction costs.
+          </p>
+
+          <div class="cv-tags">
+            <span class="cv-tag">DRO</span>
+            <span class="cv-tag">Bootstrap</span>
+            <span class="cv-tag">Portfolio Optimization</span>
+          </div>
+
+        </div>
+      </article>
+
+
+      <article class="cv-item">
+        <div class="cv-card">
+
+          <div class="cv-date">May 2026 – Jul 2026</div>
+
+          <h3>
+            <a href="{{ '/projects/distributional-volatility/' | relative_url }}">
+              Maturity-Safe Distributional Volatility Forecasting
+            </a>
+          </h3>
+
+          <div class="cv-place">
+            Independent Quantitative Research · New York, NY
+          </div>
+
+          <p>
+            Combined six VIX, HAR-style, and EWMA variance models using
+            maturity-safe bounded-loss Hedge updates and calibrated a 90% upper
+            variance forecast from 22 interlaced residual streams. Lowered
+            log-RMSE by 14.9% versus VIX-implied variance
+            (HAC-robust p &lt; 0.001), achieved 89% coverage at a nominal
+            90% level across 3,381 forecasts, and produced a cost-aware SPY
+            controller with 8.3% annualized volatility, 0.84 excess-return
+            Sharpe ratio, and 11.6% maximum drawdown after 1 bp costs.
+          </p>
+
+          <div class="cv-tags">
+            <span class="cv-tag">Volatility Forecasting</span>
+            <span class="cv-tag">Online Learning</span>
+            <span class="cv-tag">Risk Control</span>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================= -->
+  <!-- WORK EXPERIENCE -->
+  <!-- ================================================= -->
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Work Experience</h2>
+
+    <div class="cv-roadmap">
+
+      <article class="cv-item">
+        <div class="cv-card">
+
+          <div class="cv-date">Jun 2023 – Jun 2025</div>
+
+          <h3>Quantitative Research &amp; Strategy</h3>
+
+          <div class="cv-place">
+            EndParty Group · Bologna, Italy
+          </div>
+
+          <p>
+            Developed a probabilistic decision engine for event pricing and
+            capital allocation using hierarchical demand forecasting, Monte
+            Carlo scenario generation, and constrained stochastic optimization.
+            Designed and backtested dynamic pricing, marketing, and
+            sponsorship-allocation policies using posterior predictive
+            distributions and downside-risk objectives, reducing out-of-sample
+            forecast error by 14.6% and improving risk-adjusted operating
+            returns by 9.3% versus historical allocation heuristics.
+          </p>
+
+          <div class="cv-tags">
+            <span class="cv-tag">Probabilistic Forecasting</span>
+            <span class="cv-tag">Monte Carlo</span>
+            <span class="cv-tag">Stochastic Optimization</span>
+            <span class="cv-tag">Dynamic Pricing</span>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================= -->
+  <!-- SKILLS -->
+  <!-- ================================================= -->
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Skills</h2>
+
+    <div class="cv-card">
+
+      <p>
+        <strong>Programming &amp; Data:</strong>
+        Python, SQL, R, MATLAB; NumPy, pandas, SciPy, scikit-learn,
+        PyTorch, statsmodels.
+      </p>
+
+      <p style="margin-top:.8rem;">
+        <strong>Statistical &amp; ML Methods:</strong>
+        Time Series, Bayesian Inference, Monte Carlo, GLMs,
+        Statistical Learning, Neural Networks, Model Validation,
+        Risk Modeling.
+      </p>
+
+      <p style="margin-top:.8rem;">
+        <strong>Mathematics:</strong>
+        Stochastic Processes, Stochastic Control, Optimal Stopping,
+        HJB Equations, Optimization, Numerical Methods, PCA/SVD,
+        Information Theory, Uncertainty Quantification.
+      </p>
+
+      <p style="margin-top:.8rem;">
+        <strong>Languages:</strong>
+        Italian (native), English (fluent).
+      </p>
+
+    </div>
+  </section>
+
 </section>
+
