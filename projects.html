@@ -274,6 +274,60 @@ permalink: /projects/
     <div class="projects-list">
       <article
         class="project-card"
+        data-topics="quantitative-finance information-theory time-series"
+      >
+        <a class="project-thumb-link" href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener" aria-label="Open Certified Alpha Capacity (AlphaValue) project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/publications/certified-alpha-capacity.svg' | relative_url }}"
+            alt="Certified Alpha Capacity (AlphaValue) project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
+
+        <div>
+          <h2 class="project-title">
+            <a href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">
+              Certified Alpha Capacity (AlphaValue)
+            </a>
+          </h2>
+
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="quantitative-finance">Quantitative Finance</button>
+            <button class="topic-chip" data-filter="information-theory">Information Theory</button>
+            <button class="topic-chip" data-filter="time-series">Time Series</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            Can a trading signal accumulate enough statistical evidence for reliable deployment before its economic value decays?
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Put statistical evidence and economic lifetime on a common Kullback–Leibler information clock, then compare lifetime information with the reliability contract under multiplicity and crowding.
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            Derived an exact Gaussian certification frontier and endogenous crowding equilibrium; on 543 BTC/ETH funding events, the lifetime score predicts 7-day funding persistence better than current edge (Spearman 0.476 vs. 0.383) and retains 0.282 incremental rank association (95% CI [0.128, 0.412]).
+          </p>
+        </div>
+      </article>
+
+      <article
+        class="project-card"
         data-topics="quantitative-finance distributionally-robust-optimization portfolio-optimization bootstrap covariance-estimation"
       >
         <a class="project-thumb-link" href="{{ '/projects/bootstrap-dro-allocation/' | relative_url }}" aria-label="Open Bootstrap-Calibrated Distributionally Robust Allocation project">
@@ -563,11 +617,11 @@ permalink: /projects/
 
       <button class="filter-button active" data-topic-filter="all" data-filter="all">
         <span>All topics</span>
-        <span class="filter-count">5</span>
+        <span class="filter-count">6</span>
       </button>
       <button class="filter-button" data-topic-filter="quantitative-finance" data-filter="quantitative-finance">
         <span>Quantitative Finance</span>
-        <span class="filter-count">1</span>
+        <span class="filter-count">2</span>
       </button>
       <button class="filter-button" data-topic-filter="distributionally-robust-optimization" data-filter="distributionally-robust-optimization">
         <span>Distributionally Robust Optimization</span>
@@ -603,7 +657,7 @@ permalink: /projects/
       </button>
       <button class="filter-button" data-topic-filter="time-series" data-filter="time-series">
         <span>Time Series</span>
-        <span class="filter-count">1</span>
+        <span class="filter-count">2</span>
       </button>
       <button class="filter-button" data-topic-filter="spectral-methods" data-filter="spectral-methods">
         <span>Spectral Methods</span>
@@ -627,7 +681,7 @@ permalink: /projects/
       </button>
       <button class="filter-button" data-topic-filter="information-theory" data-filter="information-theory">
         <span>Information Theory</span>
-        <span class="filter-count">1</span>
+        <span class="filter-count">2</span>
       </button>
       <button class="filter-button" data-topic-filter="credal-uncertainty" data-filter="credal-uncertainty">
         <span>Credal Uncertainty</span>
