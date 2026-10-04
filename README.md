@@ -1,8 +1,11 @@
-# keunhong.github.io
+# Nicolò Bonacorsi — Academic Website
 
-- Feel free to borrow this template.
-- Make sure to update all relevant fields in `_config.yml` and `_data`.
+Personal academic website for Nicolò Bonacorsi, M.S. student and researcher in Applied Mathematics at Columbia University.
 
-# License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+Live site: https://nicobonacorsi.github.io/
 
+Built with Jekyll and adapted from the academic website template by Keunhong Park.
+
+## License
+
+Website template and adapted site materials are distributed under the Creative Commons Attribution-ShareAlike 4.0 International License where applicable.
