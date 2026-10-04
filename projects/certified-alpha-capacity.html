@@ -1,0 +1,586 @@
+---
+layout: default
+title: "Certified Alpha Capacity (AlphaValue)"
+permalink: /projects/certified-alpha-capacity/
+math: true
+---
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .project-website {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  .project-hero {
+    text-align: center;
+    max-width: 1050px;
+    margin: 0 auto 4.5rem;
+  }
+
+  .project-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(3rem, 6vw, 5.3rem);
+    line-height: 1.03;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    color: #333333;
+    margin-bottom: .8rem;
+  }
+
+  .project-paper-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.3;
+    color: #555555;
+    margin: 0 auto 1.8rem;
+    max-width: 860px;
+  }
+
+  .project-meta-block {
+    margin-bottom: 1.05rem;
+  }
+
+  .project-meta-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: #888888;
+    margin-bottom: .25rem;
+  }
+
+  .project-owner {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    color: #1e88e5;
+  }
+
+  .project-owner a {
+    color: #1e88e5;
+    text-decoration: none;
+  }
+
+  .project-owner a:hover {
+    text-decoration: underline;
+  }
+
+  .project-affiliations {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.25rem;
+    color: #333333;
+    margin-bottom: 1.8rem;
+  }
+
+  .project-venue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #444444;
+    margin-bottom: 1.4rem;
+  }
+
+  .project-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-radius: 999px;
+    background: #333333;
+    color: #ffffff;
+    padding: .48rem 1.05rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .project-button:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .project-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-toc {
+    position: sticky;
+    top: 2rem;
+    padding-top: .3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .project-toc-title {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #999999;
+    margin-bottom: .9rem;
+  }
+
+  .project-toc a {
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    padding: .38rem 0 .38rem .85rem;
+    border-left: 2px solid rgba(0,0,0,.08);
+    font-size: .98rem;
+  }
+
+  .project-toc a:hover {
+    color: #111111;
+    border-left-color: #999999;
+  }
+
+  .project-main {
+    min-width: 0;
+  }
+
+  .project-section {
+    padding: 3.2rem 0;
+    border-top: 1px solid rgba(0,0,0,.08);
+  }
+
+  .project-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .project-section h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-section h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin: 2rem 0 .85rem;
+  }
+
+  .project-section p,
+  .project-section li {
+    font-size: 1.16rem;
+    line-height: 1.75;
+    color: #333333;
+  }
+
+  .project-section ul {
+    padding-left: 1.35rem;
+  }
+
+  .math-box {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.4rem 0;
+    overflow-x: auto;
+  }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .9rem;
+    margin: 1.5rem 0;
+  }
+
+  .metric-card {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1.15rem;
+  }
+
+  .metric-value {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.55rem;
+    font-weight: 750;
+    color: #222222;
+    margin-bottom: .3rem;
+  }
+
+  .metric-label {
+    color: #777777;
+    font-size: .93rem;
+    line-height: 1.45;
+  }
+
+  .live-preview-shell {
+    border: 1px solid rgba(0,0,0,.10);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 14px 34px rgba(0,0,0,.06);
+    margin: 1.5rem 0;
+  }
+
+  .live-preview-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: .75rem .9rem;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    background: #fafafa;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .live-preview-label {
+    font-size: .95rem;
+    font-weight: 700;
+    color: #444444;
+  }
+
+  .live-preview-actions {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+
+  .preview-action {
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 999px;
+    padding: .42rem .78rem;
+    background: #ffffff;
+    color: #333333;
+    font: inherit;
+    font-size: .9rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .preview-action:hover {
+    background: #111111;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .live-preview-frame-wrap {
+    width: 100%;
+    height: min(76vh, 820px);
+    min-height: 620px;
+    background: #f7f6f2;
+  }
+
+  .live-preview-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #ffffff;
+  }
+
+  .live-preview-shell:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .live-preview-shell:fullscreen .live-preview-frame-wrap {
+    height: auto;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .back-to-projects {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #666666;
+    text-decoration: none;
+  }
+
+  .back-to-projects:hover {
+    color: #111111;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .project-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .project-toc {
+      position: relative;
+      top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .8rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-toc-title {
+      width: 100%;
+      margin-bottom: .2rem;
+    }
+
+    .project-toc a {
+      border-left: none;
+      padding: .2rem 0;
+    }
+
+    .metric-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .live-preview-frame-wrap {
+      min-height: 680px;
+    }
+  }
+</style>
+
+<section class="project-website">
+
+  <div class="project-hero">
+    <h1 class="project-hero-title">Certified Alpha Capacity</h1>
+    <div class="project-paper-title">Statistical Arbitrage When Learning Takes Time</div>
+
+    <div class="project-meta-block">
+      <div class="project-meta-label">Project of</div>
+      <div class="project-owner">
+        <a href="{{ '/' | relative_url }}">Nicolò Bonacorsi</a>
+      </div>
+    </div>
+
+    <div class="project-affiliations">
+      Columbia University
+    </div>
+
+    <div class="project-venue">
+      Working paper · AlphaValue v1.5.0 · 2026
+    </div>
+
+    <div class="project-buttons">
+      <a class="project-button" href="https://nicobonacorsi.github.io/AlphaValue/assets/Certified_Alpha_Capacity.pdf" target="_blank" rel="noopener">PDF</a>
+      <a class="project-button" href="https://arxiv.org/abs/2610.01115" target="_blank" rel="noopener">arXiv</a>
+      <a class="project-button" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7547520" target="_blank" rel="noopener">SSRN</a>
+      <a class="project-button" href="https://github.com/nicobonacorsi/AlphaValue" target="_blank" rel="noopener">Code</a>
+      <a class="project-button" href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">Website</a>
+      <a class="project-button" href="https://doi.org/10.5281/zenodo.23075105" target="_blank" rel="noopener">Zenodo v1.5.0</a>
+    </div>
+  </div>
+
+  <div class="project-layout">
+    <aside class="project-toc">
+      <div class="project-toc-title">Contents</div>
+      <a href="#abstract">Abstract</a>
+      <a href="#question">Question</a>
+      <a href="#core-idea">Core idea</a>
+      <a href="#results">Main results</a>
+      <a href="#paper-resources">Paper &amp; resources</a>
+      <a href="#live-alphavalue">Live AlphaValue</a>
+      <a href="#reproducibility">Reproducibility</a>
+    </aside>
+
+    <main class="project-main">
+      <section id="abstract" class="project-section">
+        <h2>Abstract</h2>
+        <p>
+          Statistical validation takes time, and alpha can decay before the evidence justifies deployment.
+          We quantify the surviving opportunity through Certified Alpha Capacity: the maximum expected value
+          remaining under prescribed false-deployment and power constraints. In a canonical Gaussian experiment,
+          we derive an exact certification frontier and the sharp law
+          \(\mathcal K_{\alpha,\beta}/\log(1/\varepsilon)\) for residual information capacity just above it.
+          Near the frontier, a single interim decision can preserve orders of magnitude more capacity than
+          fixed-time testing. Mapping information into cash reveals why equally certifiable signals can retain
+          different economic values. In the specified competitive equilibrium, lifetime information approaches
+          the certification frontier exponentially as research costs vanish.
+        </p>
+        <p>
+          AlphaValue is the reference implementation: a Python package, command-line interface, public test suite,
+          numerical theory checks, reproducibility materials, and an interactive Alpha Survival Frontier calculator.
+        </p>
+      </section>
+
+      <section id="question" class="project-section">
+        <h2>Question</h2>
+        <p>
+          Can an alpha generate enough future information to meet a declared false-deployment and power
+          target before the opportunity reaches its economic endpoint?
+        </p>
+      </section>
+
+      <section id="core-idea" class="project-section">
+        <h2>Core idea</h2>
+        <p>
+          Put statistical evidence and economic lifetime on the same information clock. In the canonical
+          Gaussian experiment, reliable certification requires lifetime KL information to exceed an exact
+          threshold:
+        </p>
+        <div class="math-box">
+          \[
+          \mathcal I_{\mathrm{life}}
+          \ge
+          \mathcal I_{\mathrm{crit}}(\alpha,\beta)
+          =
+          \frac{1}{2}
+          \left(z_{1-\alpha}+z_{1-\beta}\right)^2.
+          \]
+        </div>
+        <p>
+          Under zero-hurdle exponential decay, lifetime information becomes a function of initial Sharpe and
+          half-life. This produces the Alpha Survival Frontier and makes the statistical cost of search breadth
+          explicit when many candidate signals are screened. Just above the frontier, the optimal residual
+          information value obeys the inverse-logarithmic law
+          \(c_{\alpha,\beta}(A_*+\varepsilon)\sim
+          \mathcal K_{\alpha,\beta}/\log(1/\varepsilon)\).
+        </p>
+      </section>
+
+      <section id="results" class="project-section">
+        <h2>Main results</h2>
+        <ul>
+          <li>Exact Gaussian certification threshold and a general KL data-processing converse.</li>
+          <li>Sharp near-frontier capacity: residual information value scales as \(\mathcal K_{\alpha,\beta}/\log(1/\varepsilon)\), attained by a conditional-error crossing rule.</li>
+          <li>Cash-value transfer laws that separate statistical certifiability from implementable economic value, including the \([\log(1/\varepsilon)]^{-2/3}\) transverse-crossing scale.</li>
+          <li>Robust certification results for ordered decay families and a least-favorable-mixture characterization for nonordered alternatives.</li>
+          <li>Competitive crowding equilibria in which residual lifetime information concentrates exponentially near the certification frontier as research costs vanish.</li>
+        </ul>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">11.146</div>
+            <div class="metric-label">sharp near-critical constant \(\mathcal K_{0.05,0.10}\) for 5% false deployment and 90% power</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">7.245 years</div>
+            <div class="metric-label">minimum half-life for Sharpe 2 after Bonferroni screening of 100 candidates in the canonical benchmark</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">543 events</div>
+            <div class="metric-label">BTC/ETH perpetual-funding events in the descriptive cross-venue persistence benchmark</div>
+          </div>
+        </div>
+
+        <p>
+          In the supplied funding-event panel, the lifetime score has Spearman association 0.4741 with
+          next-seven-day sign-oriented funding versus 0.3833 for current edge. Residualizing lifetime midranks
+          on edge midranks leaves association 0.2777 with a calendar-month cluster-bootstrap 95% interval
+          [0.1228, 0.4061].
+        </p>
+      </section>
+
+      <section id="paper-resources" class="project-section">
+        <h2>Paper &amp; resources</h2>
+        <p>
+          <strong>Certified Alpha Capacity: Statistical Arbitrage When Learning Takes Time</strong> is available
+          as the current arXiv and SSRN manuscript. AlphaValue v1.5.0 provides the reference code, tests,
+          interactive website, and versioned reproducibility archive.
+        </p>
+        <div class="project-buttons" style="justify-content:flex-start;">
+          <a class="project-button" href="https://nicobonacorsi.github.io/AlphaValue/assets/Certified_Alpha_Capacity.pdf" target="_blank" rel="noopener">PDF</a>
+          <a class="project-button" href="https://arxiv.org/abs/2610.01115" target="_blank" rel="noopener">arXiv 2610.01115</a>
+          <a class="project-button" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7547520" target="_blank" rel="noopener">SSRN 7547520</a>
+          <a class="project-button" href="https://github.com/nicobonacorsi/AlphaValue" target="_blank" rel="noopener">GitHub</a>
+          <a class="project-button" href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">Interactive website</a>
+          <a class="project-button" href="https://doi.org/10.5281/zenodo.23075105" target="_blank" rel="noopener">Zenodo v1.5.0</a>
+        </div>
+      </section>
+
+      <section id="live-alphavalue" class="project-section">
+        <h2>Live AlphaValue</h2>
+        <p>
+          The dedicated AlphaValue website is embedded below. It implements the canonical Alpha Survival
+          Frontier calculator from the current v1.5.0 release. Change Sharpe, half-life, multiplicity, error
+          targets, and correction rules directly in the preview, or open the standalone site.
+        </p>
+
+        <div class="live-preview-shell" id="alphavalue-preview">
+          <div class="live-preview-toolbar">
+            <div class="live-preview-label">Interactive Alpha Survival Frontier</div>
+            <div class="live-preview-actions">
+              <a class="preview-action" href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">Open site ↗</a>
+              <button class="preview-action" type="button" id="alphavalue-fullscreen">Full screen</button>
+            </div>
+          </div>
+          <div class="live-preview-frame-wrap">
+            <iframe
+              class="live-preview-frame"
+              src="https://nicobonacorsi.github.io/AlphaValue/"
+              title="Interactive AlphaValue calculator"
+              loading="lazy"
+              allow="fullscreen"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section id="reproducibility" class="project-section">
+        <h2>Reproducibility</h2>
+        <p>
+          The public AlphaValue release contains the reference Python implementation, CLI, synthetic examples,
+          tests, and compact reproduction materials for the empirical calculations. The repository links the
+          manuscript, live calculator, and versioned Zenodo archive under a stable concept DOI.
+        </p>
+        <div class="project-buttons" style="justify-content:flex-start;">
+          <a class="project-button" href="https://github.com/nicobonacorsi/AlphaValue" target="_blank" rel="noopener">Code</a>
+          <a class="project-button" href="https://nicobonacorsi.github.io/AlphaValue/assets/Certified_Alpha_Capacity.pdf" target="_blank" rel="noopener">PDF</a>
+          <a class="project-button" href="https://arxiv.org/abs/2610.01115" target="_blank" rel="noopener">arXiv</a>
+          <a class="project-button" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7547520" target="_blank" rel="noopener">SSRN</a>
+          <a class="project-button" href="https://doi.org/10.5281/zenodo.23075105" target="_blank" rel="noopener">Zenodo v1.5.0</a>
+          <a class="project-button" href="https://doi.org/10.5281/zenodo.23070742" target="_blank" rel="noopener">Concept DOI</a>
+        </div>
+      </section>
+
+      <a class="back-to-projects" href="{{ '/projects/' | relative_url }}">← Back to projects</a>
+    </main>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const shell = document.getElementById("alphavalue-preview");
+    const button = document.getElementById("alphavalue-fullscreen");
+    if (!shell || !button || !document.fullscreenEnabled) {
+      if (button) button.style.display = "none";
+      return;
+    }
+
+    async function toggleFullscreen() {
+      try {
+        if (!document.fullscreenElement) {
+          await shell.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (_) {
+        window.open("https://nicobonacorsi.github.io/AlphaValue/", "_blank", "noopener");
+      }
+    }
+
+    button.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", function () {
+      button.textContent = document.fullscreenElement ? "Exit full screen" : "Full screen";
+    });
+  })();
+</script>

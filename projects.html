@@ -272,37 +272,224 @@ permalink: /projects/
 
   <div class="projects-layout">
     <div class="projects-list">
+      <article
+        class="project-card"
+        data-topics="quantitative-finance information-theory time-series"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/certified-alpha-capacity/' | relative_url }}" aria-label="Open Certified Alpha Capacity (AlphaValue) project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/publications/certified-alpha-capacity.svg' | relative_url }}"
+            alt="Certified Alpha Capacity (AlphaValue) project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
 
-<article class="project-card" data-topics="spectral-methods pca-svd face-recognition numerical-linear-algebra machine-learning">
-  <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">
-    <img class="project-thumb" src="{{ '/images/publications/svd-face-recognition.svg' | relative_url }}" alt="Spectral Methods for High-Dimensional Prediction and Face Recognition">
-  </a>
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/certified-alpha-capacity/' | relative_url }}">
+              Certified Alpha Capacity (AlphaValue)
+            </a>
+          </h2>
 
-  <div>
-    <h2 class="project-title">
-      <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">Spectral Methods for High-Dimensional Prediction and Face Recognition</a>
-    </h2>
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
 
-    <div class="project-card-meta">
-      Nicolò Bonacorsi
-    </div>
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="quantitative-finance">Quantitative Finance</button>
+            <button class="topic-chip" data-filter="information-theory">Information Theory</button>
+            <button class="topic-chip" data-filter="time-series">Time Series</button>
+          </div>
 
-    <div class="project-tags">
-      <button class="project-tag" data-topic-filter="spectral-methods" data-filter="spectral-methods">Spectral Methods</button>
-      <button class="project-tag" data-topic-filter="pca-svd" data-filter="pca-svd">PCA / SVD</button>
-      <button class="project-tag" data-topic-filter="face-recognition" data-filter="face-recognition">Face Recognition</button>
-      <button class="project-tag" data-topic-filter="numerical-linear-algebra" data-filter="numerical-linear-algebra">Numerical Linear Algebra</button>
-      <button class="project-tag" data-topic-filter="machine-learning" data-filter="machine-learning">Machine Learning</button>
-    </div>
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            Can a trading signal accumulate enough statistical evidence for reliable deployment before its economic value decays?
+          </p>
 
-    <p><strong>Question.</strong> How can PCA and SVD reduce high-dimensional crime-rate and face-image data while preserving predictive and recognition structure?</p>
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Put statistical evidence and economic lifetime on a common Kullback–Leibler information clock, then compare lifetime information with the reliability contract under multiplicity and crowding.
+          </p>
 
-    <p><strong>Key idea.</strong> Replace raw high-dimensional observations by coordinates in low-rank spectral subspaces: principal components for crime data and eigenfaces for image data.</p>
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            Exact Gaussian certification frontier, sharp inverse-logarithmic near-frontier capacity, robust-decay and crowding results; on 543 BTC/ETH funding events, the lifetime score has Spearman association 0.4741 with 7-day signed funding versus 0.3833 for current edge, with residualized association 0.2777 (95% CI [0.1228, 0.4061]).
+          </p>
+        </div>
+      </article>
 
-    <p><strong>Results.</strong> Principal-component regression improves adjusted $R^2$ from 0.5544 to 0.8555, while the eigenfaces classifier reaches 98.3333% accuracy on the Olivetti dataset.</p>
-  </div>
-</article>
+      <article
+        class="project-card"
+        data-topics="quantitative-finance distributionally-robust-optimization portfolio-optimization bootstrap covariance-estimation"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/bootstrap-dro-allocation/' | relative_url }}" aria-label="Open Bootstrap-Calibrated Distributionally Robust Allocation project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/projects/bootstrap-dro-allocation/confirmation-wealth-and-drawdown.png' | relative_url }}"
+            alt="Bootstrap-Calibrated Distributionally Robust Allocation project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
 
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/bootstrap-dro-allocation/' | relative_url }}">
+              Bootstrap-Calibrated Distributionally Robust Allocation
+            </a>
+          </h2>
+
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="quantitative-finance">Quantitative Finance</button>
+            <button class="topic-chip" data-filter="distributionally-robust-optimization">Distributionally Robust Optimization</button>
+            <button class="topic-chip" data-filter="portfolio-optimization">Portfolio Optimization</button>
+            <button class="topic-chip" data-filter="bootstrap">Bootstrap</button>
+            <button class="topic-chip" data-filter="covariance-estimation">Covariance Estimation</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            Can bootstrap-calibrated directional covariance uncertainty reduce realized portfolio risk after costs while remaining competitive with strong shrinkage benchmarks?
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Inflate sample covariance eigenvalues to circular-block-bootstrap upper directional quantiles, then solve an exact capped long-only quadratic program.
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            On 2013–2026 confirmation, annualized volatility is 16.45% versus 20.15% for equal weight, an 18.39% reduction with a paired block-bootstrap 95% interval of 14.95%–22.58%; CAGR is 12.90% and Sharpe is 0.820 after 10 bps costs.
+          </p>
+        </div>
+      </article>
+
+      <article
+        class="project-card"
+        data-topics="volatility-forecasting online-learning risk-control vix time-series"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/distributional-volatility/' | relative_url }}" aria-label="Open Maturity-Safe Distributional Volatility Forecasting and Risk Control project">
+          <img
+            class="project-thumb"
+            src="{{ '/images/projects/distributional-volatility/forecast-and-upper-bound.png' | relative_url }}"
+            alt="Maturity-Safe Distributional Volatility Forecasting and Risk Control project thumbnail"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
+
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/distributional-volatility/' | relative_url }}">
+              Maturity-Safe Distributional Volatility Forecasting and Risk Control
+            </a>
+          </h2>
+
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="volatility-forecasting">Volatility Forecasting</button>
+            <button class="topic-chip" data-filter="online-learning">Online Learning</button>
+            <button class="topic-chip" data-filter="risk-control">Risk Control</button>
+            <button class="topic-chip" data-filter="vix">VIX</button>
+            <button class="topic-chip" data-filter="time-series">Time Series</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            Can a maturity-safe online ensemble and an overlap-aware upper variance forecast improve medium-horizon volatility prediction and control drawdowns without leakage?
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Combine VIX and realized-volatility experts with bounded-loss Hedge, calibrate a 90% upper forecast through 22 non-overlapping residual streams, and map the upper bound into SPY exposure.
+          </p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            On 2013–2026 confirmation, log-RMSE improves 14.94% versus raw VIX variance with HAC p=3.20×10⁻¹⁵; empirical upper-bound coverage is 89.03%, and the cost-aware controller limits maximum drawdown to 11.56%.
+          </p>
+        </div>
+      </article>
+
+<article
+        class="project-card"
+        data-topics="spectral-methods pca-svd face-recognition numerical-linear-algebra machine-learning"
+      >
+        <a class="project-thumb-link" href="{{ '/projects/svd-face-recognition/' | relative_url }}" aria-label="Open Spectral Methods for High-Dimensional Prediction and Face Recognition project">
+          <img
+            class="project-thumb"
+            src="/images/publications/svd-face-recognition.svg"
+            alt="Spectral Methods for High-Dimensional Prediction and Face Recognition"
+          >
+          <span class="thumb-overlay">
+            <svg viewBox="0 0 24 24">
+              <circle class="stroke-icon" cx="12" cy="12" r="9"/>
+              <path class="stroke-icon" d="M3 12h18"/>
+              <path class="stroke-icon" d="M12 3c3 3 3 15 0 18"/>
+              <path class="stroke-icon" d="M12 3c-3 3-3 15 0 18"/>
+            </svg>
+          </span>
+        </a>
+
+        <div>
+          <h2 class="project-title">
+            <a href="{{ '/projects/svd-face-recognition/' | relative_url }}">
+              Spectral Methods for High-Dimensional Prediction and Face Recognition
+            </a>
+          </h2>
+
+          <div class="project-author">
+            <strong>Nicolò Bonacorsi</strong>
+          </div>
+
+          <div class="project-topics">
+            <button class="topic-chip" data-filter="spectral-methods">Spectral Methods</button>
+            <button class="topic-chip" data-filter="pca-svd">PCA / SVD</button>
+            <button class="topic-chip" data-filter="face-recognition">Face Recognition</button>
+            <button class="topic-chip" data-filter="numerical-linear-algebra">Numerical Linear Algebra</button>
+            <button class="topic-chip" data-filter="machine-learning">Machine Learning</button>
+          </div>
+
+          <p class="project-field">
+            <span class="project-field-label">Question.</span>
+            How can PCA and SVD reduce high-dimensional crime-rate and face-image data while preserving predictive and recognition structure?</p>
+
+          <p class="project-field">
+            <span class="project-field-label">Key idea.</span>
+            Replace raw high-dimensional observations by coordinates in low-rank spectral subspaces: principal components for crime data and eigenfaces for image data.</p>
+
+          <p class="project-field">
+            <span class="project-field-label">Results.</span>
+            Principal-component regression improves adjusted R² from 0.5544 to 0.8555, while the eigenfaces classifier reaches 98.3333% accuracy on the Olivetti dataset.</p>
+        </div>
+      </article>
 
 <article
         class="project-card"
@@ -422,125 +609,118 @@ permalink: /projects/
     </div>
 
     <aside class="project-filter">
-      <div class="project-filter-title">Filter by topic</div>
-      <div class="project-filter-subtitle">
-        Select an area to show only the projects belonging to that research direction.
-      </div>
+  <div class="filter-block">
+    <div class="filter-title">Filter by topic</div>
+    <p class="filter-description">
+      Select an area to show only the projects belonging to that research direction.
+    </p>
 
-      <table class="filter-table">
-        <tbody>
-          <tr>
-            <td>
-              <button class="filter-button active" data-filter="all">
-                <span>All topics</span>
-                <span class="filter-count">2</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="information-theory">
-                <span>Information Theory</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="credal-uncertainty">
-                <span>Credal Uncertainty</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="rate-distortion">
-                <span>Rate–Distortion</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="uncertainty-quantification">
-                <span>Uncertainty Quantification</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="robust-compression">
-                <span>Robust Compression</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="bayesian-inference">
-                <span>Bayesian Inference</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="probabilistic-machine-learning">
-                <span>Probabilistic ML</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="number-theory">
-                <span>Number Theory</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="monte-carlo">
-                <span>Monte Carlo</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="filter-button" data-filter="heavy-tails">
-                <span>Heavy Tails</span>
-                <span class="filter-count">1</span>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    
-        <button class="filter-button" data-filter="spectral-methods" data-topic-filter="spectral-methods">
-          <span>Spectral Methods</span>
-        </button>
-
-        <button class="filter-button" data-filter="pca-svd" data-topic-filter="pca-svd">
-          <span>PCA / SVD</span>
-        </button>
-
-        <button class="filter-button" data-filter="face-recognition" data-topic-filter="face-recognition">
-          <span>Face Recognition</span>
-        </button>
-
-        <button class="filter-button" data-filter="numerical-linear-algebra" data-topic-filter="numerical-linear-algebra">
-          <span>Numerical Linear Algebra</span>
-        </button>
-
-        <button class="filter-button" data-filter="machine-learning" data-topic-filter="machine-learning">
-          <span>Machine Learning</span>
-        </button>
-
-    </aside>
+      <button class="filter-button active" data-topic-filter="all" data-filter="all">
+        <span>All topics</span>
+        <span class="filter-count">6</span>
+      </button>
+      <button class="filter-button" data-topic-filter="quantitative-finance" data-filter="quantitative-finance">
+        <span>Quantitative Finance</span>
+        <span class="filter-count">2</span>
+      </button>
+      <button class="filter-button" data-topic-filter="distributionally-robust-optimization" data-filter="distributionally-robust-optimization">
+        <span>Distributionally Robust Optimization</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="portfolio-optimization" data-filter="portfolio-optimization">
+        <span>Portfolio Optimization</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="bootstrap" data-filter="bootstrap">
+        <span>Bootstrap</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="covariance-estimation" data-filter="covariance-estimation">
+        <span>Covariance Estimation</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="volatility-forecasting" data-filter="volatility-forecasting">
+        <span>Volatility Forecasting</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="online-learning" data-filter="online-learning">
+        <span>Online Learning</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="risk-control" data-filter="risk-control">
+        <span>Risk Control</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="vix" data-filter="vix">
+        <span>VIX</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="time-series" data-filter="time-series">
+        <span>Time Series</span>
+        <span class="filter-count">2</span>
+      </button>
+      <button class="filter-button" data-topic-filter="spectral-methods" data-filter="spectral-methods">
+        <span>Spectral Methods</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="pca-svd" data-filter="pca-svd">
+        <span>PCA / SVD</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="face-recognition" data-filter="face-recognition">
+        <span>Face Recognition</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="numerical-linear-algebra" data-filter="numerical-linear-algebra">
+        <span>Numerical Linear Algebra</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="machine-learning" data-filter="machine-learning">
+        <span>Machine Learning</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="information-theory" data-filter="information-theory">
+        <span>Information Theory</span>
+        <span class="filter-count">2</span>
+      </button>
+      <button class="filter-button" data-topic-filter="credal-uncertainty" data-filter="credal-uncertainty">
+        <span>Credal Uncertainty</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="rate-distortion" data-filter="rate-distortion">
+        <span>Rate–Distortion</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="uncertainty-quantification" data-filter="uncertainty-quantification">
+        <span>Uncertainty Quantification</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="robust-compression" data-filter="robust-compression">
+        <span>Robust Compression</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="bayesian-inference" data-filter="bayesian-inference">
+        <span>Bayesian Inference</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="probabilistic-machine-learning" data-filter="probabilistic-machine-learning">
+        <span>Probabilistic Machine Learning</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="number-theory" data-filter="number-theory">
+        <span>Number Theory</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="monte-carlo" data-filter="monte-carlo">
+        <span>Monte Carlo</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-button" data-topic-filter="heavy-tails" data-filter="heavy-tails">
+        <span>Heavy Tails</span>
+        <span class="filter-count">1</span>
+      </button>
+  </div>
+</aside>
   </div>
 </section>
 

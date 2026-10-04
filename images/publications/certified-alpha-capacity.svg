@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef5ff"/>
+      <stop offset="100%" stop-color="#fff1f3"/>
+    </linearGradient>
+    <linearGradient id="frontier" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6f8fd8"/>
+      <stop offset="100%" stop-color="#b36f79"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="420" rx="26" fill="url(#bg)"/>
+  <path d="M72 292 H350" stroke="#4b6078" stroke-width="4" opacity=".28" stroke-linecap="round"/>
+  <path d="M72 292 V82" stroke="#4b6078" stroke-width="4" opacity=".28" stroke-linecap="round"/>
+  <path d="M94 265 C128 190, 177 142, 226 118 S307 94, 342 86" fill="none" stroke="url(#frontier)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M95 242 C135 218, 180 204, 224 198 S305 191, 340 190" fill="none" stroke="#4b6078" stroke-width="4" stroke-dasharray="8 10" opacity=".42" stroke-linecap="round"/>
+  <circle cx="219" cy="122" r="11" fill="#4b6078" opacity=".72"/>
+  <circle cx="219" cy="198" r="8" fill="#4b6078" opacity=".45"/>
+  <path d="M219 186 V139" stroke="#4b6078" stroke-width="3" opacity=".5" stroke-linecap="round"/>
+  <path d="M212 147 L219 137 L226 147" fill="none" stroke="#4b6078" stroke-width="3" opacity=".5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="210" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="25" fill="#3d4b5f">Certified Alpha</text>
+  <text x="210" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="25" fill="#3d4b5f">Capacity</text>
+</svg>
