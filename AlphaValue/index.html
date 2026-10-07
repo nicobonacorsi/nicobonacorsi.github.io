@@ -540,6 +540,42 @@ footer{border-top:1px solid var(--line);padding:24px 0 30px;color:#858b94;font-s
 
 </script>
 
-  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "798567ff26a04815ae8261170c524635"}'></script><!-- End Cloudflare Web Analytics -->
+    <!-- AlphaValue click tracking: Paper / GitHub / Zenodo -->
+  <script>
+  (function(){
+    "use strict";
+    const routes={
+      "assets/Certified_Alpha_Capacity.pdf":"_events/paper/",
+      "https://github.com/nicobonacorsi/AlphaValue":"_events/github/",
+      "https://doi.org/10.5281/zenodo.23070742":"_events/zenodo/"
+    };
+
+    function recordClick(anchor){
+      const href=anchor && anchor.getAttribute("href");
+      const route=routes[href];
+      if(!route) return;
+
+      const frame=document.createElement("iframe");
+      frame.src=route+"?click="+Date.now();
+      frame.setAttribute("aria-hidden","true");
+      frame.tabIndex=-1;
+      frame.style.cssText="position:absolute;width:1px;height:1px;left:-9999px;top:-9999px;border:0;opacity:0;pointer-events:none";
+      document.body.appendChild(frame);
+      window.setTimeout(function(){ frame.remove(); },7000);
+    }
+
+    document.addEventListener("click",function(event){
+      const anchor=event.target.closest && event.target.closest("a[href]");
+      if(anchor) recordClick(anchor);
+    },true);
+
+    document.addEventListener("auxclick",function(event){
+      if(event.button!==1) return;
+      const anchor=event.target.closest && event.target.closest("a[href]");
+      if(anchor) recordClick(anchor);
+    },true);
+  })();
+  </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "798567ff26a04815ae8261170c524635"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
