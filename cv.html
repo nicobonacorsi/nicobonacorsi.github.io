@@ -542,7 +542,7 @@ permalink: /cv/
           <h3>Graduate Researcher</h3>
           <div class="cv-place"><a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> · New York, NY · Supervisor: <a href="https://stat.columbia.edu/department-directory/faculty/name/ioannis-karatzas/" target="_blank" rel="noopener">Professor Ioannis Karatzas</a></div>
           <p>
-            <strong>Drift and Volatility Control with Discretionary Stopping</strong> (working paper). Derived optimal stopping thresholds and constant drift and dispersion controls on continuation tails for convex terminal costs; characterized nonconvex free boundaries and state-dependent policies. Validated a Python free-boundary solver with finite differences and Monte Carlo across 132 regimes; joint control cut cost by up to 15.3%, with 0.37% worst-case regret under ±10% misspecification.
+            <strong>Drift and Volatility Control with Discretionary Stopping</strong> (working paper). Proved constant optimal drift and volatility controls on continuation tails for convex terminal costs; derived stopping thresholds and characterized free-boundary policies for nonconvex costs with multiple quadratic targets. Validated a Python free-boundary optimizer using finite differences and Monte Carlo across 132 regimes; achieved 8% median cost reduction versus the best single-control baseline, with 0.37% worst-case regret under ±10% parameter shifts.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Stochastic Control</span>
@@ -555,10 +555,10 @@ permalink: /cv/
       <article class="cv-item">
         <div class="cv-card">
           <div class="cv-date">Dec 2025 – Present</div>
-          <h3>Research Collaborator</h3>
+          <h3>Statistical Theory Expert, ARO PECASE project on Credal Information Theory</h3>
           <div class="cv-place"><a href="https://www.northeastern.edu/" target="_blank" rel="noopener">Northeastern University</a> · Boston, MA · Supervisor: <a href="https://coe.northeastern.edu/people/restuccia-francesco/" target="_blank" rel="noopener">Professor Francesco Restuccia</a></div>
           <p>
-            Research collaboration on robust rate–distortion theory and information-bottleneck optimization for machine learning under model uncertainty.
+            Statistical theory research on the ARO PECASE project on Credal Information Theory, including robust rate–distortion theory and credal information-bottleneck methods for machine learning under model uncertainty.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Robust ML</span>
@@ -574,7 +574,7 @@ permalink: /cv/
           <h3><a href="{{ '/projects/credal-rate-distortion/' | relative_url }}">Credal Rate–Distortion Theory</a></h3>
           <div class="cv-place">N. Bonacorsi, M. Caprio, F. Meneghello, F. Restuccia · <a href="https://mentis.info/publications/credal-rate-distortion-theory-journal/" target="_blank" rel="noopener">Extended version under review at IEEE Transactions on Information Theory</a></div>
           <p>
-            Formulated a robust rate–distortion theory for machine learning under model uncertainty; proved that zero-distortion credal compression is exactly graph coloring of an incompatibility graph.
+            Formulated a robust rate–distortion theory for machine learning under model uncertainty; proved optimal one-shot coding reduces to incompatibility-graph coloring at fixed distortion and characterized asymptotic rates via graph entropy.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">IEEE ITW 2026</span>
@@ -590,7 +590,7 @@ permalink: /cv/
           <h3><a href="https://mentis.info/publications/the-credal-information-bottleneck" target="_blank" rel="noopener">The Credal Information Bottleneck</a></h3>
           <div class="cv-place">D. Loi, G. Onorato, N. Bonacorsi, F. Meneghello, F. Restuccia</div>
           <p>
-            Generalized information-bottleneck optimization to sets of plausible laws. Across three benchmarks, reduced representation rate by 35% at matched worst-case accuracy and improved accuracy by 6 percentage points at matched rate versus standard and robust information-bottleneck baselines.
+            Extended the information bottleneck to credal uncertainty. Across three benchmarks, reduced representation rate by 35% at matched worst-case accuracy and gained 6 percentage points of accuracy at matched rate versus standard and robust information-bottleneck baselines.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Credal Information Bottleneck</span>
@@ -611,7 +611,7 @@ permalink: /cv/
           <h3>AI Research Intern</h3>
           <div class="cv-place"><a href="https://mentis.info/" target="_blank" rel="noopener">MENTIS Laboratory</a> · Boston, MA</div>
           <p>
-            Built a Python LP-feasibility/graph-search optimizer solving 54,000 problems 20× faster and within 1% of the exact optimum. Stress-tested uncertain-ML codebooks; compressed 60 uncertainty sets to 14 states (4.29×) with zero violations and near-zero violations under 15% parameter perturbations.
+            Engineered a Python combinatorial-optimization pipeline using LP feasibility tests and graph search; solved 54,000 problems, accelerated search 20×, and stayed within 1% of the exact optimum. Built uncertainty-aware ML codebooks, compressing 60 credal sets into 14 codewords (4.29×) with zero incompatibility violations versus 18.6% for an equal-size barycentric baseline.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Linear Programming</span>
@@ -627,7 +627,7 @@ permalink: /cv/
           <h3>Quantitative Researcher</h3>
           <div class="cv-place">E.PTY Group · Bologna, Italy</div>
           <p>
-            Built hierarchical and posterior-predictive Monte Carlo allocation models, reducing rolling out-of-sample RMSE by 14.6% versus historical baselines. Deployed rolling stochastic allocation with downside constraints, raising realized operating profit by 11.8%; historical backtests reduced 95% downside CVaR by 17.3%.
+            Built a hierarchical Bayesian forecasting and Monte Carlo allocation engine; reduced rolling out-of-sample RMSE by 14.6% versus historical forecasting baselines. Deployed downside-constrained stochastic allocation, increasing realized operating profit by 11.8%; historical backtests showed 17.3% lower 95% CVaR.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Probabilistic Forecasting</span>
@@ -645,10 +645,10 @@ permalink: /cv/
       <article class="cv-item">
         <div class="cv-card">
           <div class="cv-date">Aug 2026 – Present</div>
-          <h3><a href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">Certified Alpha Capacity (AlphaValue)</a></h3>
-          <div class="cv-place"><a href="https://arxiv.org/abs/2610.01115" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/nicobonacorsi/AlphaValue" target="_blank" rel="noopener">GitHub</a> · <a href="https://doi.org/10.5281/zenodo.23070742" target="_blank" rel="noopener">Zenodo</a></div>
+          <h3><a href="{{ '/projects/certified-alpha-capacity/' | relative_url }}">Certified Alpha Capacity (AlphaValue)</a></h3>
+          <div class="cv-place"><a href="https://arxiv.org/abs/2610.01115" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/nicobonacorsi/AlphaValue" target="_blank" rel="noopener">GitHub</a> · <a href="https://nicobonacorsi.github.io/AlphaValue/" target="_blank" rel="noopener">Calculator</a></div>
           <p>
-            Built and released AlphaValue, a public alpha-certification research package; derived exact multiple-testing feasibility thresholds and a crowding equilibrium linking arbitrage entry to endogenous signal decay. On 543 BTC/ETH funding events, lifetime score beat current edge (0.476 vs. 0.383) and retained 0.282 incremental rank signal (95% CI [0.128, 0.412]).
+            Selected as <a href="https://www.ml-quant.com/issues/2026-10-02/" target="_blank" rel="noopener">ML-Quant’s #1 arXiv Top Pick</a>. Developed and released AlphaValue, an open-source Python framework for statistical arbitrage signal certification; derived exact feasibility thresholds, a sharp optimal-stopping capacity law, and a competitive equilibrium for endogenous alpha decay. Across 543 BTC/ETH funding events, lifetime score outperformed current edge in seven-day funding rank correlation (0.474 vs. 0.383), retaining 0.2777 incremental rank association (95% CI [0.123, 0.406]).
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Alpha Certification</span>
@@ -664,7 +664,7 @@ permalink: /cv/
           <h3><a href="{{ '/projects/distributional-volatility/' | relative_url }}">Maturity-Safe Distributional Volatility Forecasting</a></h3>
           <div class="cv-place">Independent Quantitative Research · <a href="https://github.com/nicobonacorsi/maturity-safe-volatility-forecasting" target="_blank" rel="noopener">GitHub</a></div>
           <p>
-            Built a leakage-safe 22-day variance forecaster using six experts, bounded-loss Hedge, maturity-delayed updates and 22 non-overlapping residual streams. Across 3,381 out-of-sample forecasts, cut log-RMSE 14.9% versus VIX (HAC p &lt; 0.001) with 89.0% coverage at nominal 90%; a volatility-targeting controller cut maximum drawdown to 11.6% versus 15.3% for fixed exposure.
+            Assembled a leakage-safe 22-day variance forecaster using six experts, bounded-loss Hedge, maturity-delayed updates, and 22 non-overlapping residual streams. Evaluated 3,381 out-of-sample forecasts, reducing log-RMSE by 14.9% versus VIX (HAC p &lt; 0.001) with 89% coverage at nominal 90%; volatility targeting lowered maximum drawdown from 15.3% to 11.6% versus fixed exposure.
           </p>
           <div class="cv-tags">
             <span class="cv-tag">Volatility Forecasting</span>
@@ -690,21 +690,7 @@ permalink: /cv/
         </div>
       </article>
 
-      <article class="cv-item">
-        <div class="cv-card">
-          <div class="cv-date">2026</div>
-          <h3><a href="https://arxiv.org/abs/2603.04479" target="_blank" rel="noopener">Bayesian Modeling of Collatz Stopping Times</a></h3>
-          <div class="cv-place">N. Bonacorsi, M. Bordoni · arXiv</div>
-          <p>
-            Modeled stopping-time distributions over 10 million integers via hierarchical Bayesian inference and Monte Carlo; regime conditioning improved Wasserstein fit by 3.2×.
-          </p>
-          <div class="cv-tags">
-            <span class="cv-tag">Hierarchical Bayes</span>
-            <span class="cv-tag">Monte Carlo</span>
-            <span class="cv-tag">Distributional Modeling</span>
-          </div>
-        </div>
-      </article>
+      
     </div>
   </section>
 
